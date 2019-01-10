@@ -7,4 +7,9 @@
 
   - name: Output first disk space
     debug:
-      var: ansible_facts.disks[0].partitions[1].volumes.size
+      var: ansible_facts.disks[0].partitions[1].volumes
+    register: volumes
+    
+  - name: debug
+    debug:
+      var: volumes
