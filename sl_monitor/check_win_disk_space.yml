@@ -1,0 +1,15 @@
+- hosts: "{{ servers }}"
+
+  tasks:
+  - name: Get disk facts
+    win_disk_facts:
+    
+  - name: 'Ensure that free space is greater than 20%'
+    assert:
+      that: 
+        - item.size_remaining > item.size|float * 0.2
+      msg: "disk space has reached 80% threshold"
+    with_items: 
+      - "{{ volumes }}"
+    ignore_errors: yes
+    register: disk_space
