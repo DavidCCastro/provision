@@ -7,7 +7,8 @@
     register: disks
   
   - name: debug disks
-    debug: disks
+    debug: 
+      var: disks
     
   - name: 'Ensure that free space is greater than 20%'
     assert:
