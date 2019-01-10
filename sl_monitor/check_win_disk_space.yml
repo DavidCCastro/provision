@@ -15,3 +15,8 @@
       - volumes
       - flags:
         skip_missing: true
+    register: disk_space
+    
+  - name: debug disk_space
+    debug:
+      var: disk_space
