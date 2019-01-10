@@ -12,7 +12,6 @@
       msg: "disk space has reached 80% threshold"
     with_subelements:
       - "{{ ansible_disks }}"
-      - partitions
       - volumes
       - flags:
         skip_missing: true
