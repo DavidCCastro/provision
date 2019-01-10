@@ -6,16 +6,11 @@
     win_disk_facts:
 
   - name: "with_subelements and loop example of size check"
-    debug:
-      var: disk.1.volumes.0.size_remaining
+    assert:
+      that: 
+        - item.size_remaining > item.size|float * 0.2
+      msg: "disk space has reached 80% threshold"
     with_subelements:
       - "{{ ansible_disks }}"
       - partitions
-      - flags:
-        skip_missing: true
-    loop_control:
-      loop_var: disk
-    # When the drive has a letter, and less than 5 gb remaining
-    when:
-      - disk.1.drive_letter
-      - 5368709120 >= disk.1.volumes.0.size_remaining
+      - volumes
