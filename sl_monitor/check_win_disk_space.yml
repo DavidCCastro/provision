@@ -12,4 +12,4 @@
     
   - name: debug
     debug:
-      var: volumes.size
+      var: '{{ ansible_facts.disks|selectattr("system_disk")|first }}'
