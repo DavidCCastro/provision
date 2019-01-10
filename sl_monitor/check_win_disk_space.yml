@@ -12,4 +12,4 @@
     
   - name: debug
     debug:
-      var: ansible_facts.disks|selectattr("partitions")|volumes
+      var: ansible_facts.disks|selectattr("partitions")
