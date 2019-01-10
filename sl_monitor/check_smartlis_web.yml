@@ -1,0 +1,16 @@
+- hosts: localhost
+  become_user: root
+  
+  tasks:
+  - name: Check web http://{{ smartlis_ip }}/smartlis returns status 200
+    uri:
+      url: http://{{ smartlis_ip }}/smartlis
+  
+  - name: Login to http://{{ smartlis_ip }}/smartlis
+    uri:
+      url: http://{{ smartlis_ip }}/smartlis
+      user: suser
+      password: "{{ suser_pass }}"
+      force_basic_auth: yes
+      return_content: yes
+    register: login
