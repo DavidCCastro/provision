@@ -4,18 +4,7 @@
   tasks:
   - name: Get disk facts
     win_disk_facts:
-    register: disks
   
   - name: debug disks
     debug: 
-      var: disks
-    
-  - name: 'Ensure that free space is greater than 20%'
-    assert:
-      that: 
-        - item.size_remaining > item.size|float * 0.2
-      msg: "disk space has reached 80% threshold"
-    with_items: 
-      - "{{ disks }}"
-    ignore_errors: yes
-    register: disk_space
+      var: disk.1.volumes.0.size_remaining
