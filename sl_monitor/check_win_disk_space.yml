@@ -16,6 +16,6 @@
         - item.size_remaining > item.size|float * 0.2
       msg: "disk space has reached 80% threshold"
     with_items: 
-      - "{{ disks.ansible_disks.partitions }}"
+      - "{{ disks.results }}"
     ignore_errors: yes
     register: disk_space
