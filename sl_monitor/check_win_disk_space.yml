@@ -5,18 +5,6 @@
   - name: Get disk facts
     win_disk_facts:
 
-  - name: "with_subelements and loop example of size check"
-    assert:
-      that: 
-        - item.size_remaining > item.size|float * 0.2
-      msg: "disk space has reached 80% threshold"
-    with_subelements:
-      - "{{ ansible_disks }}"
-      - partitions
-      - flags:
-        skip_missing: true
-    register: disk_space
-    
-  - name: debug disk_space
+  - name: Output first disk space
     debug:
-      var: disk_space
+      var: ansible_facts.disks[0].size
