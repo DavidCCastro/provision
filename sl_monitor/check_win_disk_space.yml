@@ -14,4 +14,4 @@
       - "{{ ansible_disks }}"
       - partitions
       - volumes
-      skip_missing: true
+        skip_missing: true
