@@ -11,10 +11,10 @@
     
   - name: debug
     debug:
-      var: getvolumes.stdout_lines
+      var: getvolumes.stdout_lines[c]
  
   - name: execute powershell
-    win_command:  powershell.exe "Get-PSDrive "{{ getvolumes.stdout_lines.Name }}" | Select-Object Free | ConvertTo-Json"
+    win_command:  powershell.exe "Get-PSDrive "{{ getvolumes.stdout_lines.[C] }}" | Select-Object Free | ConvertTo-Json"
     register: getpsdrive
     
   - name: debug
