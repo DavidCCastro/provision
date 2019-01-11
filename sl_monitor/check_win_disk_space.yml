@@ -6,12 +6,12 @@
     win_disk_facts:
 
   - name: get volumes
-    win_command: powershell.exe "get-psdrive -PSProvider FileSystem | Select-Object Name"
+    win_command: powershell.exe "Get-PSDrive | Select-Object -ExpandProperty 'Name' | Select-String -Pattern '^[a-z]$'"
     register: getvolumes
     
   - name: debug
     debug:
-      var: getvolumes.stdout_lines.find("Name")
+      var: getvolumes
  
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive "{{ getvolumes.stdout_lines }}" | Select-Object Free | ConvertTo-Json"
