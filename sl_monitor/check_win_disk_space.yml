@@ -5,15 +5,14 @@
   - name: Get disk facts
     win_disk_facts:
 
-  - name: Output first disk space
-    debug:
-      var: ansible_facts.disks[0].partitions[1].volumes
-    register: volumes
+  - name: get volumes
+    win_command: powershell.exe "get-psdrive -PSProvider FileSystem | ConvertTo-Json"
+    register: getvolumes
     
   - name: debug
     debug:
-      var: ansible_facts.disks|selectattr("partitions")|first
-  
+      var: getvolumes
+ 
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive C | Select-Object Free | ConvertTo-Json"
     register: getpsdrive
