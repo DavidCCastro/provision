@@ -6,7 +6,7 @@
     win_disk_facts:
 
   - name: get volumes
-    win_command: powershell.exe "get-psdrive -PSProvider FileSystem | ConvertTo-Json"
+    win_command: powershell.exe "get-psdrive -PSProvider FileSystem"
     register: getvolumes
     
   - name: debug
