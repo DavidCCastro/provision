@@ -12,4 +12,12 @@
     
   - name: debug
     debug:
-      var: ansible_facts.disks|selectattr("partitions|volumes")|first
+      var: ansible_facts.disks|selectattr("partitions")|first
+  
+  - name: execute powershell
+    win_command:  powershell.exe "Get-PSDrive C | Select-Object Free | ConvertTo-Json"
+    register: getpsdrive
+    
+  - name: debug
+    debug:
+      var: getpsdrive
