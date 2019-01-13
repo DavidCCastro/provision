@@ -10,7 +10,7 @@
         
   - name: debug
     debug:
-      var: $DriveLetter
+      var: DriveLetter
  
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive "{{ $DriveLetter }}" | Select-Object Free | ConvertTo-Json"
