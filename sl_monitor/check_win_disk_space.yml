@@ -11,7 +11,7 @@
     
   - name: debug
     debug:
-      var: "{{ item.stdout }}"
+      var: "{{ item.item.DriveLetter }}"
     with_items:
       - getvolumes
  
