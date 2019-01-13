@@ -6,17 +6,17 @@
     win_disk_facts:
 
   - name: get volumes
-    win_command: powershell.exe "Get-PSDrive | Select-Object -ExpandProperty 'Name' | Select-String -Pattern '^[a-z]$' | ConvertTo-Json"
+    win_command: powershell.exe "Get-Volume | Select-Object DriveLetter | ConvertTo-Json"
     register: getvolumes
     
   - name: debug
     debug:
-      var: "(getvolumes.stdout | from_json).Matches"
+      var: "(getvolumes.stdout | from_json).DriveLetter"
  
   - name: execute powershell
-    win_command:  powershell.exe "Get-PSDrive C | Select-Object Free | ConvertTo-Json"
+    win_command:  powershell.exe "Get-PSDrive "{{ "(getvolumes.stdout | from_json).DriveLetter" }}" | Select-Object Free | ConvertTo-Json"
     register: getpsdrive
     
   - name: debug
     debug:
-      var: getpsdrive.stdout.Free
+      var: getpsdrive
