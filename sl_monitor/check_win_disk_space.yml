@@ -11,7 +11,9 @@
     
   - name: debug
     debug:
-      var: "(getvolumes.stdout_lines).DriveLetter"
+      var: getvolumes.stdout_lines
+    with_elements:
+      - DriveLetter
  
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive "{{ "(getvolumes.stdout | from_json).DriveLetter" }}" | Select-Object Free | ConvertTo-Json"
