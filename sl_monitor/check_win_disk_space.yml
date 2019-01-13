@@ -11,7 +11,7 @@
     
   - name: debug
     debug:
-      var: "(getvolumes.stdout | from_json).Name"
+      var: "(getvolumes.stdout | from_json).Matches"
  
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive C | Select-Object Free | ConvertTo-Json"
