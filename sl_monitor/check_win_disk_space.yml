@@ -11,7 +11,9 @@
     
   - name: debug
     debug:
-      var: getvolumes.stdout_lines[DriveLetter]
+      var: "{{ item }}"
+    with_items:
+      - getvolumes
  
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive "{{ getvolumes.stdout_lines }}" | Select-Object Free | ConvertTo-Json"
