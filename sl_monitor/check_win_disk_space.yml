@@ -19,4 +19,4 @@
     
   - name: debug
     debug:
-      var: "(getpsdrive.stdout | from_json).Free"
+      var: getpsdrive.stdout.Free
