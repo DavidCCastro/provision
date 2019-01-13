@@ -12,7 +12,7 @@
   - name: debug
     debug:
       var: getvolumes.stdout_lines
-      with_elements:
+    with_subelements:
       - DriveLetter
  
   - name: execute powershell
