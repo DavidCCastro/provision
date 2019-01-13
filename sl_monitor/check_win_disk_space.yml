@@ -11,7 +11,7 @@
     
   - name: debug
     debug:
-      var: getvolumes.stdout|map(attribute="File")
+      var: getvolumes.stdout
  
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive "{{ getvolumes.stdout_lines }}" | Select-Object Free | ConvertTo-Json"
