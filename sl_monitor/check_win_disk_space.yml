@@ -6,12 +6,12 @@
     win_disk_facts:
 
   - name: get volumes
-    win_command: powershell.exe "Get-Volume | Select-Object DriveLetter | ConvertTo-Json"
+    win_command: powershell.exe "Get-Volume | Select-Object DriveLetter"
     register: getvolumes
     
   - name: debug
     debug:
-      var: getvolumes.stdout.DriveLetter
+      var: getvolumes
  
   - name: execute powershell
     win_command:  powershell.exe "Get-PSDrive "{{ "(getvolumes.stdout | from_json).DriveLetter" }}" | Select-Object Free | ConvertTo-Json"
