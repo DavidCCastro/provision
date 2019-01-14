@@ -11,8 +11,8 @@
       var: service_status.stdout
   
   - name: debug outuput to find "inactive" status on stdout
-    delegate_to: SE00SANSL
+    delegate_to: localhost
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: rabbitmq service is not working
-    when: rabbitmq_status.stdout.find("1") != -1
+      msg: ensemble service is not working
+    when: service_status.stdout.find("1") != -1
