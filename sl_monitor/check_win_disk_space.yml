@@ -6,16 +6,9 @@
     win_disk_facts:
 
   - name: get volumes
-    win_command: powershell.exe "$DriveLetter= Get-Volume | Select-Object DriveLetter | ConvertTo-Json"
+    win_command: powershell.exe "Get-volume | Select-Object DriveLetter,Size,SizeRemaining"
+    register: Volumes
         
   - name: debug
     debug:
-      var: DriveLetter
- 
-  - name: execute powershell
-    win_command:  powershell.exe "Get-PSDrive "{{ $DriveLetter }}" | Select-Object Free | ConvertTo-Json"
-    register: getpsdrive
-    
-  - name: debug
-    debug:
-      var: getpsdrive
+      var: Volumes
