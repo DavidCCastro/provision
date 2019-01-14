@@ -1,5 +1,5 @@
-- hosts: localhost
-  become_user: root
+- hosts: "{{ servers }}"
+  gather_facts: false
   
   tasks:
   - name: Check web http://{{ smartlis_ip }}/smartlis returns status 200
