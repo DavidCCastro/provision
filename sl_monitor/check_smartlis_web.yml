@@ -9,4 +9,4 @@
   
   - name: Debug output
     debug:
-      var: output.json
+      var: output.json.data
