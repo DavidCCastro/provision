@@ -11,7 +11,7 @@
     
   - name: Set fact
     set_fact:
-      size_remaining: "{{ (Volumes.stdout | from_json).Size }}"
+      size_remaining: "{{ (Volumes.stdout_lines | from_json).Size }}"
         
   - name: debug
     debug:
