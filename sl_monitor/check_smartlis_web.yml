@@ -2,7 +2,7 @@
   gather_facts: false
   
   tasks:
-  - name: Check web http://{{ smartlis_ip }}/smartlis returns status 200
+  - name: Check smartlis web
     uri:
       url: http://{{ smartlis_ip }}/system/about
     register: output
