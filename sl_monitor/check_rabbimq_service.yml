@@ -13,5 +13,5 @@
     delegate_to: SE00SANSL
     slack:
       token: T9N25BYMC/BEKR5FXAT/Ed3fUnagKyth6RXeYz9JjElg
-      msg: rabbitmq service is not working
+      msg: "{{ ansible_hostname }} rabbitmq service is not working"
     when: rabbitmq_status.stdout.find("inactive") != -1
