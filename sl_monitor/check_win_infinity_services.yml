@@ -7,7 +7,7 @@
     register: service_status
 
   - name: debug outuput to find "stopped" or "1" status on stdout
-    delegate_to: SE00SANSL
+    delegate_to: localhost
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: ensemble service is not working
@@ -18,7 +18,7 @@
     register: service_status
 
   - name: debug outuput to find "stopped" or "1" status on stdout
-    delegate_to: SE00SANSL
+    delegate_to: localhost
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: Tomcat7 service is not working
@@ -29,7 +29,7 @@
     register: service_status
 
   - name: debug outuput to find "stopped" or "1" status on stdout
-    delegate_to: SE00SANSL
+    delegate_to: localhost
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: Apache2 service is not working
