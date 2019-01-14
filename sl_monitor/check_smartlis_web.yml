@@ -3,10 +3,11 @@
   
   tasks:
   - name: Check smartlis web
+    ignore_errors: yes
     uri:
       url: http://{{ smartlis_ip }}/system/about
     register: output
   
   - name: Debug output
     debug:
-      var: output.json.data
+      var: output
