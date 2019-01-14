@@ -16,5 +16,5 @@
     delegate_to: localhost
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ output.msg }}"
+      msg: "{{ output.url }}" "{{ output.msg }}"
     when: output.status == 503
