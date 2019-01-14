@@ -2,17 +2,35 @@
   gather_facts: false
 
   tasks:
-  - name: Set service startup mode to auto and ensure it is started
-    win_command: powershell.exe "Get-Service -Name W32Time | Select-Object Status | ConvertTo-Json"
+  - name: Check ensemble service status
+    win_command: powershell.exe "Get-Service -Name Cache_r-_intersystems_hsfoundation | Select-Object Status | ConvertTo-Json"
     register: service_status
-  
-  - name: debug
-    debug:
-      var: service_status.stdout
-  
-  - name: debug outuput to find "inactive" status on stdout
-    delegate_to: localhost
+
+  - name: debug outuput to find "stopped" or "1" status on stdout
+    delegate_to: SE00SANSL
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: ensemble service is not working
+    when: service_status.stdout.find("1") != -1
+    
+  - name: Check Tomcat7 service status
+    win_command: powershell.exe "Get-Service -Name Tomcat7 | Select-Object Status | ConvertTo-Json"
+    register: service_status
+
+  - name: debug outuput to find "stopped" or "1" status on stdout
+    delegate_to: SE00SANSL
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: Tomcat7 service is not working
+    when: service_status.stdout.find("1") != -1
+    
+  - name: Check Apache2 service status
+    win_command: powershell.exe "Get-Service -Name Apache2.4 | Select-Object Status | ConvertTo-Json"
+    register: service_status
+
+  - name: debug outuput to find "stopped" or "1" status on stdout
+    delegate_to: SE00SANSL
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: Apache2 service is not working
     when: service_status.stdout.find("1") != -1
