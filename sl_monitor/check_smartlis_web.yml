@@ -7,14 +7,10 @@
     uri:
       url: http://{{ smartlis_ip }}/system/about
     register: output
-  
-  - name: Debug output
-    debug:
-      var: output
 
-  - name: debug outuput to find errors
+  - name: debug outuput to find error 503
     delegate_to: localhost
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ output.url }} {{ output.msg }}"
+      msg: "Smartlis Backend not working {{ output.url }} --> {{ output.msg }}"
     when: output.status == 503
