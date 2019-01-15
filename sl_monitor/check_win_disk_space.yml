@@ -11,4 +11,4 @@
     
   - name: debug
     debug:
-      var: volumes.stdout_lines.size
+      var: volumes.stdout_lines.size\
