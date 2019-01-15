@@ -17,6 +17,7 @@
         skip_missing: true
     loop_control:
       loop_var: disk
+    ignore_errors: yes
     register: volumes
     
   - name: debug
