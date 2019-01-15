@@ -17,6 +17,7 @@
       loop_var: disk
     when:
       - disk.1.drive_letter
+      - disk.1.volumes.0.size_remaining > disk.1.volumes.0.size|float * 0.2
     register: volumes
     
   - name: debug
