@@ -27,13 +27,8 @@
   - name: Send message when free space is less than 20%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ ansible_hostname }} {{ item._ansible_item_label.drive_letter }} < 20% free space"
-    with_subelements: 
-      - "{{ volumes }}"
-      - results
-      - flags:
-        skip_missing: true
-    loop_control:
-      loop_var: disk
+      msg: "{{ ansible_hostname }} {{ item.disk.1.drive_letter }} < 20% free space"
+    with_items:
+      - "{{ volumes.result }}"
     when: item.failed == true
     delegate_to: localhost
