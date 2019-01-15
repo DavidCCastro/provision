@@ -5,12 +5,16 @@
   - name: "Check disk space on {{ inventory_hostname }}"
     win_disk_facts:
 
-  - name: Test
-    win_command: powershell.exe "Get-WmiObject -Class Win32_logicaldisk | Where-Object Drivetype -eq 3 | Select-Object "{{ item }}" | convertto-json"
-    with_items:
-      - deviceid,size,freespace
+  - name: "with_subelements and loop example of size check"
+    debug:
+      var: disk.1.volumes.0.size_remaining
+    with_subelements:
+      - "{{ ansible_disks }}"
+      - partitions
+      - flags:
+        skip_missing: true
     register: volumes
     
   - name: debug
     debug:
-      var: volumes.results[0].stdout_lines.Size
+      var: volumes
