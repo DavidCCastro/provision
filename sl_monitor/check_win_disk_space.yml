@@ -2,13 +2,13 @@
   gather_facts: yes
 
   tasks:
-  - name: "Check disk space on {{ inventory_hostname }}"
+  - name: Gather disk facts
     win_disk_facts:
 
-  - name: "with_subelements and loop example of size check"
+  - name: Ensure that free space is greater than 20%
     assert:
       that: 
-        - disk.1.volumes.0.size_remaining > disk.1.volumes.0.size|float * 0.2
+        - disk.1.volumes.0.size_remaining > disk.1.volumes.0.size|float * 0.9
       msg: "disk space has reached 80% threshold"
     with_subelements:
       - "{{ ansible_disks }}"
@@ -19,11 +19,7 @@
       loop_var: disk
     ignore_errors: yes
     register: volumes
-  
-  - name: Debug
-    debug:
-      var: volumes
-      
+
   - name: Send message when free space is less than 20%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
