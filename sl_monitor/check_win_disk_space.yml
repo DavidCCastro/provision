@@ -7,4 +7,4 @@
 
   - name: debug
     debug:
-      var: ansible_disks
+      var: ansible_disks.partitions
