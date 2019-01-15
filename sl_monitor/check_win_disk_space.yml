@@ -29,6 +29,6 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_hostname }} {{ item.disk.1.drive_letter }} < 20% free space"
     with_items:
-      - "{{ volumes.result }}"
+      - "{{ volumes.results }}"
     when: item.failed == true
     delegate_to: localhost
