@@ -18,3 +18,7 @@
     # When the drive has a letter, and less than 5 gb remaining
     when:
       - disk.1.drive_letter
+  - name: "min"
+    debug:
+      msg: "{{ item }}"
+    loop: "{{ ansible_disks|partitions }}"
