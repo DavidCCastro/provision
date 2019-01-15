@@ -6,13 +6,9 @@
     win_disk_facts:
 
   - name: get volumes
-    win_command: powershell.exe "Get-volume | Select-Object "{{ item }}" | ConvertTo-Json"
-    with_items:
-      - DriveLetter
-      - Size
-      - SizeRemaining
+    win_command: powershell.exe "Get-WmiObject -Class Win32_logicaldisk | Where-Object Drivetype -eq 3"
     register: result
         
   - name: debug
     debug:
-      var: result.Size
+      var: result
