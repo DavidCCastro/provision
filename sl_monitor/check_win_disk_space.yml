@@ -4,7 +4,11 @@
   tasks:
   - name: Get disk facts
     win_disk_facts:
+    
+  - name: debug
+    debug:
+      var: ansible_disks[0].partitions[1].number
 
   - name: debug
     debug:
-      var: ansible_disks[0].partitions[1].volumes
+      var: ansible_disks[0].partitions[1].volumes[0].size
