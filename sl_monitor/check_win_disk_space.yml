@@ -13,8 +13,10 @@
       - partitions
       - flags:
         skip_missing: true
+    when:
+      - disk.1.drive_letter
     register: volumes
     
   - name: debug
     debug:
-      var: volumes.results.item.volumes
+      var: volumes.results
