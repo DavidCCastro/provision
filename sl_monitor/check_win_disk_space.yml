@@ -33,5 +33,7 @@
       - results
       - flags:
         skip_missing: true
+    loop_control:
+      loop_var: disk
     when: item.failed == true
     delegate_to: localhost
