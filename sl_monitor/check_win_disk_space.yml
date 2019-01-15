@@ -13,6 +13,8 @@
       - partitions
       - flags:
         skip_missing: true
+    loop_control:
+      loop_var: disk
     when:
       - disk.1.drive_letter
     register: volumes
