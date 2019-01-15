@@ -30,7 +30,7 @@
       msg: "{{ ansible_hostname }} {{ item._ansible_item_label.drive_letter }} < 20% free space"
     with_subelements: 
       - "{{ volumes.results }}"
-      - partitions
+      - disk
       - flags:
         skip_missing: true
     when: item.failed == true
