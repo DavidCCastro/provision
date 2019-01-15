@@ -5,19 +5,6 @@
   - name: Get disk facts
     win_disk_facts:
 
-  - name: get volumes
-    win_command: powershell.exe "Get-WmiObject -Class Win32_logicaldisk | Where-Object Drivetype -eq 3"
-    register: result
-        
   - name: debug
     debug:
-      var: result.stdout_lines
-      
-  - name: Send notification
-    slack:
-      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ item.DeviceID }} < 20% free space"
-    with_items: 
-      - "{{ result.stdout_lines }}"
-    when: item.[FreeSpace] > item.[Size]|float * 0.2
-    delegate_to: localhost
+      var: disks
