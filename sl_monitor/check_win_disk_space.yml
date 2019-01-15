@@ -21,4 +21,4 @@
     
   - name: debug
     debug:
-      var: volumes.results
+      var: volumes.results.disk
