@@ -5,19 +5,7 @@
   - name: Get disk facts
     win_disk_facts:
     
-  - name: get volumes
-    win_command: powershell.exe "Get-volume | Select-Object DriveLetter,Size,SizeRemaining | ConvertTo-Json"
-    register: result
-        
   - name: debug
     debug:
-      var: result.stdout_lines[0].Size
-      
-  - name: Send notification
-    slack:
-      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ item.DeviceID }} < 20% free space"
-    with_items: 
-      - "{{ result.stdout_lines[0] }}"
-    when: item.FreeSpace > item.Size|float * 0.2
-    delegate_to: localhost
+      var: ansible_disks[0].partitions
+      var: ansible_disks[0].partitions.1.volumes
