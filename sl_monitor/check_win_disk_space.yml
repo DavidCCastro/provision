@@ -8,9 +8,11 @@
   - name: get volumes
     win_command: powershell.exe "Get-volume | Select-Object "{{ item }}" | ConvertTo-Json"
     with_items:
-      - DriveLetter,Size,SizeRemaining
+      - DriveLetter
+      - Size
+      - SizeRemaining
     register: result
         
   - name: debug
     debug:
-      var: result.results.stdout_lines
+      var: result.results.Size
