@@ -6,7 +6,9 @@
     win_disk_facts:
 
   - name: get volumes
-    win_command: powershell.exe "Get-volume | Select-Object DriveLetter,Size,SizeRemaining | ConvertTo-Json"
+    win_command: powershell.exe "Get-volume | Select-Object "{{ item }}" | ConvertTo-Json"
+    with_items:
+      - DriveLetter,Size,SizeRemaining
     register: result
         
   - name: debug
