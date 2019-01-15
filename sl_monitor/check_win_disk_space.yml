@@ -11,4 +11,4 @@
     
   - name: debug
     debug:
-      var: volumes
+      var: volumes.stdout_lines[0].Size
