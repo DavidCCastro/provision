@@ -21,4 +21,4 @@
   - name: "min"
     debug:
       msg: "{{ item }}"
-    loop: "{{ ansible_disks|partitions }}"
+    loop: "{{ ansible_disks|subelements('partitions') }}"
