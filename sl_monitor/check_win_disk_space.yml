@@ -19,7 +19,7 @@
       loop_var: disk
     ignore_errors: yes
     register: volumes
-    
-  - name: debug
+  
+  - name: Debug
     debug:
-      var: volumes.results[0].disk
+      var: volumes
