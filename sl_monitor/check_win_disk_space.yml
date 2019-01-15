@@ -6,11 +6,11 @@
     win_disk_facts:
 
   - name: Test
-    win_command: powershell.exe "Get-WmiObject -Class Win32_logicaldisk | Where-Object Drivetype -eq 3 | Select-Object {{ item }} | convertto-json"
+    win_command: powershell.exe "Get-WmiObject -Class Win32_logicaldisk | Where-Object Drivetype -eq 3 | Select-Object "{{ item }}" | convertto-json"
     with_items:
       - deviceid,size,freespace
     register: volumes
     
   - name: debug
     debug:
-      var: volumes.results[0].stdout_lines.
+      var: volumes.results[0].stdout_lines.Size
