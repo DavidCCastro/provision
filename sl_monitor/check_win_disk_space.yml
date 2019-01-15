@@ -13,4 +13,4 @@
     
   - name: debug
     debug:
-      var: volumes.stdout_lines
+      var: volumes
