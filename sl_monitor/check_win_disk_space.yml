@@ -13,4 +13,4 @@
         
   - name: debug
     debug:
-      var: result.results.stdout.item.Size
+      var: result.results.stdout_Lines.item.Size
