@@ -7,12 +7,8 @@
 
   - name: get volumes
     win_command: powershell.exe "Get-volume | Select-Object DriveLetter,Size,SizeRemaining | ConvertTo-Json"
-    register: Volumes
-    
-  - name: Set fact
-    set_fact:
-      size_remaining: "{{ Volumes.stdout_lines[Size] }}"
+    register: result
         
   - name: debug
     debug:
-      var: size_remaining
+      var: result
