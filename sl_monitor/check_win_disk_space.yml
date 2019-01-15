@@ -17,4 +17,4 @@
     
   - name: debug
     debug:
-      var: volumes
+      var: volumes.results.item.volumes
