@@ -11,7 +11,7 @@
     
   - name: Set fact
     set_fact:
-      size_remaining: "{{ Volumes.stdout_lines.Size }}"
+      size_remaining: "{{ Volumes.stdout_lines[Size] }}"
         
   - name: debug
     debug:
