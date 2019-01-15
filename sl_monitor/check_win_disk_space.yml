@@ -6,7 +6,7 @@
     win_disk_facts:
 
   - name: Test
-    win_command: powershell.exe "Get-WmiObject -Class Win32_logicaldisk | Where-Object Drivetype -eq 3 | Select-Object deviceid,size,freespace | format-list"
+    win_command: powershell.exe "Get-WmiObject -Class Win32_logicaldisk | Where-Object Drivetype -eq 3 | Select-Object deviceid,size,freespace | convertto-json | format-list"
     register: volumes
     
   - name: debug
