@@ -15,4 +15,4 @@
         
   - name: debug
     debug:
-      var: result.item.Size
+      var: result.Size
