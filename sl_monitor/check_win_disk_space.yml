@@ -20,5 +20,5 @@
       - disk.1.drive_letter
   - name: "min"
     debug:
-      var: "{{ item.volumes.0.size }}"
+      var: "{{ item.1.volumes.0.size }}"
     loop: "{{ ansible_disks|subelements('partitions') }}"
