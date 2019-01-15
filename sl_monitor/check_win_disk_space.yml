@@ -16,8 +16,8 @@
   - name: Send notification
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ item.item.DeviceID }} < 20% free space"
+      msg: "{{ item.DeviceID }} < 20% free space"
     with_items: 
       - "{{ result.stdout_lines }}"
-    when: item.FreeSpace > item.Size|float * 0.2
+    when: item.FreeSpace > item[Size]|float * 0.2
     delegate_to: localhost
