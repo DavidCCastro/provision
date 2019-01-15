@@ -19,5 +19,5 @@
       msg: "{{ item.DeviceID }} < 20% free space"
     with_items: 
       - "{{ result.stdout_lines }}"
-    when: item.FreeSpace > item[Size]|float * 0.2
+    when: item[FreeSpace] > item[Size]|float * 0.2
     delegate_to: localhost
