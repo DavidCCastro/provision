@@ -27,5 +27,5 @@
     with_items:
       - "{{ volumes.results }}"
     when: item.failed == true
-    delegate_to: localhost
+    delegate_to: ansible
     remote_user: smartlis
