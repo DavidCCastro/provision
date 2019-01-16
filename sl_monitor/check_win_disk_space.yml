@@ -21,6 +21,7 @@
     register: volumes
 
   - name: Send message when free space is less than 20%
+    become: yes
     remote_user: smartlis
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
