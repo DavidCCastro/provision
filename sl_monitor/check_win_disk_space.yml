@@ -1,9 +1,16 @@
 - hosts: "{{ servers }}"
-  gather_facts: yes
+  vars:
+  machine:
+    username: '{{ ansible_user }}'
+    password: '{{ ansible_password }}'
 
   tasks:
   - name: Gather disk facts
     win_disk_facts:
+    
+  - name: debug credentials
+    debug:
+      var: machine
 
   - name: Ensure that free space is greater than 20%
     assert:
