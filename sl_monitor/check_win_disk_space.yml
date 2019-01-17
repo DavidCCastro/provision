@@ -1,8 +1,8 @@
 - hosts: "{{ servers }}"
   vars:
-  machine:
-    username: '{{ ansible_user }}'
-    password: '{{ ansible_password }}'
+    machine:
+      username: '{{ ansible_user }}'
+      password: '{{ ansible_password }}'
 
   tasks:
   - name: Gather disk facts
