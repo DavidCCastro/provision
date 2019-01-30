@@ -1,21 +1,13 @@
 - hosts: "{{ servers }}"
-  vars:
-    machine:
-      username: '{{ ansible_user }}'
-      password: '{{ ansible_password }}'
 
   tasks:
   - name: Gather disk facts
     win_disk_facts:
-    
-  - name: debug credentials
-    debug:
-      var: machine
 
   - name: Ensure that free space is greater than 20%
     assert:
       that: 
-        - disk.1.volumes.0.size_remaining > disk.1.volumes.0.size|float * 0.2
+        - disk.1.volumes.0.size_remaining > disk.1.volumes.0.size|float * 0.6
       msg: "disk space has reached 80% threshold"
     with_subelements:
       - "{{ ansible_disks }}"
@@ -34,5 +26,4 @@
     with_items:
       - "{{ volumes.results }}"
     when: item.failed == true
-    delegate_to: ansible
-    remote_user: smartlis
+    delegate_to: localhost
