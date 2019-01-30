@@ -4,6 +4,10 @@
   - name: Get disk facts
     win_disk_facts:
     
+  - name: debug
+    debug:
+      var: ansible_facts
+    
   - name: 'Ensure that free space is greater than 20%'
     assert:
       that: 
