@@ -26,4 +26,4 @@
     with_items:
       - "{{ volumes.results }}"
     when: item.failed == true
-    delegate_to: 127.0.0.1
+    delegate_to: localhost
