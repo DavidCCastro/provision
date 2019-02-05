@@ -7,7 +7,7 @@
     password: "{{ item.value.password }}"
     validate_certs: "{{ item.value.validate_certs }}"
     datacenter: "{{ item.value.datacenter }}"
-    folder: "{{ item.value.datacenter }}"
+    folder: "{{ item.value.folder }}"
     name: "{{ item.key }}"
     state: poweredon
     annotation: "{{ item.value.annotation }}"
@@ -41,7 +41,7 @@
     password: "{{ item.value.password }}"
     validate_certs: "{{ item.value.validate_certs }}"
     datacenter: "{{ item.value.datacenter }}"
-    folder: "{{ item.value.datacenter }}"
+    folder: "{{ item.value.folder }}"
     name: "{{ item.key }}"
     state: poweredon
     annotation: "{{ item.value.annotation }}"
