@@ -50,8 +50,8 @@ vmware_smartlis_deployment:
     annotation: "Created from Ansible"
     disk:
     - size_gb: 40
-        type: thin
-        datastore: "{{ vmware_datastore }}"
+      type: thin
+      datastore: "{{ vmware_datastore }}"
     - size_gb: 300
       type: thin
       datastore: "{{ vmware_datastore }}"
@@ -162,8 +162,8 @@ vmware_smartlis_deployment:
     annotation: "Created from Ansible"
     disk:
     - size_gb: 40
-        type: thin
-        datastore: "{{ vmware_datastore }}"
+      type: thin
+      datastore: "{{ vmware_datastore }}"
     - size_gb: 300
       type: thin
       datastore: "{{ vmware_datastore }}"
