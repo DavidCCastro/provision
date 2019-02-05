@@ -10,8 +10,8 @@
     register: rabbitmq_status
    
   - name: debug outuput to find "inactive" status on stdout
-    delegate_to: SE00SANSL
+    delegate_to: localhost
     slack:
-      token: T9N25BYMC/BEKR5FXAT/Ed3fUnagKyth6RXeYz9JjElg
-      msg: rabbitmq service is not working
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "{{ ansible_hostname }} rabbitmq service is not working"
     when: rabbitmq_status.stdout.find("inactive") != -1

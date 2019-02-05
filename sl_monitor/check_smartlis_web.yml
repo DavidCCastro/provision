@@ -1,16 +1,16 @@
-- hosts: localhost
-  become_user: root
+- hosts: "{{ servers }}"
+  gather_facts: false
   
   tasks:
-  - name: Check web http://{{ smartlis_ip }}/smartlis returns status 200
+  - name: Check smartlis web
+    ignore_errors: yes
     uri:
-      url: http://{{ smartlis_ip }}/smartlis
-  
-  - name: Login to http://{{ smartlis_ip }}/smartlis
-    uri:
-      url: http://{{ smartlis_ip }}/smartlis
-      user: suser
-      password: "{{ suser_pass }}"
-      force_basic_auth: yes
-      return_content: yes
-    register: login
+      url: http://{{ smartlis_ip }}/system/about
+    register: output
+
+  - name: debug outuput to find error 503
+    delegate_to: localhost
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "Smartlis Backend not working {{ output.url }} --> {{ output.msg }}"
+    when: output.status == 503
