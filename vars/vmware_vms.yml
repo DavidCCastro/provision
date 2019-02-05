@@ -1,6 +1,6 @@
 ---
 vmware_host: "192.1.1.130"
-vmware_user: "ansible"
+vmware_user: "inf\\ansible"
 vmware_password: "{{ vcenter_pass }}"
 vmware_validate_certs: false
 vmware_template: slbase1
