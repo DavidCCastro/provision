@@ -33,8 +33,7 @@ vmware_smartlis_deployment:
       memory_mb: 4096
       num_cpus: 2
     customization:
-      dns_servers:
-       - "{{ vmware_dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: slelastic01
     template: "{{ vmware_template }}"
   sldata01:
@@ -59,8 +58,7 @@ vmware_smartlis_deployment:
       memory_mb: 4096
       num_cpus: 2
     customization:
-      dns_servers:
-      - "{{ vmware_dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: sldata01
     template: "{{ vmware_template }}"
   slcom01:
@@ -81,8 +79,7 @@ vmware_smartlis_deployment:
       memory_mb: 4096
       num_cpus: 1
     customization:
-      dns_servers:
-      - "{{ vmware_dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: slcom01
     template: "{{ vmware_template }}"
   slrabbit01:
@@ -103,8 +100,7 @@ vmware_smartlis_deployment:
       memory_mb: 4096
       num_cpus: 1
     customization:
-      dns_servers:
-      - "{{ vmware_dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: slrabbit01
     template: "{{ vmware_template }}"
   slapp01:
@@ -125,8 +121,7 @@ vmware_smartlis_deployment:
       memory_mb: 4096
       num_cpus: 1
     customization:
-      dns_servers:
-      - "{{ vmware_dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: slapp01
     template: "{{ vmware_template }}"
   slwww01:
@@ -147,8 +142,7 @@ vmware_smartlis_deployment:
       memory_mb: 4096
       num_cpus: 1
     customization:
-      dns_servers:
-      - "{{ vmware_dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: slwww01
     template: "{{ vmware_template }}"
   slstatic01:
@@ -173,8 +167,7 @@ vmware_smartlis_deployment:
       memory_mb: 4096
       num_cpus: 1
     customization:
-      dns_servers:
-      - "{{ vmware_dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: slstatic01
     template: "{{ vmware_template }}"
 
