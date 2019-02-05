@@ -20,8 +20,6 @@
       ip: "{{ item.value.networks[0].ip }}"
       netmask: "{{ item.value.networks[0].netmask }}"
       gateway: "{{ item.value.networks[0].gateway }}"
-      dns_servers:
-      - "{{ item.value.networks[0].dns_servers }}"
     hardware:
       memory_mb: "{{ item.value.hardware.memory_mb }}"
       num_cpus: "{{ item.value.hardware.num_cpus }}"
@@ -52,8 +50,6 @@
       ip: "{{ item.value.networks[0].ip }}"
       netmask: "{{ item.value.networks[0].netmask }}"
       gateway: "{{ item.value.networks[0].gateway }}"
-      dns_servers:
-      - "{{ item.value.networks[0].dns_servers }}"
     hardware:
       memory_mb: "{{ item.value.hardware.memory_mb }}"
       num_cpus: "{{ item.value.hardware.num_cpus }}"
