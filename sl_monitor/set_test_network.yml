@@ -10,7 +10,7 @@
       datacenter: CSI
       validate_certs: no
       name: "{{ item }}"
-      state: poweredoff
+      state: present
       force: yes
       networks:
       - name: SL_Privada
