@@ -1,6 +1,5 @@
 ---
-- name: Enable rabbitmq service
+- name: Restart rabbitmq-server service
   systemd:
     name: rabbitmq-server
-    enabled: true
-    state: started
+    state: restarted
