@@ -4,16 +4,16 @@
     url: "{{ erlang_rabbitmq_repo_key }}"
     state: present
        
- - name: add erlang repo
-   apt_repository:
-     repo: "{{ erlang_rabbitmq_repo_source }}"
-     state: present
+- name: add erlang repo
+  apt_repository:
+    repo: "{{ erlang_rabbitmq_repo_source }}"
+    state: present
     
- - name: apt update
-   apt:
-     update_cache: yes
+- name: apt update
+  apt:
+    update_cache: yes
      
- - name: Install erlang
-   apt:
-     name: "{{ erlang_rabbitmq_apt_packages }}"
-     state: present
+- name: Install erlang
+  apt:
+    name: "{{ erlang_rabbitmq_apt_packages }}"
+    state: present
