@@ -1,0 +1,16 @@
+- hosts: localhost
+
+  tasks:
+  - name: Change Network
+    vmware_guest:
+      hostname: '{{ vcenter_host }}'
+      username: '{{ vcenter_user }}'
+      password: '{{ vcenter_pass }}'
+      validate_certs: no
+      name: "{{ item }}"
+      state: present
+      networks:
+      - name: SL_Privada
+    loop:
+      - slcom01
+    delegate_to: localhost
