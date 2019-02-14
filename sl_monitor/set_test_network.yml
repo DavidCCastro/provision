@@ -14,5 +14,5 @@
       networks:
       - name: SL_Privada
     loop:
-      - slcom01
+      - slapp01
     delegate_to: localhost
