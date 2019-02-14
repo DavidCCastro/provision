@@ -1,3 +1,2 @@
 ---
 - import_tasks: install_erlang_slrabbitmq.yml
-- import_tasks: service.yml
