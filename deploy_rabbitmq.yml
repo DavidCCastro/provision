@@ -1,0 +1,8 @@
+- name: install rabbitmq
+  hosts: slrabbit
+  become: yes
+  become_user: root
+  remote_user: smartlis
+  roles:
+    - slrabbit
+    - erlang-slrabbitmq
