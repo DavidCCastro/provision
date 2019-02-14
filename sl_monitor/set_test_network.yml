@@ -6,6 +6,7 @@
       hostname: '{{ vcenter_host }}'
       username: '{{ vcenter_user }}'
       password: '{{ vcenter_pass }}'
+      folder: /Taller/vm
       validate_certs: no
       name: "{{ item }}"
       state: poweredoff
