@@ -6,7 +6,7 @@
       hostname: '{{ vcenter_host }}'
       username: '{{ vcenter_user }}'
       password: '{{ vcenter_pass }}'
-      folder: /CSI/vm
+      folder: /CSI/SL_Aviles_PRE
       datacenter: CSI
       validate_certs: no
       name: "{{ item }}"
