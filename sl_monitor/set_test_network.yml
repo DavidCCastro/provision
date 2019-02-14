@@ -6,8 +6,8 @@
       hostname: '{{ vcenter_host }}'
       username: '{{ vcenter_user }}'
       password: '{{ vcenter_pass }}'
-      folder: /Taller/vm
-      datacenter: Taller
+      folder: /CSI/vm
+      datacenter: CSI
       validate_certs: no
       name: "{{ item }}"
       state: poweredoff
