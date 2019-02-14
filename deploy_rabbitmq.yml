@@ -4,7 +4,7 @@
   become_user: root
   remote_user: smartlis
   vars_files:
-    - roles/erlang-slrabbitmq/vars/erlang-slrabbitmq.yml
+    - roles/erlang_slrabbitmq/vars/erlang_slrabbitmq.yml
   
   roles:
     - erlang-slrabbitmq
