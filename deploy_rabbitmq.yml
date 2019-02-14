@@ -3,6 +3,9 @@
   become: yes
   become_user: root
   remote_user: smartlis
+  vars_files:
+    - roles/erlang-slrabbitmq/vars/erlang-slrabbitmq.yml
+  
   roles:
     - erlang-slrabbitmq
     - slrabbit
