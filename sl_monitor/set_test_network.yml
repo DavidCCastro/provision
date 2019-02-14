@@ -8,7 +8,7 @@
       password: '{{ vcenter_pass }}'
       validate_certs: no
       name: "{{ item }}"
-      state: present
+      state: poweredoff
       networks:
       - name: SL_Privada
     loop:
