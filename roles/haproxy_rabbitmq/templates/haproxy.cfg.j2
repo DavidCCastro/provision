@@ -49,5 +49,5 @@ listen  rabbitBalancer
         mode            tcp
         balance         roundrobin
         timeout client  3h
-        server          rabbitmaster "{{ rabbitmaster_host }}":5672 check inter 5s rise 2 fall 3
-        server          rabbitslave "{{ rabbitslave_host }}":5672 check inter 5s rise 2 fall 3
+        server          rabbitmaster {{ rabbitmaster_host }}:5672 check inter 5s rise 2 fall 3
+        server          rabbitslave {{ rabbitslave_host }}:5672 check inter 5s rise 2 fall 3
