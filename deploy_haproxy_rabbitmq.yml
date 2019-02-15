@@ -1,0 +1,8 @@
+---
+- name: install haproxy
+  hosts: slrabbit
+  become: yes
+  become_user: root
+  remote_user: smartlis
+  roles:
+    - haproxy_rabbitmq
