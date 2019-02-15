@@ -4,5 +4,7 @@
   become: yes
   become_user: root
   remote_user: smartlis
+  vars_files:
+    - roles/haproxy_rabbitmq/vars/haproxy_rabbitmq.yml
   roles:
     - haproxy_rabbitmq
