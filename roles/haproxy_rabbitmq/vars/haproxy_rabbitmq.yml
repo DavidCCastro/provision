@@ -1,0 +1,2 @@
+rabbitmqmaster_host: "{{ rabbitmqmaster_host }}"
+rabbitmqslave_host: "{{ rabbitmqslave_host }}"
