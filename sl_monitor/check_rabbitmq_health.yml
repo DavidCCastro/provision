@@ -1,0 +1,16 @@
+- hosts: localhost
+  
+  tasks:
+  - name: Get rabbitmq nodes info
+    uri:
+      url: http://{{ item }}/api/nodes
+      user: guest
+      password: guest
+      return_content: yes
+    register: rabbitmq_health
+    with_items:
+      - "{{ servers }}"
+    
+  - name: debug
+    debug:
+      var: rabbitmq_health
