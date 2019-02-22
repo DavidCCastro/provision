@@ -3,13 +3,11 @@
   tasks:
   - name: Get rabbitmq nodes info
     uri:
-      url: http://{{ item }}/api/nodes
+      url: http://192.1.1.224:15672/api/nodes
       user: guest
       password: guest
       return_content: yes
     register: rabbitmq_health
-    with_items:
-      - "{{ servers }}"
     
   - name: debug
     debug:
