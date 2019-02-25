@@ -11,4 +11,4 @@
     
   - name: debug
     debug:
-      var: rabbitmq_health.json
+      var: rabbitmq_health.mem_alarm
