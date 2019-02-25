@@ -12,3 +12,4 @@
   - name: debug
     debug:
       var: rabbitmq_health.json.0.mem_alarm
+      msg: "{{ item.json.0.name }}"
