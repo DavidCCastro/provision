@@ -11,4 +11,4 @@
     
   - name: debug
     debug:
-      var: rabbitmq_health
+      var: rabbitmq_health.json
