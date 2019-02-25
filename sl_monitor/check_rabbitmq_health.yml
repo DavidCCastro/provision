@@ -15,5 +15,5 @@
       msg: "{{ item.name }}{{ item.mem_alarm }}"
     with_items:
       - "{{ rabbitmq_health.json }}"
-    when: item.mem_alarm == true
+    when: item.mem_alarm == false
     delegate_to: localhost
