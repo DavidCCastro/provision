@@ -7,6 +7,7 @@
       username: "{{ vcenter_username }}"
       password: "{{ vcenter_password }}"
       vm_type: vm
+    validate_certs: false
     register: vmfacts
 
   - debug:
