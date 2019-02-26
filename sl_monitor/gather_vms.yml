@@ -1,12 +1,13 @@
 - hosts: localhost
 
-- name: Gather all registered virtual machines
-  vmware_vm_facts:
-    hostname: 192.1.1.150
-    username: "{{ vcenter_username }}"
-    password: "{{ vcenter_password }}"
-    vm_type: vm
-  register: vmfacts
+  tasks:
+  - name: Gather all registered virtual machines
+    vmware_vm_facts:
+      hostname: 192.1.1.150
+      username: "{{ vcenter_username }}"
+      password: "{{ vcenter_password }}"
+      vm_type: vm
+    register: vmfacts
 
-- debug:
-    var: vmfacts.virtual_machines
+  - debug:
+      var: vmfacts.virtual_machines
