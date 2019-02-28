@@ -11,6 +11,10 @@
   shell: rabbitmqctl join_cluster rabbit@{{ rabbitmaster_host }}
   register: join_cluster_output
   ignore_errors: True
+  
+- name: debug
+  debug:
+    var: join_cluster_output
 
 - name: skip fail if the node is already a member of the cluster
   fail: msg="join_cluster failed but node is not already a member"
