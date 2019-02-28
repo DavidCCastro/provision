@@ -1,3 +1,2 @@
 rabbitmq_erlang_cookie: YLNEQWFHYGJLKTCPKYIG
 rabbitmaster_host: "{{ rabbitmqmaster_host }}"
-rabbitslave_host: "{{ rabbitmqslave_host }}"
