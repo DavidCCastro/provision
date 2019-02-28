@@ -1,0 +1,10 @@
+---
+- name: install keepalive
+  hosts: slrabbit
+  become: yes
+  become_user: root
+  remote_user: smartlis
+  vars_files:
+    - roles/keepalive/vars/keepalive.yml
+  roles:
+    - keepalive
