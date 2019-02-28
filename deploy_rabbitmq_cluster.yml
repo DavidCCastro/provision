@@ -1,0 +1,10 @@
+---
+- name: create slrabbitmq cluster
+  hosts: slrabbit
+  become: yes
+  become_user: root
+  remote_user: smartlis
+  vars_files:
+    - roles/slrabbit_cluster/vars/slrabbit_cluster.yml
+  roles:
+    - slrabbit_cluster
