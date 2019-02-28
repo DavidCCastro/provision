@@ -1,0 +1,5 @@
+---
+- name: configure keepalive
+  template:
+    src: keepalive.conf
+    dest: /etc/Keepalived/keepalived.conf
