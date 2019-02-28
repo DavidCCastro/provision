@@ -2,11 +2,11 @@
 - name: configure keepalived master
   template:
     src: keepalived_master.conf.j2
-    dest: /etc/Keepalived/keepalived.conf
+    dest: /etc/keepalived/keepalived.conf
   when: ("{{ ansible_hostname }}" == "{{ rabbitmaster_host }}")
   
 - name: configure keepalived slave
   template:
     src: keepalived_slave.conf.j2
-    dest: /etc/Keepalived/keepalived.conf
+    dest: /etc/keepalived/keepalived.conf
   when: ("{{ ansible_hostname }}" == "{{ rabbitslave_host }}")
