@@ -1,3 +1,5 @@
 rabbitmq_erlang_cookie: 
 rabbitmq_create_cluster: no
-rabbitmq_cluster_master: localhost
+rabbitmq_nodes:
+  - {{ rabbitmqmaster_host }}
+  - {{ rabbitmqslave_host }}
