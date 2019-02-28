@@ -1,5 +1,5 @@
 ---
 - name: install keepalive
   apt:
-    name: "{{ apt_packages }}"
+    name: "{{ keepalive_packages }}"
     state: present
