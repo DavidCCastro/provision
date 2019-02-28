@@ -8,9 +8,12 @@
   shell: rabbitmqctl stop_app
 
 - name: add this node to cluster
-  shell: rabbitmqctl join_cluster rabbit@{{ rabbitmq_nodes }}
+  shell: rabbitmqctl join_cluster rabbit@{{ item }}
   register: join_cluster_output
   ignore_errors: True
+  with_items:
+    - {{ rabbitmaster_node }}
+    - {{ rabbitslave_node }}
 
 - name: skip fail if the node is already a member of the cluster
   fail: msg="join_cluster failed but node is not already a member"
