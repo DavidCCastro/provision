@@ -1,0 +1,5 @@
+---
+- name: rabbitmq service started
+  service:
+    name: rabbitmq-server
+    state: started
