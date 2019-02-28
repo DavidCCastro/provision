@@ -1,5 +1,4 @@
-rabbitmq_erlang_cookie: 
-rabbitmq_create_cluster: no
+rabbitmq_erlang_cookie: YLNEQWFHYGJLKTCPKYIG
 rabbitmq_nodes:
   - {{ rabbitmqmaster_host }}
   - {{ rabbitmqslave_host }}
