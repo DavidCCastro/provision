@@ -12,8 +12,8 @@
   register: join_cluster_output
   ignore_errors: True
   with_items:
-    - {{ rabbitmaster_host }}
-    - {{ rabbitslave_host }}
+    - "{{ rabbitmaster_host }}"
+    - "{{ rabbitslave_host }}"
 
 - name: skip fail if the node is already a member of the cluster
   fail: msg="join_cluster failed but node is not already a member"
