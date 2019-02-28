@@ -8,7 +8,7 @@
   shell: rabbitmqctl stop_app
 
 - name: add this node to cluster
-  shell: rabbitmqctl join_cluster rabbit@{{ rabbitmq_cluster_master }}
+  shell: rabbitmqctl join_cluster rabbit@{{ rabbitmq_nodes }}
   register: join_cluster_output
   ignore_errors: True
 
