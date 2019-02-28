@@ -25,9 +25,6 @@
   template:
     src: erlang.cookie.j2
     dest: /var/lib/rabbitmq/.erlang.cookie
-    owner: rabbitmq
-    group: rabbitmq
-    mode: 0400
 
 - name: remove old erlang cookie
   file:
