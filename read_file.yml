@@ -1,5 +1,6 @@
 - hosts: 192.1.1.224
-  
+  become: yes
+  become_method: sudo
   tasks:
   - name: copy file content
     copy:
