@@ -7,5 +7,4 @@
     copy:
       src: /var/lib/rabbitmq/.erlang.cookie
       dest: /var/lib/rabbitmq/.erlang.cookie
-      remote_src: yes
     delegate_to: 192.1.1.224
