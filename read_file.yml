@@ -6,4 +6,4 @@
     copy:
       src: /home/smartlis/.erlang.cookie
       dest: /home/smartlis/.erlang.cookie
-      delegate_to: 192.1.1.47
+    delegate_to: 192.1.1.47
