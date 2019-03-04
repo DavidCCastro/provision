@@ -1,0 +1,10 @@
+- hosts: 192.1.1.224
+  tasks:
+  - name: red file content .erlang.cookie
+    debug:
+      msg: "{{lookup('file', '/var/lib/rabbitmq/.erlang.cookie') }}"
+    register: erlang_cookie
+    
+  - name: debug:
+    debug:
+      var: erlang_cookie
