@@ -1,4 +1,4 @@
-- hosts: 192.1.1.224
+- hosts: 192.1.1.47
   
   tasks:
   - name: copy file content
@@ -7,5 +7,5 @@
     copy:
       src: /var/lib/rabbitmq/.erlang.cookie
       dest: /var/lib/rabbitmq/.erlang.cookie
-    delegate_to: 192.1.1.47
-    remote_user: smartlis
+      remote_src: yes
+    delegate_to: 192.1.1.224
