@@ -5,7 +5,7 @@
   - name: fetch file
     fetch: 
       src: /var/lib/rabbitmq/.erlang.cookie
-      dest: /home/smartlis/.erlang.cookie
+      dest: /home/smartlis
 
 - hosts: 192.1.1.47
   become: true
@@ -14,5 +14,5 @@
   - name: copy file
     copy:
       src: /home/smartlis/.erlang.cookie
-      dest: /var/lib/rabbitmq/.erlang.cookie
+      dest: /var/lib/rabbitmq
       force: yes
