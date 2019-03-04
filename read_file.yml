@@ -1,8 +1,9 @@
 - hosts: 192.1.1.224
-  become: yes
-  become_method: sudo
+  
   tasks:
   - name: red file content .erlang.cookie
+    become: yes
+    become_method: sudo
     debug:
       msg: "{{lookup('file', '/var/lib/rabbitmq/.erlang.cookie') }}"
     register: erlang_cookie
