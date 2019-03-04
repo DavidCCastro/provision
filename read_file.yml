@@ -1,8 +1,9 @@
 - hosts: 192.1.1.224
-  become: yes
-  become_method: sudo
+  
   tasks:
   - name: copy file content
+    become: yes
+    become_method: sudo
     copy:
       src: /var/lib/rabbitmq/.erlang.cookie
       dest: /var/lib/rabbitmq/.erlang.cookie
