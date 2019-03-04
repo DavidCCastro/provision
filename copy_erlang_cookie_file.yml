@@ -13,6 +13,6 @@
   tasks:
   - name: copy file
     copy:
-      src: tmp/192.1.1.224/.erlang.cookie
+      src: tmp/192.1.1.224/var/lib/rabbitmq/.erlang.cookie
       dest: /var/lib/rabbitmq/.erlang.cookie
       force: yes
