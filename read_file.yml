@@ -1,18 +1,8 @@
 - hosts: 192.1.1.224
   
   tasks:
-  - name: red file content .erlang.cookie
-    become: yes
-    become_method: sudo
-    command: cat /var/lib/rabbitmq/.erlang.cookie
-    register: erlang_cookie
-    
-  - name: debug
-    debug:
-      var: erlang_cookie.stdout
-      
   - name: copy file content
     copy:
-      content: "{{ erlang_cookie.stdout }}"
+      src: /home/smartlis/.erlang.cookie
       dest: /home/smartlis/.erlang.cookie
       delegate_to: 192.1.1.47
