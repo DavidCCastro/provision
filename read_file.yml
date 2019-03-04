@@ -8,3 +8,4 @@
       src: /var/lib/rabbitmq/.erlang.cookie
       dest: /var/lib/rabbitmq/.erlang.cookie
     delegate_to: 192.1.1.47
+    remote_user: smartlis
