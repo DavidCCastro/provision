@@ -5,7 +5,7 @@
     become: yes
     become_method: sudo
     debug:
-      msg: "{{ lookup('file', '/var/lib/rabbitmq/.erlang.cookie') }}"
+      msg: "{{ lookup('file', '/var/lib/rabbitmq/test') }}"
     register: erlang_cookie
     
   - name: debug
