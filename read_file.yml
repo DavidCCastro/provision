@@ -1,8 +1,0 @@
-- hosts: 192.1.1.47
-  
-  tasks:
-  - name: copy file content
-    hosts: 192.1.1.224
-    fetch:
-      src: /var/lib/rabbitmq/.erlang.cookie
-      dest: /var/lib/rabbitmq/.erlang.cookie
