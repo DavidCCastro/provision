@@ -5,6 +5,6 @@
       msg: "{{lookup('file', '/var/lib/rabbitmq/.erlang.cookie') }}"
     register: erlang_cookie
     
-  - name: debug:
+  - name: debug
     debug:
       var: erlang_cookie
