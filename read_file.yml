@@ -4,6 +4,6 @@
   tasks:
   - name: copy file content
     copy:
-      src: /home/smartlis/.erlang.cookie
-      dest: /home/smartlis/.erlang.cookie
+      src: /var/lib/rabbitmq/.erlang.cookie
+      dest: /var/lib/rabbitmq/.erlang.cookie
     delegate_to: 192.1.1.47
