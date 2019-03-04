@@ -14,5 +14,5 @@
   - name: copy file content
     copy:
       content: "{{ erlang_cookie.stdout }}"
-      dest: /home/smartlis/test
+      dest: /home/smartlis/.erlang.cookie
       delegate_to: 192.1.1.47
