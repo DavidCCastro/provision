@@ -1,16 +1,15 @@
 - hosts: 192.1.1.224
   become: true
-  become_user: root
+  become_method: sudo
   tasks:
   - name: fetch file
     fetch: 
       src: /var/lib/rabbitmq/.erlang.cookie
-      dest: /home/smartlis/.erlang.cookie
-      remote_src: yes
+      dest: /home/smartlis/
 
 - hosts: 192.1.1.47
   become: true
-  become_user: root
+  become_method: sudo
   tasks:
   - name: copy file
     copy:
