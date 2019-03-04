@@ -1,6 +1,8 @@
 - hosts: 192.1.1.224
   tasks:
   - name: fetch file
+    become: yes
+    become_method: sudo
     fetch: 
       src: /var/lib/rabbitmq/.erlang.cookie
       dest: /home/smartlis/
@@ -9,6 +11,8 @@
 - hosts: 192.1.1.47
   tasks:
   - name: copy file
+    become: yes
+    become_method: sudo
     copy:
       src: /home/smartlis/.erlang.cookie
       dest: /var/lib/rabbitmq/
