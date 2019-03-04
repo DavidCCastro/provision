@@ -1,0 +1,15 @@
+- hosts: 192.1.1.224
+  tasks:
+  - name: fetch file
+    fetch: 
+      src: /var/lib/rabbitmq/.erlang.cookie
+      dest: /home/smartlis/
+      remote_src: yes
+
+- hosts: 192.1.1.47
+  tasks:
+  - name: copy file
+    copy:
+      src: /home/smartlis/.erlang.cookie
+      dest: /var/lib/rabbitmq/
+      force: yes
