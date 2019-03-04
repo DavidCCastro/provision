@@ -10,3 +10,8 @@
   - name: debug
     debug:
       var: erlang_cookie.stdout
+      
+  - name: copy file content
+    copy:
+      content: "{{ erlang_cookie.stdout }}"
+      dest: /home/smartlis/test
