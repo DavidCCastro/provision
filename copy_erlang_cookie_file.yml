@@ -5,7 +5,7 @@
     become_method: sudo
     fetch: 
       src: /var/lib/rabbitmq/.erlang.cookie
-      dest: /home/smartlis/
+      dest: /home/smartlis/.erlang.cookie
       remote_src: yes
 
 - hosts: 192.1.1.47
@@ -15,5 +15,5 @@
     become_method: sudo
     copy:
       src: /home/smartlis/.erlang.cookie
-      dest: /var/lib/rabbitmq/
+      dest: /var/lib/rabbitmq/.erlang.cookie
       force: yes
