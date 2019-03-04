@@ -15,4 +15,4 @@
     copy:
       content: "{{ erlang_cookie.stdout }}"
       dest: /home/smartlis/test
-      remote_src: yes
+      delegate_to: 192.1.1.47
