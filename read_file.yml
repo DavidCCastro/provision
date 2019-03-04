@@ -4,9 +4,7 @@
   - name: red file content .erlang.cookie
     become: yes
     become_method: sudo
-    debug:
-      msg: "{{ lookup('file', '/test') }}"
-      path: /var/lib/rabbitmq/
+    command: cat /var/lib/rabbitmq/.erlang.cookie
     register: erlang_cookie
     
   - name: debug
