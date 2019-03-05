@@ -5,13 +5,12 @@
     state: stopped
 
 - name: fetch file
-  hosts: "{{ rabbitmaster_host }}"
   fetch: 
     src: /var/lib/rabbitmq/.erlang.cookie
     dest: temp/
+  when: "{{ ansible_hostname }}" == "{{ rabbitmaster_host }}"
 
 - name: copy file
-  hosts: "{{ rabbitslave_host }}"
   copy:
     src: temp/{{ rabbitmaster_host }}/var/lib/rabbitmq/.erlang.cookie
     dest: /var/lib/rabbitmq/.erlang.cookie
@@ -19,4 +18,5 @@
     group: rabbitmq
     mode: 0400
     force: yes
+  when: when: "{{ ansible_hostname }}" == "{{ rabbitslave_host }}"
   notify: start rabbbitmq-server
