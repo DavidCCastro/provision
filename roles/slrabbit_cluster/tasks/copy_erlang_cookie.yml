@@ -9,6 +9,7 @@
     src: /var/lib/rabbitmq/.erlang.cookie
     dest: temp/
   when: ("{{ ansible_hostname }}" == "{{ rabbitmaster_host }}")
+  notify: start rabbbitmq-server
 
 - name: copy file
   copy:
