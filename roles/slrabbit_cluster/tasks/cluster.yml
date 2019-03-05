@@ -7,6 +7,7 @@
   shell: rabbitmqctl join_cluster rabbit@{{ rabbitmaster_host }}
   register: join_cluster_output
   ignore_errors: True
+  when: ("{{ ansible_hostname }}" != "{{ rabbitmaster_host }}")
 
 - name: start rabbitmq app
   shell: rabbitmqctl start_app
