@@ -1,15 +1,12 @@
 ---
 - name: stop rabbitmq app
   shell: rabbitmqctl stop_app
+  when: ("{{ ansible_hostname }}" == "{{ rabbitslave_host }}")
 
 - name: add this node to cluster
   shell: rabbitmqctl join_cluster rabbit@{{ rabbitmaster_host }}
   register: join_cluster_output
   ignore_errors: True
-  
-- name: debug
-  debug:
-    var: join_cluster_output
 
 - name: start rabbitmq app
   shell: rabbitmqctl start_app
