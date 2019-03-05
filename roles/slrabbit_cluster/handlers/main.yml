@@ -3,3 +3,8 @@
   systemd:
     name: rabbitmq-server
     state: stopped
+    
+- name: start rabbitmq-server
+  systemd:
+    name: rabbitmq-server
+    state: started
