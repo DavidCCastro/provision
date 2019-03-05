@@ -1,4 +1,3 @@
 ---
-- import_tasks: config_cluster.yml
-- import_tasks: service.yml
+- import_tasks: copy_erlang_cookie.yml
 - import_tasks: cluster.yml
