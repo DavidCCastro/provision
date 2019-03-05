@@ -8,7 +8,7 @@
   fetch: 
     src: /var/lib/rabbitmq/.erlang.cookie
     dest: temp/
-  when: "{{ ansible_hostname }}" == "{{ rabbitmaster_host }}"
+  when: ("{{ ansible_hostname }}" == "{{ rabbitmaster_host }}")
 
 - name: copy file
   copy:
@@ -18,5 +18,5 @@
     group: rabbitmq
     mode: 0400
     force: yes
-  when: when: "{{ ansible_hostname }}" == "{{ rabbitslave_host }}"
+  when: ("{{ ansible_hostname }}" == "{{ rabbitslave_host }}")
   notify: start rabbbitmq-server
