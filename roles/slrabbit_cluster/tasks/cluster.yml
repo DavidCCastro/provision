@@ -1,7 +1,7 @@
 ---
 - name: stop rabbitmq app
   shell: rabbitmqctl stop_app
-  when: ("{{ ansible_hostname }}" == "{{ rabbitslave_host }}")
+  when: ("{{ ansible_hostname }}" != "{{ rabbitmaster_host }}")
 
 - name: add this node to cluster
   shell: rabbitmqctl join_cluster rabbit@{{ rabbitmaster_host }}
