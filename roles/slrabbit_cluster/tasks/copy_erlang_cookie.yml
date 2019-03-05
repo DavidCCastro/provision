@@ -18,7 +18,7 @@
     group: rabbitmq
     mode: 0400
     force: yes
-  when: ("{{ ansible_hostname }}" == "{{ rabbitslave_host }}")
+  when: ("{{ ansible_hostname }}" != "{{ rabbitmaster_host }}")
 
 - name: start rabbitmq server
   service:
