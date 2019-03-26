@@ -11,4 +11,4 @@
     
   - name: debug
     debug:
-      msg: "{{ files.files }}"
+      msg: "{{ files.files.path }}"
