@@ -11,6 +11,6 @@
     
   - name: debug
     debug:
-      msg: "{{ item.path }}"
+      msg: "{{ item[0].path }}"
     with_items:
       - "{{ files }}"
