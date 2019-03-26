@@ -1,0 +1,19 @@
+- hosts: "{{ esx_node }}"
+  gather_facts: no
+  
+  tasks:
+  - name: list vmx files
+    find:
+      path: /vmfs/volumes/SL_SAN/
+      patterns: '*.vmx'
+      recurse: yes
+    register: files
+    
+  - name: debug
+    debug:
+      msg: "{{ item.path }}"
+    with_items: "{{ files.files }}"
+  
+  - name: Register Backups
+    shell: vim-cmd solo/registervm {{ item.path }} {{ item.newvmname }}
+    with_items: "{{ files.files }}"
