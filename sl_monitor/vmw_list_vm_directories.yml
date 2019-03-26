@@ -13,4 +13,4 @@
     debug:
       msg: "{{ item }}"
     with_items:
-      - files
+      - "{{ files }}"
