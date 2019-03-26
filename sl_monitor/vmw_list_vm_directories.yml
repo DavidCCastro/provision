@@ -19,7 +19,7 @@
     find:
       path: /vmfs/volumes/SL_SAN/
       file_type: directory
-      recurse: yes
+      recurse: no
     register: directories
     
   - name: debug
