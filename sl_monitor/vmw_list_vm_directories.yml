@@ -8,7 +8,7 @@
       patterns: '*.vmx'
       recurse: yes
     with_items:
-      - /vmfs/volumes/HUVM_Restore/
+      - /vmfs/volumes/SL_SAN/
     register: files
     
   - name: debug
