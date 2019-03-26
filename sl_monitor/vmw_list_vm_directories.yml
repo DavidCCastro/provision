@@ -14,3 +14,16 @@
       msg: "{{ item.path }}"
     with_items:
       - "{{ files.files }}"
+      
+  - name: list vmx files
+    find:
+      path: /vmfs/volumes/SL_SAN/
+      file_type: directory
+      recurse: yes
+    register: directories
+    
+  - name: debug
+    debug:
+      msg: "{{ item.path }}"
+    with_items:
+      - "{{ directories.files }}"
