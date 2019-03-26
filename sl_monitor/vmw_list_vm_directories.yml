@@ -1,0 +1,17 @@
+- hosts: "{{ esx_node }}"
+  gather_facts: no
+  
+  tasks:
+  - name: list vmx files
+    find:
+      path: "{{ item }}"
+      patterns: '*.vmx'
+      recurse: yes
+    with_items:
+      - /vmfs/volumes/HUVM_Restore/
+    register: files
+    
+  - name: debug
+    debug:
+      msg: "{{ item.files[0].path }}"
+    with_items: "{{ files.results }}"
