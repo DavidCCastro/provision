@@ -11,4 +11,6 @@
     
   - name: debug
     debug:
-      var: files
+      msg: "{{ item }}"
+    with_items:
+      - files
