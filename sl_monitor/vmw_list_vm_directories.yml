@@ -11,5 +11,5 @@
     
   - name: debug
     debug:
-      msg: "{{ item.files[0].path }}"
-    with_items: "{{ files.stdout }}"
+      msg: "{{ item.0.path }}"
+    with_items: "{{ files }}"
