@@ -15,15 +15,10 @@
     with_items:
       - "{{ files.files }}"
       
-  - name: list vmx files
-    find:
-      path: /vmfs/volumes/SL_SAN/Test
-      file_type: directory
-      recurse: no
-    register: directories
-    
-  - name: debug
-    debug:
-      msg: "{{ item.path }}"
+  - name: Register displayname
+    lineinfile:
+      path: {{ item.path}}
+      regexp: '^displayName'
     with_items:
-      - "{{ directories.files }}"
+      - "{{ files.files }}"
+    register: displayname
