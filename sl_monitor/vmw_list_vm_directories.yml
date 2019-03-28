@@ -15,10 +15,7 @@
     with_items:
       - "{{ files.files }}"
       
-  - name: Register displayname
-    lineinfile:
-      path: "{{ item.path }}"
-      regexp: '^displayName'
-    with_items:
-      - "{{ files.files }}"
+  - set_fact:
+        "my_{{ item | basename }}": "{{ item }}"
+      with_items: "{{ files.files | map(attribute='path') | list }}"
     register: displayname
