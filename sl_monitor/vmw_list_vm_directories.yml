@@ -11,15 +11,6 @@
     
   - name: debug
     debug:
-      msg: "{{ item.path }}"
+      msg: "{{ item }}"
     with_items:
-      - "{{ files.files }}"
-      
-  - set_fact:
-      "my_{{ item | basename }}": "{{ item }}"
-    with_items: "{{ files.files | map(attribute='path') | list }}"
-    register: displayname
-    
-  - name: debug
-    debug:
-      var: displayname
+      - "{{ files.files | map(attribute='path') | list }}"
