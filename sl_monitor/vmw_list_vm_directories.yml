@@ -17,7 +17,7 @@
       
   - name: Register displayname
     lineinfile:
-      path: {{ item.path}}
+      path: "{{ item.path }}"
       regexp: '^displayName'
     with_items:
       - "{{ files.files }}"
