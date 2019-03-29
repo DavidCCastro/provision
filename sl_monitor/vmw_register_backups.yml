@@ -11,7 +11,7 @@
   
   - name: Edit vmx file displayName parameter
     lineinfile:
-      path: {{ item.path }}
+      path: "{{ item.path }}"
       regexp: 's/.$/_BACKUP&/'
       line: 'displayName'
     with_items: 
