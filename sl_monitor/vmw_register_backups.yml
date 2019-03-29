@@ -16,8 +16,3 @@
       line: 'displayName'
     with_items: 
       - "{{ files.files }}"
-  
-  - name: Register Backups
-    shell: vim-cmd solo/registervm {{ item.path }}
-    with_items: 
-      - "{{ files.files }}"
