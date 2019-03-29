@@ -10,9 +10,9 @@
     register: files
   
   - name: Edit vmx file displayName parameter
-    lineinfile:
+    replace:
       path: "{{ item.path }}"
       regexp: 'displayName'
-      line: 's/.$/_BACKUP&/'
+      replace: 's/.$/_BACKUP&/'
     with_items: 
       - "{{ files.files }}"
