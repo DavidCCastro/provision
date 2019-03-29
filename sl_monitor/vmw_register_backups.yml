@@ -1,6 +1,5 @@
 - hosts: "{{ esx_node }}"
   gather_facts: no
-  warn: false
   
   tasks:
   - name: list vmx files
@@ -14,6 +13,8 @@
     shell: sed -i '/displayName/ s/.$/_BACKUP&/' {{ item.path }}
     with_items: 
       - "{{ files.files }}"
+    args:
+      warn: false
       
   - name: Register Backups
     shell: vim-cmd solo/registervm {{ item.path }}
