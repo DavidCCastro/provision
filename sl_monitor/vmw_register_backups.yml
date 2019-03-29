@@ -1,5 +1,5 @@
 - hosts: "{{ esx_node }}"
-  gather_facts: yes
+  gather_facts: no
   
   tasks:
   - name: list vmx files
@@ -12,4 +12,9 @@
   - name: Edit vmx file displayName parameter
     shell: sed -i '/displayName/ s/.$/_BACKUP&/' {{ item.path }}
     with_items: 
+      - "{{ files.files }}"
+      
+  - name: Register Backups
+    shell: vim-cmd solo/registervm {{ item.path }}
+    with_items:
       - "{{ files.files }}"
