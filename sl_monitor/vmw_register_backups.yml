@@ -10,9 +10,6 @@
     register: files
   
   - name: Edit vmx file displayName parameter
-    replace:
-      path: "{{ item.path }}"
-      regexp: 'displayName'
-      replace: 's/.$/_BACKUP&/'
+    shell: sed -i '/displayName/ s/.$/_BACKUP&/' {{ item.path }}
     with_items: 
       - "{{ files.files }}"
