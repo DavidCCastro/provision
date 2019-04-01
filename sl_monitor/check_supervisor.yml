@@ -2,6 +2,7 @@
     
   tasks:
   - name: check supervisor programs running
+    become: yes
     shell: supervisorctl status
     register: supervisor_status
     
