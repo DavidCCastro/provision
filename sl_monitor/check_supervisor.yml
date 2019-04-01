@@ -3,7 +3,9 @@
   tasks:
   - name: check supervisor programs running
     become: yes
-    shell: supervisorctl status
+    shell: "{{ item }}" status
+    with_items:
+      - supervisorctl
     register: supervisor_status
     
   - name: debug
