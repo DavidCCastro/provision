@@ -10,4 +10,4 @@
     debug:
       msg: "{{ item }}"
     with_items:
-      - "{{ supervisor_status.stdout_lines }}"
+      - "{{ supervisor_status.stdout|from_json }}"
