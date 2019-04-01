@@ -5,7 +5,7 @@
     become: yes
     shell: "{{ item }}" status
     with_items:
-      - supervisorctl
+      - "{{ supervisorctl }}"
     register: supervisor_status
     
   - name: debug
