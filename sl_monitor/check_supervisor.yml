@@ -1,0 +1,10 @@
+- hosts: "{{ servers }}"
+    
+  tasks:
+  - name: check supervisor programs running
+    shell: supervisorctl status
+    register: supervisor_status
+    
+  - name: debug
+    debug:
+      var: supervisor_status
