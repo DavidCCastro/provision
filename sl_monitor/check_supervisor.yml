@@ -8,4 +8,6 @@
     
   - name: debug
     debug:
-      var: supervisor_status
+      msg: "{{ item }}"
+    with_items:
+      - "{{ supervisor_status.stdout_lines }}"
