@@ -15,7 +15,6 @@
     shell: shopt -s extglob
     args:
       executable: /bin/bash
-      chdir: /srv/smartlis/core/backend
       
   - name: Delete not needed files
     become: yes
@@ -24,7 +23,7 @@
       chdir: /srv/smartlis/core/backend
   
   - name: Deactivate regular expressions
-    command: shopt -u extglob
+    shell: shopt -u extglob
     args:
       executable: /bin/bash
   
