@@ -29,7 +29,6 @@
   
   - name: Extract backend archive
     unarchive:
-      creates: /srv/smartlis/core/backend/sl_root
       src: ftp://192.1.1.181/smartlis/smartlis_backend_4.1.23_build_14560_[20190329T154933].zip
       dest: /srv/smartlis/core/backend
       owner: smartlis
@@ -39,8 +38,8 @@
   - name: Pip install requirements in venv
     pip:
       virtualenv: /srv/smartlis/core/backend/venv
-      requirements: /srv/smartlis/core/backend/requirements.txt
-      extra_args: --upgrade --upgrade-strategy eager -r
+      requirements: /srv/smartlis/core/backend
+      extra_args: --upgrade --upgrade-strategy eager -r requirements.txt
       state: present
       
   - name: Execute migrate.py
