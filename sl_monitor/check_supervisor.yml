@@ -12,4 +12,4 @@
     debug:
       msg: "{{ item }}"
     with_items:
-      - "{{ supervisor_status.results.stdout_lines.find('RUNNING') }}"
+      - "{{ supervisor_status.results[0].stdout_lines.find('RUNNING') }}"
