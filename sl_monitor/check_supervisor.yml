@@ -17,6 +17,7 @@
       executable: /bin/bash
   
   - name: Remove backend directories except sl_root_custom, settings and venv
+    become: yes
     shell: rm -rf !({{ item }})
     args:
       executable: /bin/bash
