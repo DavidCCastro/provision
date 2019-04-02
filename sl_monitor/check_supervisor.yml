@@ -17,10 +17,14 @@
       executable: /bin/bash
   
   - name: Remove backend directories except sl_root_custom, settings and venv
-    shell: rm -rf !(sl_root_custom|settings|venv)
+    shell: rm -rf !({{ item }})
     args:
       executable: /bin/bash
       chdir: /srv/smartlis/core/backend
+    with_items:
+      - sl_root_custom
+      - settings
+      - venv
     
   - name: Deactivate regular expressions
     command: shopt -u extglob
