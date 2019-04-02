@@ -3,13 +3,19 @@
   tasks:
   - name: check supervisor programs running
     become: yes
-    supervisorctl:
-      name: all
-      state: present
-    register: supervisor_status
+    shell: supervisorctl stop all
     
-  - name: debug
-    debug:
-      msg: "{{ item }}"
-    with_items:
-      - "{{ supervisor_status.stdout }}"
+  - name: "Backup Backend folder"
+    archive:
+      path: /srv/smartlis/core/backend
+      dest: /srv/smartlis/core/backend_backup.tar.gz
+      format: gz
+      
+  - name: "Extract backend archive"
+    unarchive:
+      creates: /srv/smartlis/core/backend/sl_root
+      src: https://pydio.smartlis.com/releases/smartlis/core/backend/4.1/smartlis_backend_4.1.23_build_14560_[20190329T154933].zip
+      dest: /srv/smartlis/core/backend
+      owner: smartlis
+      group: smartlis
+      remote_src: yes
