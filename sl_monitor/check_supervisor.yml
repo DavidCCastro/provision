@@ -3,7 +3,9 @@
   tasks:
   - name: check supervisor programs running
     become: yes
-    shell: supervisorctl status
+    supervisorctl:
+      name: all
+      state: present
     register: supervisor_status
     
   - name: debug
