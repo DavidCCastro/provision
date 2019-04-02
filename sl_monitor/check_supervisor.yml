@@ -12,13 +12,13 @@
       format: gz
   
   - name: Activate regular expressions
-    shell: shopt -s extglob
+    command: shopt -s extglob
   
   - name: Remove backend directories except sl_root_custom, settings and venv
     shell: cd /srv/smartlis/core/backend && rm -rf !(sl_root_custom|settings|venv)
     
   - name: Deactivate regular expressions
-    shell: shopt -u extglob
+    command: shopt -u extglob
   
   - name: Extract backend archive
     unarchive:
