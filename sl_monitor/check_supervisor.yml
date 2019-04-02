@@ -20,7 +20,7 @@
     become: yes
     command: rm -rf !(sl_root_custom|settings|venv)
     args:
-      chdir: /srv/smartlis/core/backend
+      chdir: /srv/smartlis/core/backend/
   
   - name: Deactivate regular expressions
     shell: shopt -u extglob
