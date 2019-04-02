@@ -12,13 +12,19 @@
       format: gz
   
   - name: Activate regular expressions
-    command: shopt -s extglob
+    shell: shopt -s extglob
+    args:
+      executable: /bin/bash
   
   - name: Remove backend directories except sl_root_custom, settings and venv
-    shell: cd /srv/smartlis/core/backend && rm -rf !(sl_root_custom|settings|venv)
+    shell: rm -rf !(sl_root_custom|settings|venv)
+    args:
+      chdir: /srv/smartlis/core/backend
     
   - name: Deactivate regular expressions
     command: shopt -u extglob
+    args:
+      executable: /bin/bash
   
   - name: Extract backend archive
     unarchive:
@@ -37,7 +43,9 @@
       state: present
       
   - name: Execute migrate.py
-    script: /srv/smartlis/core/backend/migrate.py
+    script: migrate.py
+    args:
+      chdir: /srv/smartlis/core/backend
     
   - name: Run supervisor process
     become: yes
