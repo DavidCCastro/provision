@@ -37,8 +37,7 @@
       state: present
       
   - name: Execute migrate.py
-    chdir: /srv/smartlis/core/backend
-    script: migrate.py
+    script: /srv/smartlis/core/backend/migrate.py
     
   - name: Run supervisor process
     become: yes
