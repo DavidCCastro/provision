@@ -19,6 +19,7 @@
   - name: Remove backend directories except sl_root_custom, settings and venv
     shell: rm -rf !(sl_root_custom|settings|venv)
     args:
+      executable: /bin/bash
       chdir: /srv/smartlis/core/backend
     
   - name: Deactivate regular expressions
