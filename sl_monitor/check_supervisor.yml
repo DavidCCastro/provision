@@ -12,21 +12,11 @@
       format: gz
   
   - name: Activate regular expressions
-    shell: shopt -s extglob
-    args:
-      executable: /bin/bash
-  
-  - name: Remove backend directories except sl_root_custom, settings and venv
-    become: yes
-    shell: rm -rf !({{ item }})
+    shell: shopt -s extglob && sudo rm -rf !(sl_root_custom|settings|venv)
     args:
       executable: /bin/bash
       chdir: /srv/smartlis/core/backend
-    with_items:
-      - sl_root_custom
-      - settings
-      - venv
-    
+  
   - name: Deactivate regular expressions
     command: shopt -u extglob
     args:
