@@ -12,9 +12,15 @@
       format: gz
   
   - name: Activate regular expressions
-    shell: shopt -s extglob && sudo rm -rf !(sl_root_custom|settings|venv)
+    shell: shopt -s extglob
     args:
       executable: /bin/bash
+      chdir: /srv/smartlis/core/backend
+      
+  - name: Delete not needed files
+    become: yes
+    command: rm -rf !(sl_root_custom|settings|venv)
+    args:
       chdir: /srv/smartlis/core/backend
   
   - name: Deactivate regular expressions
