@@ -3,11 +3,13 @@
   tasks:
   - name: check supervisor programs running
     become: yes
-    shell: supervisorctl status
+    shell: supervisorctl {{ item }}
+    with_items:
+      - status
     register: supervisor_status
     
   - name: debug
     debug:
       msg: "{{ item }}"
     with_items:
-      - "{{ supervisor_status.stdout_lines | to_json }}"
+      - "{{ supervisor_status }}"
