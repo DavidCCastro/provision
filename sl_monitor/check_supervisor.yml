@@ -1,21 +1,54 @@
 - hosts: "{{ servers }}"
     
   tasks:
-  - name: check supervisor programs running
+  - name: Check supervisor programs running
     become: yes
     shell: supervisorctl stop all
     
-  - name: "Backup Backend folder"
+  - name: Backup Backend folder
     archive:
       path: /srv/smartlis/core/backend
       dest: /srv/smartlis/core/backend_backup.tar.gz
       format: gz
-      
-  - name: "Extract backend archive"
+  
+  - name: Activate regular expressions
+    shell: shopt -s extglob
+  
+  - name: Remove backend directories except sl_root_custom, settings and venv
+    shell: cd /srv/smartlis/core/backend && rm -rf !(sl_root_custom|settings|venv)
+    
+  - name: Deactivate regular expressions
+    shell: shopt -u extglob
+  
+  - name: Extract backend archive
     unarchive:
       creates: /srv/smartlis/core/backend/sl_root
-      src: https://pydio.smartlis.com/releases/smartlis/core/backend/4.1/smartlis_backend_4.1.23_build_14560_[20190329T154933].zip
+      src: ftp://192.1.1.181/smartlis/smartlis_backend_4.1.23_build_14560_[20190329T154933].zip
       dest: /srv/smartlis/core/backend
       owner: smartlis
       group: smartlis
       remote_src: yes
+      
+  - name: Pip install requirements in venv
+    pip:
+      virtualenv: /srv/smartlis/core/backend/venv
+      requirements: /srv/smartlis/core/backend/requirements.txt
+      extra_args: --upgrade --upgrade-strategy eager -r
+      state: present
+      
+  - name: Execute migrate.py
+    chdir: /srv/smartlis/core/backend
+    script: migrate.py
+    
+  - name: Run supervisor process
+    become: yes
+    shell: supervisorctl start all
+  
+  - name: Clear cache
+    uri:
+      url: localhost:8000/system/clear_cache
+    register: clear_cache
+    
+  - name: debug
+    debug:
+      var: clear_cache
