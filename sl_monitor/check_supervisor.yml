@@ -10,16 +10,12 @@
       path: /srv/smartlis/core/backend
       dest: /srv/smartlis/core/backend_backup.tar.gz
       format: gz
-  
-  - name: Activate regular expressions
-    shell: shopt -s extglob
-    args:
-      executable: /bin/bash
       
   - name: Delete not needed files
     become: yes
-    command: rm -rf !(sl_root_custom|settings|venv)
+    command: shopt -s extglob && rm -rf !(sl_root_custom|settings|venv)
     args:
+      executable: /bin/bash
       chdir: /srv/smartlis/core/backend/
   
   - name: Deactivate regular expressions
@@ -29,7 +25,7 @@
   
   - name: Extract backend archive
     unarchive:
-      src: ftp://192.1.1.181/smartlis/smartlis_backend_4.1.23_build_14560_[20190329T154933].zip
+      src: ftp://10.233.16.3/smartlis/smartlis_backend_4.1.23_build_14560_[20190329T154933].zip
       dest: /srv/smartlis/core/backend
       owner: smartlis
       group: smartlis
