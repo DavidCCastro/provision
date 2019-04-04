@@ -13,11 +13,11 @@
       
   - name: Delete not needed files
     become: yes
-    shell: "{{ item }}" -s extglob && rm -rf !(settings|venv)
+    shell: {{ item }} -s extglob && rm -rf !(settings|venv)
     args:
       executable: /bin/bash
       chdir: /srv/smartlis/core/backend
-    with_items:
+    loop:
       - shopt
   
   - name: Deactivate regular expressions
