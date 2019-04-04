@@ -13,10 +13,9 @@
       
   - name: Delete not needed files
     become: yes
-    command: shopt -s extglob && rm -rf !(sl_root_custom|settings|venv)
+    command: shopt -s extglob && sudo rm -rf !(sl_root_custom|settings|venv)
     args:
-      executable: /bin/bash
-      chdir: /srv/smartlis/core/backend/
+      chdir: /srv/smartlis/core/backend
   
   - name: Deactivate regular expressions
     shell: shopt -u extglob
