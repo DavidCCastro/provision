@@ -13,7 +13,7 @@
       
   - name: Delete not needed files
     become: yes
-    shell: shopt -s extglob && rm -rf !(settings|venv)
+    shell: "shopt -s extglob && rm -rf !(settings|venv)"
     args:
       executable: /bin/bash
       chdir: /srv/smartlis/core/backend
