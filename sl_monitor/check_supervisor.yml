@@ -1,7 +1,7 @@
 - hosts: "{{ servers }}"
     
   tasks:
-  - name: Check supervisor programs running
+  - name: Stop all supervisor process
     become: yes
     shell: supervisorctl stop all
     
@@ -38,11 +38,11 @@
       state: present
       
   - name: Execute migrate.py
-    shell: . venv/bin/activate && migrate.py && deactivate
+    shell: . venv/bin/activate && python migrate.py && deactivate
     args:
       chdir: /srv/smartlis/core/backend
     
-  - name: Run supervisor process
+  - name: Start all supervisor process
     become: yes
     shell: supervisorctl start all
   
