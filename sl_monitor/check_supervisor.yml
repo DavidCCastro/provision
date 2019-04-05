@@ -29,7 +29,7 @@
     pip:
       virtualenv: /srv/smartlis/core/backend/venv
       requirements: /srv/smartlis/core/backend/requirements.txt
-      extra_args: --upgrade --upgrade-strategy eager -r requirements.txt
+      extra_args: --upgrade --upgrade-strategy eager
       state: present
       
   - name: Execute migrate.py
