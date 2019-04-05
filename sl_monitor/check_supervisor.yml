@@ -19,6 +19,7 @@
       
   - name: Disable extglob
     shell: shopt -u extglob
+    args:
       executable: /bin/bash
   
   - name: Extract backend archive
