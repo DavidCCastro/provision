@@ -28,7 +28,7 @@
   - name: Pip install requirements in venv
     pip:
       virtualenv: /srv/smartlis/core/backend/venv
-      requirements: /srv/smartlis/core/backend
+      requirements: /srv/smartlis/core/backend/requirements.txt
       extra_args: --upgrade --upgrade-strategy eager -r requirements.txt
       state: present
       
