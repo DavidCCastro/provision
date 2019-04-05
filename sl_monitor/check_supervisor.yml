@@ -18,9 +18,8 @@
       chdir: /srv/smartlis/core/backend
       
   - name: Disable extglob
-    shell: shopt -u extglob
-    args:
-      executable: /bin/bash
+    become: yes
+    shell: "bash -c 'shopt -u extglob'"
   
   - name: Extract backend archive
     unarchive:
