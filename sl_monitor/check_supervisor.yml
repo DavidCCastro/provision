@@ -13,9 +13,12 @@
       
   - name: Delete not needed files
     become: yes
-    shell: 'shopt -s extglob && rm -rf !(settings|venv) && shopt -u extglob'
+    shell: "bash -c 'shopt -s extglob \n rm -rf !(settings|venv)'"
     args:
       chdir: /srv/smartlis/core/backend
+      
+  - name: Disable extglob
+    shell: shopt -u extglob
       executable: /bin/bash
   
   - name: Extract backend archive
