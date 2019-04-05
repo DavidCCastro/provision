@@ -33,7 +33,7 @@
       state: present
       
   - name: Execute migrate.py
-    script: migrate.py
+    shell: . venv/bin/activate && migrate.py && deactivate
     args:
       chdir: /srv/smartlis/core/backend
     
