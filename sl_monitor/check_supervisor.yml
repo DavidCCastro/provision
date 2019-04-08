@@ -10,6 +10,7 @@
       supervisor_proc: "{{ superv_status.stdout_lines }}"
     
   - name:
-    shell: supervisorctl stop "{{ item }}"
+    become: yes
+    shell: supervisorctl stop {{ item }}
     with_items:
       - "{{ supervisor_proc }}"
