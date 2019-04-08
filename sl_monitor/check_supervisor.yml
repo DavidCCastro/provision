@@ -11,4 +11,4 @@
     
   - name: debug
     debug:
-      var: superv_proc
+      msg: "{{ superv_proc | from_json }}"
