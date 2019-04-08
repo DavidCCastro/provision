@@ -1,57 +1,11 @@
 - hosts: "{{ servers }}"
     
   tasks:
-  - name: Stop all supervisor process
+  - name: Check supervisor status
     become: yes
-    shell: supervisorctl stop all
-    
-  - name: Backup Backend folder
-    archive:
-      path: /srv/smartlis/core/backend
-      dest: /srv/smartlis/core/backend_backup.tar.gz
-      format: gz
-      
-  - name: Delete not needed files
-    become: yes
-    shell: "bash -c 'shopt -s extglob \n rm -rf !(settings|venv)'"
-    args:
-      chdir: /srv/smartlis/core/backend
-      
-  - name: Disable extglob
-    become: yes
-    shell: shopt -u extglob
-    args:
-      executable: /bin/bash
-  
-  - name: Extract backend archive
-    unarchive:
-      src: ftp://10.233.16.3/smartlis/smartlis_backend_4.1.23_build_14560_[20190329T154933].zip
-      dest: /srv/smartlis/core/backend
-      owner: smartlis
-      group: smartlis
-      remote_src: yes
-      
-  - name: Pip install requirements in venv
-    pip:
-      virtualenv: /srv/smartlis/core/backend/venv
-      requirements: /srv/smartlis/core/backend/requirements.txt
-      extra_args: --upgrade --upgrade-strategy eager
-      state: present
-      
-  - name: Execute migrate.py
-    shell: . venv/bin/activate && python migrate.py && deactivate
-    args:
-      chdir: /srv/smartlis/core/backend
-    
-  - name: Start all supervisor process
-    become: yes
-    shell: supervisorctl start all
-  
-  - name: Clear cache
-    uri:
-      url: http://localhost:8000/system/clear_cache
-    register: clear_cache
+    shell: supervisorctl status
+    register: superv_status
     
   - name: debug
     debug:
-      var: clear_cache
+      ver: superv_status
