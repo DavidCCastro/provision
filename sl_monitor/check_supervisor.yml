@@ -7,7 +7,7 @@
     register: superv_status
     
   - set_fact:
-      superv_proc: "{{ superv_status.stdout|from_json }}"
+      superv_proc: "{{ superv_status.stdout | from_json }}"
     
   - name: debug
     debug:
