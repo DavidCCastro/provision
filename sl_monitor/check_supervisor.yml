@@ -6,11 +6,8 @@
     shell: supervisorctl status
     register: superv_status
     
-  - set_fact:
-      supervisor_proc: "{{ superv_status.stdout_lines }}"
-    
   - name:
     become: yes
     shell: supervisorctl stop {{ item }}
     with_items:
-      - "{{ supervisor_proc }}"
+      - "{{ superv_status.stdout_lines }}"
