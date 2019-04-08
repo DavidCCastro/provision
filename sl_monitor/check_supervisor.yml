@@ -47,7 +47,7 @@
   
   - name: Clear cache
     uri:
-      url: localhost:8000/system/clear_cache
+      url: http://localhost:8000/system/clear_cache
     register: clear_cache
     
   - name: debug
