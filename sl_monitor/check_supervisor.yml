@@ -1,4 +1,6 @@
 - hosts: "{{ servers }}"
+  set_fact:
+    supervisor_proc: "{{ superv_status.stdout_lines }}"
     
   tasks:
   - name: Check supervisor status
@@ -8,4 +10,4 @@
     
   - name: debug
     debug:
-      var: superv_status
+      msg: "{{ supervisor_proc }}"
