@@ -19,7 +19,9 @@
       
   - name: Disable extglob
     become: yes
-    shell: "bash -c 'shopt -u extglob'"
+    shell: shopt -u extglob
+    args:
+      executable: /bin/bash
   
   - name: Extract backend archive
     unarchive:
