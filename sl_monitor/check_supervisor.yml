@@ -6,8 +6,9 @@
     shell: supervisorctl status
     register: superv_status
     
-  - name:
-    become: yes
-    shell: supervisorctl stop {{ item }}
-    with_items:
-      - "{{ superv_status.stdout_lines }}"
+  - set_fact:
+      superv_proc: "{{ superv_status.stdout_lines|from_json }}"
+    
+  - name: debug
+    debug:
+      var: superv_proc
