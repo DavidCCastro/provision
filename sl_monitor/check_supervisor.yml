@@ -3,12 +3,11 @@
   tasks:
   - name: Check supervisor status
     become: yes
-    shell: supervisorctl status
+    shell: supervisorctl {{ item }}
+    with_items:
+      - "status"
     register: superv_status
-    
-  - set_fact:
-      superv_proc: "{{ superv_status.stdout | to_json }}"
-    
+      
   - name: debug
     debug:
-      msg: "{{ superv_proc | from_json }}"
+      var: superv_status
