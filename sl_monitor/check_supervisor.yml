@@ -16,4 +16,4 @@
     
   - name: debug2
     debug:
-      var: salida
+      var: salida2
