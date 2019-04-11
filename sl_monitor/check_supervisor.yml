@@ -4,6 +4,7 @@
   - name: Check supervisor status
     become: yes
     shell: supervisorctl status
+    register: salida
       
   - name: debug
     debug:
