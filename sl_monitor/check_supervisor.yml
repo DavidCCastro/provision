@@ -3,11 +3,11 @@
   tasks:
   - name: Check supervisor status
     become: yes
-    shell: supervisorctl {{ item }}
-    with_items:
-      - "status"
-    register: superv_status
+    shell: supervisorctl status
       
   - name: debug
     debug:
-      var: superv_status
+      msg:
+        - "PROCESS: {{ item.split()[0] }}"
+        - "STATUS: {{ item.split()[1]  }}"
+    loop: "{{ salida.stdout_lines }}"
