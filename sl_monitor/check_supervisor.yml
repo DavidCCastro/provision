@@ -12,8 +12,10 @@
         - "PROCESS: {{ item.split()[0] }}"
         - "STATUS: {{ item.split()[1]  }}"
     loop: "{{ salida.stdout_lines }}"
-    register: salida2
     
-  - name: debug2
-    debug:
-      var: salida2
+  - name: start previous running supervisor process
+    supervisorctl:
+      name: {{ item.split()[0] }}
+      state: started
+    loop: "{{ salida.stdout_lines }}"
+    when: item.split()[1] == RUNNING
