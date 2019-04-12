@@ -14,8 +14,7 @@
     loop: "{{ salida.stdout_lines }}"
     
   - name: start previous running supervisor process
-    supervisorctl:
-      name: {{ item.split()[0] }}
-      state: started
+    become: yes
+      shell: supervisorctl "{{ item.split()[0] }}" start
     loop: "{{ salida.stdout_lines }}"
     when: ("{{ item.split()[1] }}" == 'RUNNING')
