@@ -18,4 +18,4 @@
       name: "{{ item.split()[0] }}"
       state: started
     loop: "{{ salida.stdout_lines }}"
-    when: {{ item.split()[1] }} == RUNNING
+    when: "{{ item.split()[1] }}" == "RUNNING"
