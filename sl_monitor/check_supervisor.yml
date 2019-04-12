@@ -8,7 +8,7 @@
     
   - name: start previous running supervisor process
     supervisorctl:
-      name: ({{ item.split()[0] }})
+      name: smartlis-core-backend
       state: started
     loop: "{{ salida.stdout_lines }}"
     when: ("{{ item.split()[1] }}" == 'RUNNING')
