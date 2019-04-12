@@ -1,6 +1,11 @@
 - hosts: "{{ servers }}"
     
   tasks:
+  - name: Check supervisor status
+    become: yes
+    shell: supervisorctl status
+    register: supervisor_status
+  
   - name: Stop all supervisor process
     become: yes
     shell: supervisorctl stop all
@@ -43,9 +48,11 @@
     args:
       chdir: /srv/smartlis/core/backend
     
-  - name: Start all supervisor process
+  - name: start previous running supervisor process
     become: yes
-    shell: supervisorctl start all
+    shell: supervisorctl start {{ item.split()[0] }}
+    loop: "{{ supervisor_status.stdout_lines }}"
+    when: ("{{ item.split()[1] }}" == 'RUNNING')
   
   - name: Clear cache
     uri:
