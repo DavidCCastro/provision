@@ -1,0 +1,24 @@
+---
+# Create a VM from a template
+- name: Creating additional VM by SL role
+  vmware_guest:
+    hostname: "{{ item.value.hostname }}"
+    username: "{{ item.value.username }}"
+    password: "{{ item.value.password }}"
+    validate_certs: "{{ item.value.validate_certs }}"
+    datacenter: "{{ item.value.datacenter }}"
+    folder: "{{ item.value.folder }}"
+    name: "{{ item.key }}"
+    state: poweredon
+    annotation: "{{ item.value.annotation }}"
+    networks:
+    - name: "{{ item.value.networks[0].name }}"
+      ip: "{{ item.ip }}"
+    customization:
+      hostname: "{{ item.key }}"
+    template: "{{ item.sl_template }}"
+    wait_for_ip_address: yes
+  loop:
+    - { ip: 
+  delegate_to: localhost
+  ignore_errors: yes
