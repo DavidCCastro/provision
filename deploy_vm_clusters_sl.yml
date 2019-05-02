@@ -4,4 +4,4 @@
   vars_files:
     - vars/vm_clusters_sl.yml 
   roles:
-    - role: vmware_sl_clusters
+    - role: vm_sl_clusters
