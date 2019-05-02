@@ -12,3 +12,4 @@ vmware_dns_servers: [ 192.1.1.100 ]
 vmware_network_name: "VM_Network"
 vmware_template: "{{ vm_template }}"
 vmware_name: "{{ vm_name }}"
+vmware_ip: "{{ vm_ip }}"
