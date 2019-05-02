@@ -2,7 +2,7 @@
 # Create a VM from a template
 - name: Creating additional VM by SL role
   vmware_guest:
-    hostname: "{{ vmware_hosts }}"
+    hostname: "{{ vmware_host }}"
     username: "{{ vmware_user }}"
     password: "{{ vmware_password }}"
     validate_certs: "{{ vmware_validate_certs }}"
