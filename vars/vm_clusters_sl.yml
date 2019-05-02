@@ -9,7 +9,7 @@ vmware_datastore: "SL_SAN"
 vmware_esx: "192.1.1.141"
 vmware_datacenter: "Taller"
 vmware_dns_servers: [ 192.1.1.100 ]
-vmware_network_name: "VM_Network"
+vmware_network_name: "VM Network"
 vmware_template: "{{ vm_template }}"
 vmware_name: "{{ vm_name }}"
 vmware_ip: "{{ vm_ip }}"
