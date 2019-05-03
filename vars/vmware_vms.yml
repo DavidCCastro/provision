@@ -4,7 +4,7 @@ vmware_user: "inf\\ansible"
 vmware_password: "{{ vcenter_pass }}"
 vmware_validate_certs: false
 vmware_template: slbase1
-vmware_folder: "/Taller/vm"
+vmware_folder: "/Taller/vm/Smartlis"
 vmware_datastore: "SL_SAN"
 vmware_esx: "192.1.1.141"
 vmware_datacenter: "Taller"
