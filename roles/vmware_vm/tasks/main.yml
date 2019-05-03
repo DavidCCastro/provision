@@ -31,7 +31,7 @@
       hostname: "{{ item.key }}"
     template: "{{ item.value.template }}"
     wait_for_ip_address: yes
-  loop: "{{ lookup('dict', vmware_smartlis_deployment) }}"
+  loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
   delegate_to: localhost
   when: item.value.disk is defined
   ignore_errors: yes
@@ -60,7 +60,7 @@
       hostname: "{{ item.key }}"
     template: "{{ item.value.template }}"
     wait_for_ip_address: yes
-  loop: "{{ lookup('dict', vmware_smartlis_deployment ) }}"
+  loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
   when: item.value.disk is not defined
   delegate_to: localhost
   ignore_errors: yes
