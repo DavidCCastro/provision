@@ -15,9 +15,7 @@ vmware_gateway_servers: "192.1.1.150"
 simple_deployment: "lookup('dict', vmware_smartlis_deployment)"
 cluster_deployment: "lookup('dict', vmware_vms_cluster_deployment)"
 
-deployment_types: 
- - "{{ simple_deployment }}"
- - "{{ cluster_deployment }}"
+deployment_types: "{{ simple_deployment }}"
 
 vmware_smartlis_deployment:
   slelastic01:
