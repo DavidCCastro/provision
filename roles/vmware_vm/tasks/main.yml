@@ -47,6 +47,7 @@
     name: "{{ item.key }}"
     state: poweredon
     annotation: "{{ item.value.annotation }}"
+    networks:
     - name: "{{ item.value.networks[0].name }}"
       ip: "{{ item.value.networks[0].ip }}"
       netmask: "{{ vmware_mask_servers }}"
