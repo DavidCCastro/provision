@@ -21,8 +21,8 @@
     networks:
     - name: "{{ item.value.networks[0].name }}"
       ip: "{{ item.value.networks[0].ip }}"
-      netmask: "{{ vmware_netmask }}"
-      gateway: "{{ vmware_gateway }}"
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: "{{ item.value.hardware.memory_mb }}"
       num_cpus: "{{ item.value.hardware.num_cpus }}"
