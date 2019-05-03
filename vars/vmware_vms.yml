@@ -33,8 +33,8 @@ vmware_smartlis_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 2
+      memory_mb: 16384
+      num_cpus: 8
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slelastic01
@@ -204,8 +204,8 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 2
+      memory_mb: 16384
+      num_cpus: 8
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slelastic01
@@ -232,11 +232,39 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 2
+      memory_mb: 16384
+      num_cpus: 8
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slelastic02
+    template: "{{ vmware_template }}"
+  slkibana:
+    hostname: "{{ vmware_host }}"
+    username: "{{ vmware_user }}"
+    password: "{{ vmware_password }}"
+    validate_certs: "{{ vmware_validate_certs }}"
+    datacenter: "{{ vmware_datacenter }}"
+    folder: "{{ vmware_folder }}"
+    state: poweredon
+    annotation: "Created from Ansible"
+    disk:
+    - size_gb: 40
+      type: thin
+      datastore: "{{ vmware_datastore }}"
+    - size_gb: 300
+      type: thin
+      datastore: "{{ vmware_datastore }}"
+    networks:
+    - name: VM Network
+      ip: 192.168.1.1
+      netmask: 255.255.255.0
+      gateway: 192.168.1.1
+    hardware:
+      memory_mb: 8192
+      num_cpus: 6
+    customization:
+      dns_servers: "{{ vmware_dns_servers }}"
+      hostname: slkibana
     template: "{{ vmware_template }}"
   sldata01:
     hostname: "{{ vmware_host }}"
@@ -260,8 +288,8 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 2
+      memory_mb: 8192
+      num_cpus: 6
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: sldata01
@@ -288,8 +316,8 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 2
+      memory_mb: 8192
+      num_cpus: 6
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: sldata02
@@ -337,8 +365,8 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 1
+      memory_mb: 12288
+      num_cpus: 12
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slcom01
@@ -358,8 +386,8 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 1
+      memory_mb: 12288
+      num_cpus: 12
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slcom02
@@ -380,7 +408,7 @@ vmware_vms_cluster_deployment:
       gateway: 192.168.1.1
     hardware:
       memory_mb: 4096
-      num_cpus: 1
+      num_cpus: 6
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slrabbit01
@@ -401,7 +429,7 @@ vmware_vms_cluster_deployment:
       gateway: 192.168.1.1
     hardware:
       memory_mb: 4096
-      num_cpus: 1
+      num_cpus: 6
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slrabbit02
@@ -421,8 +449,8 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 1
+      memory_mb: 12288
+      num_cpus: 12
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slapp01
@@ -442,8 +470,8 @@ vmware_vms_cluster_deployment:
       netmask: 255.255.255.0
       gateway: 192.168.1.1
     hardware:
-      memory_mb: 4096
-      num_cpus: 1
+      memory_mb: 12288
+      num_cpus: 12
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slapp02
@@ -464,7 +492,7 @@ vmware_vms_cluster_deployment:
       gateway: 192.168.1.1
     hardware:
       memory_mb: 4096
-      num_cpus: 1
+      num_cpus: 4
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slwww01
@@ -485,7 +513,7 @@ vmware_vms_cluster_deployment:
       gateway: 192.168.1.1
     hardware:
       memory_mb: 4096
-      num_cpus: 1
+      num_cpus: 4
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slwww02
@@ -513,7 +541,7 @@ vmware_vms_cluster_deployment:
       gateway: 192.168.1.1
     hardware:
       memory_mb: 4096
-      num_cpus: 1
+      num_cpus: 2
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slstatic01
@@ -541,7 +569,7 @@ vmware_vms_cluster_deployment:
       gateway: 192.168.1.1
     hardware:
       memory_mb: 4096
-      num_cpus: 1
+      num_cpus: 2
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
       hostname: slstatic02
