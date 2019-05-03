@@ -182,7 +182,7 @@ vmware_smartlis_deployment:
 
 # Cluster deployment
 vmware_vms_cluster_deployment:
-slelastic01:
+  slelastic01:
     hostname: "{{ vmware_host }}"
     username: "{{ vmware_user }}"
     password: "{{ vmware_password }}"
