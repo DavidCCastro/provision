@@ -13,7 +13,7 @@
     networks:
     - name: "{{ vmware_network_name }}"
       ip: "{{ vmware_ip }}"
-      netsmask: "{{ vmware_netmask }}"
+      netmask: "{{ vmware_netmask }}"
     template: "{{ item }}"
     wait_for_ip_address: yes
   loop:
