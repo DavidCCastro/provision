@@ -2,12 +2,12 @@
 # Create a VM from a template
 - name: Creating VM with additional disk
   vmware_guest:
-    hostname: "{{ item.value.hostname }}"
-    username: "{{ item.value.username }}"
-    password: "{{ item.value.password }}"
-    validate_certs: "{{ item.value.validate_certs }}"
-    datacenter: "{{ item.value.datacenter }}"
-    folder: "{{ item.value.folder }}"
+    hostname: "{{ vmware_host }}"
+    username: "{{ vmware_username }}"
+    password: "{{ vmware_password }}"
+    validate_certs: "{{ vmware_validate_certs }}"
+    datacenter: "{{ vmware_datacenter }}"
+    folder: "{{ vmware_folder }}"
     name: "{{ item.key }}"
     state: poweredon
     annotation: "{{ item.value.annotation }}"
@@ -21,46 +21,17 @@
     networks:
     - name: "{{ item.value.networks[0].name }}"
       ip: "{{ item.value.networks[0].ip }}"
-      netmask: "{{ item.value.networks[0].netmask }}"
-      gateway: "{{ item.value.networks[0].gateway }}"
+      netmask: "{{ vmware_netmask }}"
+      gateway: "{{ vmware_gateway }}"
     hardware:
       memory_mb: "{{ item.value.hardware.memory_mb }}"
       num_cpus: "{{ item.value.hardware.num_cpus }}"
     customization:
-      dns_servers: "{{ item.value.customization.dns_servers }}"
+      dns_servers: "{{ vmware_dns_servers }}"
       hostname: "{{ item.key }}"
-    template: "{{ item.value.template }}"
+    template: "{{ vmware_template }}"
     wait_for_ip_address: yes
   loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
   delegate_to: localhost
   when: item.value.disk is defined
-  ignore_errors: yes
-
-- name: Create the VM without additional disks
-  vmware_guest:
-    hostname: "{{ item.value.hostname }}"
-    username: "{{ item.value.username }}"
-    password: "{{ item.value.password }}"
-    validate_certs: "{{ item.value.validate_certs }}"
-    datacenter: "{{ item.value.datacenter }}"
-    folder: "{{ item.value.folder }}"
-    name: "{{ item.key }}"
-    state: poweredon
-    annotation: "{{ item.value.annotation }}"
-    networks:
-    - name: "{{ item.value.networks[0].name }}"
-      ip: "{{ item.value.networks[0].ip }}"
-      netmask: "{{ item.value.networks[0].netmask }}"
-      gateway: "{{ item.value.networks[0].gateway }}"
-    hardware:
-      memory_mb: "{{ item.value.hardware.memory_mb }}"
-      num_cpus: "{{ item.value.hardware.num_cpus }}"
-    customization:
-      dns_servers: "{{ item.value.customization.dns_servers }}"
-      hostname: "{{ item.key }}"
-    template: "{{ item.value.template }}"
-    wait_for_ip_address: yes
-  loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
-  when: item.value.disk is not defined
-  delegate_to: localhost
   ignore_errors: yes
