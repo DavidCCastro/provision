@@ -12,8 +12,8 @@ vmware_dns_servers: [ 192.1.1.100 ]
 vmware_mask_servers: "255.255.255.0"
 vmware_gateway_servers: "192.1.1.150"
 
-simple_deployment: "lookup('dict', vmware_smartlis_deployment)"
-cluster_deployment: "lookup('dict', vmware_vms_cluster_deployment)"
+simple_deployment: "{{ lookup('dict', vmware_smartlis_deployment) }}"
+cluster_deployment: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
 
 deployment_types: "{{ simple_deployment }}"
 
