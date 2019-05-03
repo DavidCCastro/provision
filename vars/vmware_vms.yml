@@ -9,6 +9,8 @@ vmware_datastore: "SL_SAN"
 vmware_esx: "192.1.1.141"
 vmware_datacenter: "Taller"
 vmware_dns_servers: [ 192.1.1.100 ]
+vmware_mask_servers: "255.255.255.0"
+vmware_gateway_servers: "192.1.1.150"
 
 vmware_smartlis_deployment:
   slelastic01:
@@ -30,8 +32,8 @@ vmware_smartlis_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 16384
       num_cpus: 8
@@ -58,8 +60,8 @@ vmware_smartlis_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 2
@@ -79,8 +81,8 @@ vmware_smartlis_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -100,8 +102,8 @@ vmware_smartlis_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -121,8 +123,8 @@ vmware_smartlis_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -142,8 +144,8 @@ vmware_smartlis_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -170,8 +172,8 @@ vmware_smartlis_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -201,8 +203,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 16384
       num_cpus: 8
@@ -229,8 +231,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 16384
       num_cpus: 8
@@ -250,8 +252,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 8192
       num_cpus: 6
@@ -278,8 +280,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 8192
       num_cpus: 6
@@ -306,8 +308,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 8192
       num_cpus: 6
@@ -334,8 +336,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 2
@@ -355,8 +357,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -376,8 +378,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -397,8 +399,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 6
@@ -418,8 +420,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 6
@@ -439,8 +441,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -460,8 +462,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -481,8 +483,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 4
@@ -502,8 +504,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 4
@@ -530,8 +532,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 2
@@ -558,8 +560,8 @@ vmware_vms_cluster_deployment:
     networks:
     - name: VM Network
       ip: 192.168.1.1
-      netmask: 255.255.255.0
-      gateway: 192.168.1.1
+      netmask: "{{ vmware_mask_servers }}"
+      gateway: "{{ vmware_gateway_servers }}"
     hardware:
       memory_mb: 4096
       num_cpus: 2
