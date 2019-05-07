@@ -30,7 +30,7 @@
   
   - name: Extract backend archive
     unarchive:
-      src: ftp://smartlis/4.1/smartlis_backend_4.1.27_build_15629_[20190506T162938].zip
+      src: ftp://smartlis/smartlis_backend_4.1.27_build_15629_[20190506T162938].zip
       dest: /srv/smartlis/core/backend
       owner: smartlis
       group: smartlis
