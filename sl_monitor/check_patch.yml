@@ -4,7 +4,7 @@
     - name: check if patch is installed
       lineinfile:
         path: /srv/smartlis/core/backend/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py
-        line: "       # PATCH: Django 1.11.x is saving NULL on the DB with empty string values"
+        line: '       # PATCH: Django 1.11.x is saving NULL on the DB with empty string values'
         state: present
       check_mode: yes
       register: check_patch
