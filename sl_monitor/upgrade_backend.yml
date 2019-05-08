@@ -47,6 +47,20 @@
     shell: . venv/bin/activate && python migrate.py && deactivate
     args:
       chdir: /srv/smartlis/core/backend
+      
+  - name: check if patch is installed
+    lineinfile:
+      path: /srv/smartlis/core/backend/venv/lib/python2.7/site-packages/django/db/models/fields/__init__.py
+      line: "# PATCH: Django 1.11.x is saving NULL on the DB with empty string values"
+      state: present
+    check_mode: yes
+    register: check_patch
+    
+  - name: install patch if needed
+    shell: . venv/bin/activate && patch -p1 -t -d /srv/smartlis/core/backend/venv -i /srv/smartlis/core/backend/patches/0001-interprets_empty_strings_as_nulls.patch && deactivate
+    args:
+      chdir: /srv/smartlis/core/backend
+    when: check_patch is failed
     
   - name: start previous running supervisor process
     become: yes
