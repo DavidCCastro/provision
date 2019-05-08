@@ -8,3 +8,7 @@
         state: present
       check_mode: yes
       register: check_patch
+    
+    - name: debug
+      debug:
+        var: check_patch
