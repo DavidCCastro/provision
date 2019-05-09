@@ -60,6 +60,11 @@
     shell: supervisorctl start {{ item.split()[0] }}
     loop: "{{ supervisor_status.stdout_lines }}"
     when: ("{{ item.split()[1] }}" == 'RUNNING')
+    
+  - name: Wait for port 8000 to become open on the host, don't start checking for 5 seconds
+    wait_for:
+      port: 8000
+      delay: 5
   
   - name: Clear cache
     uri:
