@@ -49,9 +49,10 @@
       chdir: /srv/smartlis/core/backend
     
   - name: install patch if needed
-    shell: . venv/bin/activate && patch -p1 -t -d /srv/smartlis/core/backend/venv -i /srv/smartlis/core/backend/patches/0001-interprets_empty_strings_as_nulls.patch && deactivate
-    args:
-      chdir: /srv/smartlis/core/backend
+    patch:
+      src: /srv/smartlis/core/backend/patches/0001-interprets_empty_strings_as_nulls.patch
+      basedir: /srv/smartlis/core/backend/venv
+      strip: 1
     
   - name: start previous running supervisor process
     become: yes
