@@ -1,0 +1,6 @@
+- hosts: "{{ servers }}"
+
+  tasks:
+  - name: Clear cache
+    uri:
+      url: http://localhost:8000/system/clear_cache/
