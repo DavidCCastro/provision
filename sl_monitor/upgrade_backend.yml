@@ -48,7 +48,7 @@
     args:
       chdir: /srv/smartlis/core/backend
     
-  - name: install patch if needed
+  - name: install patch
     patch:
       src: /srv/smartlis/core/backend/patches/0001-interprets_empty_strings_as_nulls.patch
       basedir: /srv/smartlis/core/backend/venv
