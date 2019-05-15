@@ -1,7 +1,4 @@
 ---
 # tasks file
-- name: Import {{ deployment_type }} deployment vars file
-  include_vars: "{{ deployment_type }}_deployment_vars.yml"
-
 - name: Import {{ deployment_type }} deployment tasks file
   import_tasks: {{ deployment_type }}_deployment.yml
