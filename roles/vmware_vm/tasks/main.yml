@@ -1,4 +1,4 @@
 ---
 # tasks file
 - name: Import {{ deployment_type }} deployment tasks file
-  import_tasks: {{ deployment_type }}deployment.yml
+  import_tasks: {{ deployment_type }}_deployment.yml
