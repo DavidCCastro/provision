@@ -3,6 +3,5 @@
   gather_facts: false
   vars_files:
     - vars/vmware_vms.yml 
-  roles:
-          #- role: jordi        
+  roles:      
     - role: vmware_vm
