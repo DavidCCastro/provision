@@ -12,11 +12,6 @@ vmware_dns_servers: [ 192.1.1.100 ]
 vmware_mask_servers: "255.255.255.0"
 vmware_gateway_servers: "192.1.1.150"
 
-simple_deployment: "{{ q('dict', vmware_smartlis_deployment) }}"
-cluster_deployment: "{{ q('dict', vmware_vms_cluster_deployment) }}"
-
-#deployment_types: "{{ deployment_type }}"
-
 vmware_smartlis_deployment:
   slelastic01:
     annotation: "Created from Ansible"
