@@ -1,6 +1,6 @@
 ---
+- hosts: Smartlis
 - name: Update /etc/hosts from inventory
-  hosts: Smartlis
   lineinfile:
     dest: /etc/hosts 
     line: "{{ hostvars[item].ansible_host }} {{ hostvars[item].inventory_hostname }}"
