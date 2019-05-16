@@ -27,7 +27,9 @@
       memory_mb: "{{ item.value.hardware.memory_mb }}"
       num_cpus: "{{ item.value.hardware.num_cpus }}"
     customization:
-      dns_servers: "{{ vmware_dns_servers }}"
+      dns_servers: 
+        - "{{ vmware_dns_server1 }}"
+        - "{{ vmware_dns_server2 }}"
     template: "{{ vmware_template }}"
     wait_for_ip_address: yes
   loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
@@ -55,7 +57,9 @@
       memory_mb: "{{ item.value.hardware.memory_mb }}"
       num_cpus: "{{ item.value.hardware.num_cpus }}"
     customization:
-      dns_servers: "{{ vmware_dns_servers }}"
+      dns_servers:
+        - "{{ vmware_dns_server1 }}"
+        - "{{ vmware_dns_server2 }}
     template: "{{ vmware_template }}"
     wait_for_ip_address: yes
   loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
