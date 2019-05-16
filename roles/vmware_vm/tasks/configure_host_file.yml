@@ -3,7 +3,8 @@
   user: smartlis
   become: yes
   become_method: sudo
-  
+   
+  tasks:
 - name: Update /etc/hosts from inventory
   lineinfile:
     dest: /etc/hosts 
