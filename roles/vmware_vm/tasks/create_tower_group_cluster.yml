@@ -9,6 +9,7 @@
     
 - name: Add sl servers to group
   tower_host:
+    tower_username: admin
     tower_password: "{{ tower_pass }}"
     name: "{{ item }}"
     description: "Smartlis hosts"
