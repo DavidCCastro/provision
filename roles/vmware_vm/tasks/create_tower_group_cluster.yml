@@ -9,4 +9,4 @@
       
 - name: Add sl servers to group
   shell: tower-cli host associate --host {{ item.key }} --group Smartlis -u admin -p "{{ tower_pass }}"
-  loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
+  loop: "{{ lookup('dict', vmware_vms_cluster_deployment, wantlist=True) }}"
