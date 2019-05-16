@@ -1,0 +1,19 @@
+---
+- name: Create slservers tower group
+  tower_group:
+    inventory: aviles
+    name: Smartlis
+    state: present
+    tower_username: admin
+    tower_password: "{{ tower_pass }}"
+    
+- name: Add sl servers to group
+  tower_host:
+    tower_username: admin
+    tower_password: "{{ tower_pass }}"
+    name: "{{ item }}"
+    description: "Smartlis hosts"
+    groups: Smartlis
+    inventory: aviles
+    state: present
+  with_items: "{{ vmware_smartlis_deployment.keys() }}"
