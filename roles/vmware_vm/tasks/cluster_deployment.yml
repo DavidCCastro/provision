@@ -28,7 +28,6 @@
       num_cpus: "{{ item.value.hardware.num_cpus }}"
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
-      hostname: "{{ item.key }}"
     template: "{{ vmware_template }}"
     wait_for_ip_address: yes
   loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
@@ -57,7 +56,6 @@
       num_cpus: "{{ item.value.hardware.num_cpus }}"
     customization:
       dns_servers: "{{ vmware_dns_servers }}"
-      hostname: "{{ item.key }}"
     template: "{{ vmware_template }}"
     wait_for_ip_address: yes
   loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
