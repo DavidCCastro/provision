@@ -15,4 +15,4 @@
    
 - name: debubg
   debug:
-    var: vmware_vms_cluster_deployment
+    var: vmware_vms_cluster_deployment.key
