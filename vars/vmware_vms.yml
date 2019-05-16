@@ -8,7 +8,7 @@ vmware_folder: "/Taller/vm/Smartlis"
 vmware_datastore: "SL_SAN"
 vmware_esx: "192.1.1.141"
 vmware_datacenter: "Taller"
-vmware_dns_servers: [ 192.1.1.100 ]
+vmware_dns_servers: [ 192.1.1.100 80.58.61.250 ]
 vmware_mask_servers: "255.255.255.0"
 vmware_gateway_servers: "192.1.1.150"
 
@@ -22,7 +22,7 @@ vmware_smartlis_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.210
     hardware:
       memory_mb: 16384
       num_cpus: 8
@@ -35,7 +35,7 @@ vmware_smartlis_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.211
     hardware:
       memory_mb: 4096
       num_cpus: 2
@@ -43,7 +43,7 @@ vmware_smartlis_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.212
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -51,7 +51,7 @@ vmware_smartlis_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.213
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -59,7 +59,7 @@ vmware_smartlis_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.214
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -67,7 +67,7 @@ vmware_smartlis_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.215
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -81,7 +81,7 @@ vmware_smartlis_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.216
     hardware:
       memory_mb: 4096
       num_cpus: 1
@@ -97,7 +97,7 @@ vmware_vms_cluster_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.210
     hardware:
       memory_mb: 16384
       num_cpus: 8
@@ -110,7 +110,7 @@ vmware_vms_cluster_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.217
     hardware:
       memory_mb: 16384
       num_cpus: 8
@@ -118,7 +118,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.218
     hardware:
       memory_mb: 8192
       num_cpus: 6
@@ -131,7 +131,7 @@ vmware_vms_cluster_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.211
     hardware:
       memory_mb: 8192
       num_cpus: 6
@@ -144,7 +144,7 @@ vmware_vms_cluster_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.219
     hardware:
       memory_mb: 8192
       num_cpus: 6
@@ -157,7 +157,7 @@ vmware_vms_cluster_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.220
     hardware:
       memory_mb: 4096
       num_cpus: 2
@@ -165,7 +165,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.212
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -173,7 +173,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.221
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -181,7 +181,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.213
     hardware:
       memory_mb: 4096
       num_cpus: 6
@@ -189,7 +189,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.222
     hardware:
       memory_mb: 4096
       num_cpus: 6
@@ -197,7 +197,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.214
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -205,7 +205,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.223
     hardware:
       memory_mb: 12288
       num_cpus: 12
@@ -213,7 +213,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.215
     hardware:
       memory_mb: 4096
       num_cpus: 4
@@ -221,7 +221,7 @@ vmware_vms_cluster_deployment:
     annotation: "Created from Ansible"
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.224
     hardware:
       memory_mb: 4096
       num_cpus: 4
@@ -234,7 +234,7 @@ vmware_vms_cluster_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.216
     hardware:
       memory_mb: 4096
       num_cpus: 2
@@ -247,7 +247,7 @@ vmware_vms_cluster_deployment:
       type: thin
     networks:
     - name: VM Network
-      ip: 192.168.1.1
+      ip: 192.1.1.225
     hardware:
       memory_mb: 4096
       num_cpus: 2
