@@ -5,6 +5,7 @@
   
 - name: Import tower group creation tasks file
   import_tasks: create_tower_group_cluster.yml
+  ignore_errors: yes
   
 - name: Import configuration host file tasks
   import_tasks: configure_host_file.yml
