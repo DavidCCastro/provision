@@ -7,6 +7,6 @@
     tower_username: admin
     tower_password: "{{ tower_pass }}"
       
-  - name: Add sl servers to group
-    shell: tower-cli host associate --host "{{ item }}" --group Smartlis -u admin -p "{{ tower_pass }}"
-    loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
+- name: Add sl servers to group
+  shell: tower-cli host associate --host "{{ item }}" --group Smartlis -u admin -p "{{ tower_pass }}"
+  loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
