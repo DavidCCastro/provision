@@ -4,5 +4,5 @@
   import_tasks: "{{ deployment_type }}_deployment.yml"
   
 - name: Import tower group creation tasks file
-  import_tasks: create_tower_group_cluster.yml
+  import_tasks: "create_tower_group_{{ deployment_type }}.yml"
   ignore_errors: yes
