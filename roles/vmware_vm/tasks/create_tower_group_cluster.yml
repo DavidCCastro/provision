@@ -10,7 +10,8 @@
 - name: Add sl servers to group
   shell: tower-cli host associate --host {{ item.hostname }} --group Smartlis -u admin -p "{{ tower_pass }}"
   with_items: 
-   - "{{ vmware_vms_cluster_deployment }}"
+    - "{{ vmware_vms_cluster_deployment }}"
+  ignore_errors: yes
    
 - name: debubg
   debug:
