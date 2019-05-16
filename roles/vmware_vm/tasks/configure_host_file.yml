@@ -1,5 +1,4 @@
 ---
-- hosts: Smartlis
 - name: Update /etc/hosts from inventory
   lineinfile:
     dest: /etc/hosts 
