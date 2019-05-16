@@ -1,4 +1,9 @@
 ---
+- hosts: Smartlis
+  user: smartlis
+  become: yes
+  become_method: sudo
+  
 - name: Update /etc/hosts from inventory
   lineinfile:
     dest: /etc/hosts 
