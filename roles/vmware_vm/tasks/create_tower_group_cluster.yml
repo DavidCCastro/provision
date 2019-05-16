@@ -8,5 +8,11 @@
     tower_password: "{{ tower_pass }}"
     
 - name: Add sl servers to group
-  command: tower-cli host associate --host {{ item }} --group Smartlis -u admin -p "{{ tower_pass }}"
+  tower_host:
+    tower_password: "{{ tower_pass }}"
+    name: "{{ item }}"
+    description: "Smartlis hosts"
+    groups: Smartlis
+    inventory: aviles
+    state: present
   with_items: "{{ vmware_vms_cluster_deployment.keys() }}"
