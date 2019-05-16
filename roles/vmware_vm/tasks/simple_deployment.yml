@@ -29,7 +29,7 @@
     customization:
       dns_servers:
         - "{{ vmware_dns_server1 }}"
-        - "{{ vmware_dns_server2 }}
+        - "{{ vmware_dns_server2 }}"
     template: "{{ vmware_template }}"
     wait_for_ip_address: yes
   loop: "{{ lookup('dict', vmware_smartlis_deployment) }}"
@@ -59,7 +59,7 @@
     customization:
       dns_servers:
         - "{{ vmware_dns_server1 }}"
-        - "{{ vmware_dns_server2 }}
+        - "{{ vmware_dns_server2 }}"
     template: "{{ vmware_template }}"
     wait_for_ip_address: yes
   loop: "{{ lookup('dict', vmware_smartlis_deployment) }}"
