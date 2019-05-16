@@ -26,8 +26,6 @@ vmware_smartlis_deployment:
     hardware:
       memory_mb: 16384
       num_cpus: 8
-    customization:
-      hostname: slelastic01
   sldata01:
     annotation: "Created from Ansible"
     disk:
@@ -41,8 +39,6 @@ vmware_smartlis_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 2
-    customization:
-      hostname: sldata01
   slcom01:
     annotation: "Created from Ansible"
     networks:
@@ -51,8 +47,6 @@ vmware_smartlis_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 1
-    customization:
-      hostname: slcom01
   slrabbit01:
     annotation: "Created from Ansible"
     networks:
@@ -61,8 +55,6 @@ vmware_smartlis_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 1
-    customization:
-      hostname: slrabbit01
   slapp01:
     annotation: "Created from Ansible"
     networks:
@@ -71,8 +63,6 @@ vmware_smartlis_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 1
-    customization:
-      hostname: slapp01
   slwww01:
     annotation: "Created from Ansible"
     networks:
@@ -81,8 +71,6 @@ vmware_smartlis_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 1
-    customization:
-      hostname: slwww01
   slstatic01:
     state: poweredon
     annotation: "Created from Ansible"
@@ -97,8 +85,6 @@ vmware_smartlis_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 1
-    customization:
-      hostname: slstatic01
 
 # Cluster deployment
 vmware_vms_cluster_deployment:
@@ -115,8 +101,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 16384
       num_cpus: 8
-    customization:
-      hostname: slelastic01
   slelastic02:
     annotation: "Created from Ansible"
     disk:
@@ -130,8 +114,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 16384
       num_cpus: 8
-    customization:
-      hostname: slelastic02
   slkibana:
     annotation: "Created from Ansible"
     networks:
@@ -140,8 +122,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 8192
       num_cpus: 6
-    customization:
-      hostname: slkibana
   sldata01:
     annotation: "Created from Ansible"
     disk:
@@ -155,8 +135,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 8192
       num_cpus: 6
-    customization:
-      hostname: sldata01
   sldata02:
     annotation: "Created from Ansible"
     disk:
@@ -170,8 +148,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 8192
       num_cpus: 6
-    customization:
-      hostname: sldata02
   slbk:
     annotation: "Created from Ansible"
     disk:
@@ -185,8 +161,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 2
-    customization:
-      hostname: slbk
   slcom01:
     annotation: "Created from Ansible"
     networks:
@@ -195,8 +169,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 12288
       num_cpus: 12
-    customization:
-      hostname: slcom01
   slcom02:
     annotation: "Created from Ansible"
     networks:
@@ -205,8 +177,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 12288
       num_cpus: 12
-    customization:
-      hostname: slcom02
   slrabbit01:
     annotation: "Created from Ansible"
     networks:
@@ -215,8 +185,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 6
-    customization:
-      hostname: slrabbit01
   slrabbit02:
     annotation: "Created from Ansible"
     networks:
@@ -225,8 +193,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 6
-    customization:
-      hostname: slrabbit02
   slapp01:
     annotation: "Created from Ansible"
     networks:
@@ -235,8 +201,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 12288
       num_cpus: 12
-    customization:
-      hostname: slapp01
   slapp02:
     annotation: "Created from Ansible"
     networks:
@@ -245,8 +209,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 12288
       num_cpus: 12
-    customization:
-      hostname: slapp02
   slwww01:
     annotation: "Created from Ansible"
     networks:
@@ -255,8 +217,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 4
-    customization:
-      hostname: slwww01
   slwww02:
     annotation: "Created from Ansible"
     networks:
@@ -265,8 +225,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 4
-    customization:
-      hostname: slwww02
   slstatic01:
     annotation: "Created from Ansible"
     disk:
@@ -280,8 +238,6 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 2
-    customization:
-      hostname: slstatic01
   slstatic02:
     annotation: "Created from Ansible"
     disk:
@@ -295,5 +251,3 @@ vmware_vms_cluster_deployment:
     hardware:
       memory_mb: 4096
       num_cpus: 2
-    customization:
-      hostname: slstatic02
