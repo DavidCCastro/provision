@@ -4,6 +4,6 @@
   become_user: smartlis 
   lineinfile: 
     dest: /etc/hosts
-    line: '{{ hostvars[item].ansible_host }} {{ hostvars[item].inventory_hostname }}
+    line: "{{ hostvars[item].ansible_host }} {{ hostvars[item].inventory_hostname }}"
     state: present
   with_items: "{{ groups.Smartlis }}"
