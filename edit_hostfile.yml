@@ -7,6 +7,6 @@
   - name: Update /etc/hosts from inventory
     lineinfile:
       path: /etc/hosts
-      line: "{{ item.keys() }} {{ item.value.networks[0].ip }}"
+      line: "{{ item.key }} {{ item.value.networks[0].ip }}"
       state: present
     loop: "{{ lookup('dict', vmware_smartlis_deployment) }}"
