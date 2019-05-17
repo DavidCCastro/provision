@@ -10,5 +10,5 @@
       line: "{{ item.ip }} {{ item.name }}"
       state: present
     with_items: 
-      - { name: "{{ vmware_smartlis_deployment.keys() }}"}
-      - { ip: "{{ vmware_smartlis_deployment.keys() }}"}
+      - { name: '"{{ vmware_smartlis_deployment.keys() }}"'}
+      - { ip: '"{{ vmware_smartlis_deployment.keys() }}"'}
