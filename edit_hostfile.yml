@@ -1,4 +1,4 @@
-- hosts: Ansible
+- hosts: Smartlis
   become: yes
   vars_files:
     - vars/vmware_vms.yml
