@@ -1,5 +1,7 @@
 ---
 - name: Update /etc/hosts from inventory
+  become: yes
+  become_user: root
   lineinfile:
     dest: /etc/hosts 
     line: "{{ item }}"
