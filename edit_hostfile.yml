@@ -10,4 +10,4 @@
       line: "{{ item }}"
       state: present
     loop: 
-      - "{{ vmware_smartlis_deployment.keys() }}"
+      - "{{ lookup('dict', vmware_smartlis_deployment.keys() }}"
