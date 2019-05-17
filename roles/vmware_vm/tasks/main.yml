@@ -6,4 +6,4 @@
   import_tasks: "create_tower_group_{{ deployment_type }}.yml"
 
 - name: Import edit hostfile task
-  import_tasks: "edit_ansible_hostfile_{{ delpoyment_type }}.yml"
+  import_tasks: "edit_ansible_hostfile_{{ deployment_type }}.yml"
