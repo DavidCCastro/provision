@@ -9,4 +9,4 @@
       path: /etc/hosts
       line: "{{ item }}"
       state: present
-    loop: "{{ lookup('dict', vmware_smartlis_deployment.keys(), item.value.networks[0].ip }}"
+    loop: "{{ lookup('dict', vmware_smartlis_deployment.keys(), item.value.networks[0].ip) }}"
