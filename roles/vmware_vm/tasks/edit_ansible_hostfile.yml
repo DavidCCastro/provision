@@ -1,9 +1,9 @@
 ---
 - name: Update /etc/hosts from inventory
   become: yes
-  become_user: smartlis
-  lineinfile:
-    dest: /etc/hosts 
-    line: "{{ item }}"
+  become_user: smartlis 
+  lineinfile: 
+    dest: /etc/hosts
+    line: '{{ hostvars[item]["ansible_host"] }} {{ hostvars[item]["ansible_hostname"] }} {{ hostvars[item]["ansible_nodename"] }}'
     state: present
-  with_items: "{{ vmware_smartlis_deployment.keys() }}"
+  with_items: groups['Smartlis']
