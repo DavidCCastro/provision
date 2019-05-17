@@ -1,5 +1,6 @@
 ---
 - name: Update /etc/hosts from inventory
+  become: yes
   lineinfile:
     path: /etc/hosts
     line: "{{ item }}"
