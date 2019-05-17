@@ -1,8 +1,5 @@
 ---
 - name: Update /etc/hosts from inventory
-  become: yes
-  become_user: smartlis
-  become_method: sudo
   lineinfile:
     dest: /etc/hosts 
     line: "{{ item }}"
