@@ -1,4 +1,4 @@
-- hosts: 127.0.0.1
+- hosts: Ansible
   become: yes
   vars_files:
     - vars/vmware_vms.yml
