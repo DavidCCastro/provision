@@ -1,9 +1,9 @@
 ---
 - name: Update /etc/hosts from inventory
   become: yes
-  blockinfile:
+  lineinfile:
     path: /etc/hosts
-    block: |
-      {{ item }}
+    line: "{{ item }}"
     state: present
   with_items: "{{ vmware_smartlis_deployment.keys() }}"
+  delegate_to: Ansible
