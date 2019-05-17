@@ -1,8 +1,9 @@
 ---
-# tasks file
 - name: Import {{ deployment_type }} deployment tasks file
   import_tasks: "{{ deployment_type }}_deployment.yml"
   
 - name: Import tower group creation tasks file
   import_tasks: "create_tower_group_{{ deployment_type }}.yml"
-  ignore_errors: yes
+
+- name: Import edit hostfile task
+  import_tasks: edit_ansible_hostfile.yml
