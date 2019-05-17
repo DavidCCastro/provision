@@ -1,0 +1,7 @@
+---
+- name: Update /etc/hosts from inventory
+  lineinfile:
+    dest: /etc/hosts 
+    line: "{{ item.key }} {{ item.value.ip }}"
+    state: present
+  with_items: "{{ vmware_smartlis_deployment }}"
