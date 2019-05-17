@@ -1,0 +1,7 @@
+---
+- name: Update /etc/hosts from inventory
+  lineinfile:
+    path: /etc/hosts
+    line: "{{ item.value.networks[0].ip }}   {{ item.key }}"
+    state: present
+  loop: "{{ lookup('dict', vmware_vms_cluster_deployment) }}"
