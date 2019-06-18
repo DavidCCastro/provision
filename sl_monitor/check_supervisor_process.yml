@@ -1,0 +1,15 @@
+- hosts: "{{ servers }}"
+    
+  tasks:
+  - name: Check supervisor status
+    become: yes
+    shell: supervisorctl status
+    register: supervisor_status
+
+  - name: Send message when supervisor process is not running
+    slack:
+      token: "{{ slack_token }}"
+      msg: "{{ ansible_hostname }} {{ item.split()[0] }} is {{ item.split()[1] }}"
+    loop: "{{ supervisor_status.stdout_lines }}"
+    when: ("{{ item.split()[1] }}" != 'RUNNING' }})
+    delegate_to: "{{ delegate_to }}"
