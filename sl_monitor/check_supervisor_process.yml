@@ -1,4 +1,4 @@
-- hosts: "{{ servers }}"
+- hosts: SE00SBUL1
     
   tasks:
   - name: Check supervisor status
@@ -12,4 +12,4 @@
       msg: "{{ ansible_hostname }} {{ item.split()[0] }} is {{ item.split()[1] }}"
     loop: "{{ supervisor_status.stdout_lines }}"
     when: ("{{ item.split()[1] }}" != 'RUNNING' }})
-    delegate_to: "{{ delegate_to }}"
+    delegate_to: localhost
