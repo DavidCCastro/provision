@@ -17,5 +17,5 @@
       msg: "{{ item.cluster_name }} Status={{ item.status }}"
     loop: 
       - "{{ cluster_health.json }}"
-    when: ("{{ item.status }}" == 'yellow') or ("{{ item.status }}" == 'red')
+    when: item.status == 'yellow' or item.status == 'red'
     delegate_to: localhost
