@@ -9,7 +9,7 @@
     
   - name: debug
     debug:
-      var: cluster_health
+      var: cluster_health.json
     
   - name: Send message when rabbitmq alarm=true
     slack:
