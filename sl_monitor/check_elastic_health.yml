@@ -15,6 +15,7 @@
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ item.cluster_name }} Status={{ item.status }}"
-    loop: "{{ cluster_health.json }}"
+    loop: 
+      - "{{ cluster_health.json }}"
     when: ("{{ item.status }}" == 'yellow') or ("{{ item.status }}" == 'red')
     delegate_to: localhost
