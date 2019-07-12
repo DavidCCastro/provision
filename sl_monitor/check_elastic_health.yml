@@ -7,6 +7,10 @@
       return_content: yes
     register: cluster_health
     
+  - name: debug
+    debug:
+      var: cluster_health
+    
   - name: Send message when rabbitmq alarm=true
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
