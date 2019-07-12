@@ -1,0 +1,17 @@
+- hosts: localhost
+  
+  tasks:
+  - name: Get elastic cluster info
+    uri:
+      url: http://10.233.16.105:9200/_cluster/health
+      return_content: yes
+    register: cluster_health
+    
+  - name: Send message when rabbitmq alarm=true
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "{{ item.cluster_name }} Status={{ item.status }}"
+    with_items:
+      - "{{ rabbitmq_health.json }}"
+    when: item.status == yellow or item.status == red
+    delegate_to: localhost
