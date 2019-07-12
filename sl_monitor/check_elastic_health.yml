@@ -7,7 +7,7 @@
       return_content: yes
     register: cluster_health
     
-  - name: Send message when rabbitmq alarm=true
+  - name: Send message when elastic cluster health is not green
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: Elasticsearch cluster "{{ item.cluster_name }} status is {{ item.status }}, maybe one node is down"
