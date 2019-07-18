@@ -31,6 +31,14 @@
       return_content: yes
     register: indices_stats
     
+  - name: Send message when elastic indices
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: Elasticsearch indices "{{ item.indices[0] }}"
+    loop: 
+      - "{{ indices_stats.json }}"
+    delegate_to: localhost
+    
   - name: Get elastic nodes stats
     uri:
       url: http://10.233.16.105:9200/_nodes/stats
