@@ -31,7 +31,7 @@
       return_content: yes
     register: indices_stats
     
-  - name: Get elastic indices stats
+  - name: Get elastic nodes stats
     uri:
       url: http://10.233.16.105:9200/_nodes/stats
       return_content: yes
