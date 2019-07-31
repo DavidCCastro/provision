@@ -8,9 +8,22 @@
       password: '{{ vcenter_pass }}'
       cluster: '{{ cluster }}'
       validate_certs: no
-    register: vcenter_about_info
+    register: datastore_info
     
   - name: debug info
     debug:
       msg: '{{ item.freeSpace }}'
-    loop: '{{ vcenter_about_info.datastores }}'
+    loop: '{{ datastore.datastores }}'
+    
+  - name: 'Ensure that free space is greater than 20%'
+    assert:
+      that: 
+        - item.freeSpace > item.capacity|float * 0.2
+      msg: "datastore {{ item.name }} space has reached 80% threshold"
+    loop: '{{ datastore.datastores }}'
+    register: datastore_space
+
+  - name: debug info
+    debug:
+      msg: '{{ item }}'
+    loop: '{{ datastore_space }}'
