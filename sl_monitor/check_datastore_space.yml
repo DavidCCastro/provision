@@ -27,4 +27,13 @@
     debug:
       msg: '{{ item }}'
     loop: 
-      - '{{ datastore_space }}'
+      - '{{ datastore_space.results }}'
+
+  - name: Send message when free space is less than 20%
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "Datastore {{ item.name }} < 20% free space, {{ ((item.freeSpace / 1024) / 1024) | int }}MB available"
+    loop: 
+      - "{{ datastore_space.results }}"
+    when: item.failed == true
+    delegate_to: localhost
