@@ -26,4 +26,5 @@
   - name: debug info
     debug:
       msg: '{{ item }}'
-    loop: '{{ datastore_space }}'
+    loop: 
+      - '{{ datastore_space }}'
