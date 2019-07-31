@@ -13,4 +13,5 @@
     
   - name: debug info
     debug:
-      var: vcenter_about_info
+      msg: '{{ item }}'
+    loop: vcenter_about_info.json
