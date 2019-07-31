@@ -34,7 +34,6 @@
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "Datastore {{ item.name }} < 20% free space, {{ ((item.freeSpace / 1024) / 1024) | int }}MB available"
-    loop: 
-      - "{{ datastore_space.results }}"
+    loop: "{{ datastore_space.results }}"
     when: item.failed == true
     delegate_to: localhost
