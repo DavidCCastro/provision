@@ -13,4 +13,4 @@
   - name: debug info
     debug:
       msg: '{{ item }}'
-    loop: '{{ vcenter_about_info.json }}'
+    loop: '{{ vcenter_about_info.datastores }}'
