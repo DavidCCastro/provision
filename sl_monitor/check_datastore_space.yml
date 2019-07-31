@@ -12,5 +12,5 @@
     
   - name: debug info
     debug:
-      msg: '{{ item }}'
-    loop: '{{ vcenter_about_info.datastores.0.freeSpace }}'
+      msg: '{{ item.freeSpace }}'
+    loop: '{{ vcenter_about_info.datastores }}'
