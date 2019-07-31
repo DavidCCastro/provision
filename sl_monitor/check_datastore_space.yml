@@ -13,14 +13,14 @@
   - name: debug info
     debug:
       msg: '{{ item.freeSpace }}'
-    loop: '{{ datastore.datastores }}'
+    loop: '{{ datastore_info.datastores }}'
     
   - name: 'Ensure that free space is greater than 20%'
     assert:
       that: 
         - item.freeSpace > item.capacity|float * 0.2
       msg: "datastore {{ item.name }} space has reached 80% threshold"
-    loop: '{{ datastore.datastores }}'
+    loop: '{{ datastore_info.datastores }}'
     register: datastore_space
 
   - name: debug info
