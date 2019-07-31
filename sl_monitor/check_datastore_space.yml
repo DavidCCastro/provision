@@ -22,7 +22,7 @@
   - name: Send message when free space is less than 20%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "Datastore {{ item.item.name }} < 20% free space, {{ (item.item.freeSpace / (1024 * 3)) | int }}GB available"
+      msg: "Datastore {{ item.item.name }} < 20% free space, {{ (item.item.freeSpace / 1024|pow(3)) | int }}GB available"
     loop: "{{ datastore_space.results }}"
     when: item.failed == true
     delegate_to: localhost
