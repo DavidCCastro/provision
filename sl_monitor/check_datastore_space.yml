@@ -8,10 +8,9 @@
       password: '{{ vcenter_pass }}'
       cluster: '{{ cluster }}'
       validate_certs: no
-    delegate_to: localhost
     register: vcenter_about_info
     
   - name: debug info
     debug:
       msg: '{{ item }}'
-    loop: vcenter_about_info.json
+    loop: '{{ vcenter_about_info.json }}'
