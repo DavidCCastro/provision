@@ -25,4 +25,4 @@
     debug:
       msg: "{{ item }}"
     loop:
-      - "{{ supervisor_started.stdout_lines }}"
+      - "{{ supervisor_started }}"
