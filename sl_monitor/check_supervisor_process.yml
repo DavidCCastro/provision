@@ -23,6 +23,6 @@
     
   - name: debug
     debug:
-      msg: "{{ item.0.stdout }}"
+      msg: "{{ item.stdout_lines }}"
     loop:
       - "{{ supervisor_started.results }}"
