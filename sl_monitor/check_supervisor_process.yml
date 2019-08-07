@@ -16,7 +16,7 @@
     
   - name: Restart supervisor process if status is FATAL or EXITED
     supervisorctl:
-      name: "{{ item.split()[0] }}"
+      name: {{ item.split()[0] }}
       state: started
     loop: "{{ supervisor_status.stdout_lines }}"
     when: ("{{ item.split()[1] }}" == 'EXITED') or ("{{ item.split()[1] }}" == 'FATAL')
