@@ -11,16 +11,18 @@
       token: "{{ slack_token }}"
       msg: "{{ ansible_hostname }} {{ item.split()[0] }} is {{ item.split()[1] }}"
     loop: "{{ supervisor_status.stdout_lines }}"
-    when: ("{{ item.split()[1] }}" == 'EXITED') or ("{{ item.split()[1] }}" == 'FATAL')
+    when: ("{{ item.split()[1] }}" == 'STOPPED') or ("{{ item.split()[1] }}" == 'FATAL')
     delegate_to: localhost
     
   - name: Restart supervisor process if status is FATAL or EXITED
     become: yes
     shell: supervisorctl start {{ item.split()[0] }}
     loop: "{{ supervisor_status.stdout_lines }}"
-    when: ("{{ item.split()[1] }}" == 'EXITED') or ("{{ item.split()[1] }}" == 'FATAL')
+    when: ("{{ item.split()[1] }}" == 'STOPPED') or ("{{ item.split()[1] }}" == 'FATAL')
     register: supervisor_started
     until: supervisor_started.stdout.find("RUNNING") != -1
+    retries: 5
+    delay: 6
     
   - name: Send message when a supervisor process is restarted
     slack:
