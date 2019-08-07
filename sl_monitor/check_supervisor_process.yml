@@ -24,7 +24,7 @@
   - name: Send message when a supervisor process is restarted
     slack:
       token: "{{ slack_token }}"
-      msg: {{ ansible_hostname }} "{{ item.0.stdout_lines }}"
+      msg: "{{ ansible_hostname }} {{ item.0.stdout_lines }}"
     loop:
       - "{{ supervisor_started.results }}"
     delegate_to: localhost
