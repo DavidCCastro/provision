@@ -24,7 +24,7 @@
   - name: debug
     debug:
       msg: "{{ item }}"
-    loop: "{{ supervisor_started }}"
+    loop: "{{ supervisor_started.results }}"
     
   - name: Send message when a supervisor process is restarted
     slack:
