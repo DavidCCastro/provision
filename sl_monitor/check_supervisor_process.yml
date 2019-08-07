@@ -21,6 +21,11 @@
     when: ("{{ item.split()[1] }}" == 'EXITED') or ("{{ item.split()[1] }}" == 'FATAL')
     register: supervisor_started
     
+  - name: debug
+    debug:
+      msg: "{{ item }}"
+    loop: "{{ supervisor_started }}"
+    
   - name: Send message when a supervisor process is restarted
     slack:
       token: "{{ slack_token }}"
