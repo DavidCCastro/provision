@@ -25,6 +25,5 @@
     slack:
       token: "{{ slack_token }}"
       msg: "{{ ansible_hostname }} {{ item.stdout_lines }}"
-    loop:
-      - "{{ supervisor_started.results }}"
+    loop: "{{ supervisor_started.results }}"
     delegate_to: localhost
