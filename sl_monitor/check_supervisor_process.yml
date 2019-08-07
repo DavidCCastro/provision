@@ -25,4 +25,4 @@
     debug:
       msg: "{{ item }}"
     loop:
-      - "{{ supervisor_started }}"
+      - "{{ supervisor_started.results }}"
