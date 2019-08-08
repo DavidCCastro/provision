@@ -3,7 +3,7 @@
   tasks:
   - name: Checking PSC replica
     become: yes
-    shell: shell && /usr/lib/vmware-vmdir/bin/vdcrepadmin -f showpartnerstatus -h localhost -u administrator -w {{ psc_pass }}
+    shell: /usr/lib/vmware-vmdir/bin/vdcrepadmin -f showpartnerstatus -h localhost -u administrator -w {{ psc_pass }}
     register: replica_status
 
   - name: debug
