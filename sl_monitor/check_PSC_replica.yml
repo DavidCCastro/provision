@@ -11,3 +11,10 @@
       msg: "{{ item.split(':')[0] }} {{ item.split(':')[1] }}"
     loop: "{{ replica_status.stdout_lines }}"
 
+  - name: Send message when supervisor process is not running
+    slack:
+      token: "{{ slack_token }}"
+      msg: "{{ ansible_hostname }} {{ item.split(':')[0] }} is not available"
+    loop: "{{ replica_status.stdout_lines }}"
+    when: ("{{ item.split(':')[0].find('available') }}" == 1) and ("{{ item.split(':')[1] }}" == 'Yes')
+    delegate_to: localhost
