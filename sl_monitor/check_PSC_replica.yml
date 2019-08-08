@@ -1,21 +1,21 @@
 - hosts: localhost
     
   tasks:
-  - name: start PSC session
+  - name: start VCenter session
     uri:
       url: https://192.1.1.130/rest/com/vmware/cis/session
       force_basic_auth: yes
       validate_certs: no
       method: POST
-      user: root
-      password: "{{ psc_pass }}"
+      user: "{{ vcenter_user }}"
+      password: "{{ vcenter_pass }}"
     register: login
     
   - name: debug
     debug:
       var: "{{ login }}"
       
-  - name: check PSC health
+  - name: check VCenter PSC registration
     uri:
       url: https://192.1.1.130/rest/vcenter/system-config/psc-registration
       force_basic_auth: yes
