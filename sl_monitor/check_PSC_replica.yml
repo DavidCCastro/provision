@@ -8,7 +8,7 @@
 
   - name: debug
     debug:
-      msg: "{{ item.split(':')[0] }} -- {{ item.split(':')[1] | regex_replace('/\s[a-zA-Z]+/', '', $data) }}"
+      msg: "{{ item.split(':')[0] }} -- {{ item.split(':')[1] | regex_replace('/[a-zA-Z]+\s/', '', $data) }}"
     loop: "{{ replica_status.stdout_lines }}"
     ignore_errors: yes
 
