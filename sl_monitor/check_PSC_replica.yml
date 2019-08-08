@@ -19,9 +19,9 @@
     uri:
       url: https://192.1.1.139/rest/appliance/health/applmgmt
       force_basic_auth: yes
-        validate_certs: no
-        headers:
-          Cookie: "{{ login.set_cookie }}"
+      validate_certs: no
+      headers:
+        Cookie: "{{ login.set_cookie }}"
       register: psc_health
       
   - name: debug
