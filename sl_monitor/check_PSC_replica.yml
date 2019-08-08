@@ -6,16 +6,10 @@
     shell: /usr/lib/vmware-vmdir/bin/vdcrepadmin -f showpartnerstatus -h localhost -u administrator -w {{ psc_pass }}
     register: replica_status
 
-  - name: debug
-    debug:
-      msg: "{{ item.split(':')[0] }} -- {{ item.split(':')[1] | regex_replace(' ') }}"
-    loop: "{{ replica_status.stdout_lines }}"
-    ignore_errors: yes
-
-  - name: Send message when supervisor process is not running
+  - name: Send message when PSC replica partner is not available
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ ansible_hostname }} {{ item.split(':')[0] }} is not available"
+      msg: "{{ ansible_hostname }} PSC replica {{ item.split(':')[0] }} {{ item.split(':')[1]| regex_replace(' ') }}"
     loop: "{{ replica_status.stdout_lines }}"
     when: ("{{ item.split(':')[0].find("available") }}" != -1) and ("{{ item.split(':')[1] | regex_replace(' ') }}" == 'Yes')
     delegate_to: localhost
