@@ -20,6 +20,6 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_hostname }} {{ item }}"
     loop: "{{ replica_status.stdout_lines }}"
-    when: ("{{ item.find('0') }}" != -1)
+    when: ("{{ item.find("0") }}" != -1)
     delegate_to: localhost
     ignore_errors: yes
