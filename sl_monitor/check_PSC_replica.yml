@@ -9,4 +9,5 @@
   - name: debug
     debug:
       msg: "{{ item }}"
-    loop: "{{ replica_status }}"
+    loop: 
+      - "{{ replica_status }}"
