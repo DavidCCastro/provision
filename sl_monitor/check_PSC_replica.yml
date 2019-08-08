@@ -26,4 +26,5 @@
       
   - name: debug
     debug:
-      var: "{{ psc_health }}"
+      msg: "{{ item }}"
+    loop: "{{ psc_health }}"
