@@ -22,7 +22,7 @@
       validate_certs: no
       headers:
         Cookie: "{{ login.set_cookie }}"
-      register: psc_health
+    register: psc_health
       
   - name: debug
     debug:
