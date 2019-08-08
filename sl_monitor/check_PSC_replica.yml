@@ -17,6 +17,6 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_hostname }} {{ item.split(':')[0] }} is not available"
     loop: "{{ replica_status.stdout_lines }}"
-    when: "{{ item.split(':')[1] }}" == 'Yes'
+    when: {{ item.split(':')[1] }} == 'Yes'
     delegate_to: localhost
     ignore_errors: yes
