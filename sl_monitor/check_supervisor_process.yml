@@ -1,4 +1,4 @@
-- hosts: slapp01
+- hosts: SE00SBUL1
     
   tasks:
   - name: Check supervisor status
