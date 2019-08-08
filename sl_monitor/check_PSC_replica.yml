@@ -1,9 +1,12 @@
-- hosts: "{{ psc_servers }}"
+- hosts: localhost
     
   tasks:
   - name: Checking PSC replica
-    become: yes
-    shell: shell && /usr/lib/vmware-vmdir/bin/vdcrepadmin -f showpartnerstatus -h localhost -u administrator -w {{ psc_pass }}
+    uri:
+      url: https://192.1.1.139/rest/appliance/access/shell
+      user: root
+      password: {{ psc_pass }}
+      return_content: yes
     register: replica_status
     
   - name: debug
