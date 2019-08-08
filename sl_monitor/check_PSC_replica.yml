@@ -8,6 +8,5 @@
 
   - name: debug
     debug:
-      msg: "{{ item.stdout_lines }}"
-    loop: 
-      - "{{ replica_status }}"
+      msg: "{{ item.split()[0] }}"
+    loop: "{{ replica_status.stdout_lines }}"
