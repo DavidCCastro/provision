@@ -31,5 +31,5 @@
       token: "{{ slack_token }}"
       msg: "{{ ansible_hostname }} trying to start process {{ item.stdout }}"
     loop: "{{ supervisor_started.results }}"
-    when: item.stdout exists
+    when: item.stdout is present
     delegate_to: localhost
