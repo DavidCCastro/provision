@@ -9,8 +9,17 @@
   - name: Send message when PSC replica partner is not available
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ ansible_hostname }} PSC replica {{ item.split(':')[0] }} {{ item.split(':')[1]| regex_replace(' ') }}"
+      msg: "{{ ansible_hostname }} PSC replica {{ item.split(':')[0] }} is {{ item.split(':')[1]| regex_replace(' ') }}"
     loop: "{{ replica_status.stdout_lines }}"
-    when: ("{{ item.split(':')[0].find("available") }}" != -1) and ("{{ item.split(':')[1] | regex_replace(' ') }}" == 'Yes')
+    when: ("{{ item.split(':')[0].find("available") }}" != -1) and ("{{ item.split(':')[1] | regex_replace(' ') }}" != 'Yes')
+    delegate_to: localhost
+    ignore_errors: yes
+    
+  - name: Send message when PSC replica partner changes behind is not 0
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "{{ ansible_hostname }} {{ item.find("0") }}"
+    loop: "{{ replica_status.stdout_lines }}"
+    when: ("{{ item.find("0") }}" != -1)
     delegate_to: localhost
     ignore_errors: yes
