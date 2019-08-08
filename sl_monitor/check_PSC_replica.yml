@@ -1,19 +1,29 @@
 - hosts: localhost
     
   tasks:
-  - name: Checking PSC replica
+  - name: start PSC session
     uri:
-      url: https://192.1.1.139/rest/appliance/access/shell
-      method: POST
-      body: grant_type=password&username=root&password={{ psc_pass }}
-      return_content: yes
-      headers:
-        Content-Type: application/x-www-form-urlencoded
+      url: https://192.1.1.139/rest/com/vmware/cis/session
+      force_basic_auth: yes
       validate_certs: no
-      return_content: yes
-    register: replica_status
+      method: POST
+      user: root
+      password: "{{ psc_pass }}"
+    register: login
     
   - name: debug
     debug:
-      msg: "{{ item }}"
-    loop: "{{ replica_status }}"
+      var: "{{ login }}"
+      
+  - name: check PSC health
+    uri:
+      url: https://192.1.1.139/rest/appliance/health/applmgmt
+      force_basic_auth: yes
+        validate_certs: no
+        headers:
+          Cookie: "{{ login.set_cookie }}"
+      register: psc_health
+      
+  - name: debug
+    debug:
+      var: "{{ psc_health }}"
