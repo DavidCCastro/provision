@@ -17,7 +17,7 @@
       
   - name: check PSC health
     uri:
-      url: https://192.1.1.139/rest/appliance/health/applmgmt
+      url: https://192.1.1.139/rest/vcenter/system-config/psc-registration
       force_basic_auth: yes
       validate_certs: no
       headers:
