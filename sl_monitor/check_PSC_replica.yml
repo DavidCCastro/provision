@@ -10,6 +10,7 @@
     debug:
       msg: "{{ item.split(':')[0] }} {{ item.split(':')[1] }}"
     loop: "{{ replica_status.stdout_lines }}"
+    ignore_errors: yes
 
   - name: Send message when supervisor process is not running
     slack:
