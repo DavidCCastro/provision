@@ -14,12 +14,3 @@
     when: ("{{ item.split(':')[0].find("available") }}" != -1) and ("{{ item.split(':')[1] | regex_replace(' ') }}" != 'Yes')
     delegate_to: localhost
     ignore_errors: yes
-    
-  - name: Send message when PSC replica partner changes behind is not 0
-    slack:
-      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ ansible_hostname }} {{ item }}"
-    loop: "{{ replica_status.stdout_lines }}"
-    when: ("{{ item.find("0") }}" != -1)
-    delegate_to: localhost
-    ignore_errors: yes
