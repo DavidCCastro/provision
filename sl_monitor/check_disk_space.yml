@@ -8,7 +8,7 @@
       msg: "disk space has reached 80% threshold"
     with_items: 
       - "{{ ansible_mounts }}"
-    when: ansible_hostname != SE00SBDL1
+    when: ansible_hostname != sldata01
     ignore_errors: yes
     register: disk_space
 
