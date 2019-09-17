@@ -1,4 +1,4 @@
-- hosts: SE00SBUL1
+- hosts: slapp01
       
   tasks:    
   - name: restart supervisor process
