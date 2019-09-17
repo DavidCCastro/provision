@@ -1,13 +1,11 @@
-- hosts: "{{ servers }}"
+- hosts: SE00SBUL1
       
-  tasks:
-  - name: Check supervisor status
+  tasks:    
+  - name: restart supervisor process
     become: yes
-    shell: supervisorctl status
-    register: salida
-    
-  - name: start previous running supervisor process
-    become: yes
-    shell: supervisorctl start {{ item.split()[0] }}
-    loop: "{{ supervisor_status.stdout_lines }}"
-    when: ("{{ item.split()[1] }}" == 'RUNNING')
+    shell: supervisorctl {{ item }} smartlis-core-backend
+    loop:
+      - stop
+      - start
+    loop_control:
+      pause: 5
