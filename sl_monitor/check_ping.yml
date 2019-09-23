@@ -6,3 +6,4 @@
     ping:
     loop: 
       - "{{ servers }}"
+    ignore_errors: yes
