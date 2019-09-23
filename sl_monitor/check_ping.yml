@@ -6,3 +6,17 @@
     command: ping -c 4 {{ item }}
     loop: "{{ servers }}"
     ignore_errors: yes
+    register: ping_result
+    
+  - name: Debug
+    debug:
+      msg: "{{ item }}"
+    loop: ping_result
+    
+  - name: Send message when a server not responds to ping
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "{{ item }} is not respondig to ping"
+    loop: "{{ ping_result }}"
+    when: item.rc != 0
+    delegate_to: localhost
