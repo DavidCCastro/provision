@@ -4,6 +4,6 @@
     
   tasks:
   - name: Pinging smartlis servers
-    command: ping {{ item }}
+    command: ping -c 4 {{ item }}
     loop: "{{ servers }}"
     ignore_errors: yes
