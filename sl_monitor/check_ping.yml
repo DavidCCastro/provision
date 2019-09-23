@@ -1,4 +1,5 @@
 - hosts: localhost
+  user: smartlis
   gather_facts: no
     
   tasks:
