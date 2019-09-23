@@ -4,8 +4,6 @@
     
   tasks:
   - name: Pinging smartlis servers
-    become: yes
-    become_method: sudo
     command: ping {{ item }}
     loop: "{{ servers }}"
     ignore_errors: yes
