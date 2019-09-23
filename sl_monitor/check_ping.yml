@@ -11,7 +11,7 @@
   - name: Debug
     debug:
       msg: "{{ item }}"
-    loop: ping_result
+    loop: "{{ ping_result }}"
     
   - name: Send message when a server not responds to ping
     slack:
