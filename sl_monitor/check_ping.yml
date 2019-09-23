@@ -1,8 +1,8 @@
-- hosts: "{{ servers }}"
-  user: smartlis
-  become: yes
-  become_method: sudo
+- hosts: localhost
+  gather_facts: no
   
   tasks:
   - name: Pinging smartlis servers
     ping:
+    loop: 
+      - "{{ servers }}"
