@@ -1,9 +1,10 @@
 - hosts: localhost
+  become: yes
   gather_facts: no
+  
   
   tasks:
   - name: Pinging smartlis servers
-    become: yes
     command: ping {{ item }}
     loop: "{{ servers }}"
     ignore_errors: yes
