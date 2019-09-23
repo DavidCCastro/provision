@@ -11,8 +11,7 @@
   - name: Debug
     debug:
       msg: "{{ item }}"
-    loop: 
-      - "{{ ping_result }}"
+    loop: "{{ ping_result.results }}"
     ignore_errors: yes
     
   - name: Send message when a server not responds to ping
