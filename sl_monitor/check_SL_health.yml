@@ -51,7 +51,6 @@
     with_items:
       - "{{ rabbitmq_health.json }}"
     when: item.mem_alarm == true
-    delegate_to: "{{ delegate_to }}"
     
   - name: Send message when rabbitmq disk_free_alarm=true
     slack:
