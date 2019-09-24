@@ -1,0 +1,6 @@
+- hosts: "{{ sldata01_server }}"
+
+  tasks:
+  - name: Create dummy database
+    postgresql_db:
+      name: dummy
