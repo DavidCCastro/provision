@@ -4,3 +4,5 @@
   - name: Create dummy database
     postgresql_db:
       name: dummy
+      login_user: smartlis
+      login_password: "{{ postgre_pass }}"
