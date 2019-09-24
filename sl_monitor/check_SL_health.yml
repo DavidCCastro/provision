@@ -1,4 +1,4 @@
-- hosts: localhost
+- hosts: Ansible
  
   tasks:
   - name: Pinging smartlis servers
