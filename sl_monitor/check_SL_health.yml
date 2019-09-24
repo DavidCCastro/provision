@@ -1,0 +1,105 @@
+- hosts: localhost
+ 
+  tasks:
+  - name: Pinging smartlis servers
+    command: ping -c 4 {{ item }}
+    loop: "{{ groups['Smartlis'] }}"
+    ignore_errors: yes
+    register: ping_result
+    
+  - name: Send message when a server not responds to ping
+    slack:
+      token: "{{ slack_token }}"
+      msg: "{{ item.item }} is not respondig to ping"
+    loop: "{{ ping_result.results }}"
+    when: item.failed == true
+
+  - name: Get elastic cluster info
+    uri:
+      url: http://{{ slwww_keepalived_ip }}:9200/_cluster/health
+      return_content: yes
+    register: cluster_health
+    
+  - name: Send message when elastic cluster health is not green
+    slack:
+      token: "{{ slack_token }}"
+      msg: Elasticsearch cluster "{{ item.cluster_name }} status is {{ item.status }}, maybe one node is down"
+    loop: 
+      - "{{ cluster_health.json }}"
+    when: item.status != 'green'
+    delegate_to: "{{ delegate_to }}"
+    
+  - name: Send message when elastic cluster is relocating shards
+    slack:
+      token: "{{ slack_token }}"
+      msg: Elasticsearch cluster "{{ item.cluster_name }} is relocating shards, shards being relocated={{ item.relocating_shards }}. Maybe one node is down"
+    loop: 
+      - "{{ cluster_health.json }}"
+    when: item.relocating_shards > 0
+    delegate_to: "{{ delegate_to }}"
+
+  - name: Get rabbitmq nodes info
+    uri:
+      url: http://{{ slwww_keepalived_ip }}:15672/api/nodes
+      user: guest
+      password: guest
+      return_content: yes
+    register: rabbitmq_health
+    
+  - name: Send message when rabbitmq mem_alarm=true
+    slack:
+      token: "{{ slack_token }}"
+      msg: "{{ item.name }} WARNING Memory Alarm={{ item.mem_alarm }}"
+    with_items:
+      - "{{ rabbitmq_health.json }}"
+    when: item.mem_alarm == true
+    delegate_to: "{{ delegate_to }}"
+    
+  - name: Send message when rabbitmq disk_free_alarm=true
+    slack:
+      token: "{{ slack_token }}"
+      msg: "{{ item.name }} WARNING Disk Free Alarm={{ item.disk_free_alarm }}"
+    with_items:
+      - "{{ rabbitmq_health.json }}"
+    when: item.disk_free_alarm == true
+    delegate_to: "{{ delegate_to }}"
+    
+  - name: Get rabbitmq queues info
+    uri:
+      url: http://{{ slwww_keepalived_ip }}:15672/api/queues
+      user: guest
+      password: guest
+      return_content: yes
+    register: rabbitmq_queues
+
+  - name: Send message when rabbitmq queue "messages ready" value is greater than 50K
+    slack:
+      token: "{{ slack_token }}"
+      msg: "{{ item.node }} queue name {{ item.name }} has {{ item.messages_ready }} messages ready, maybe the consumer is not working properly..."
+    loop: "{{ rabbitmq_queues.json }}"
+    when: item.messages_ready > 50000
+    delegate_to: "{{ delegate_to }}"
+
+  - name: check couchdb status
+    uri:
+      url: http://{{ slwww_keepalived_ip }}:5984
+    register: response_couchdb
+    until: response_couchdb.json.couchdb == 'Welcome'
+    
+  - name: check kibana status
+    uri:
+      url: http://{{ slwww_keepalived_ip }}:5601
+      status_code: 403
+    
+  - name: check redis ports
+    wait_for:
+      host: localhost
+      port: "{{ item[1] }}"
+      delay: 1
+      timeout: 10
+    loop: "{{ groups['slapp']|product(['6379', '6380'])|list }}"
+    delegate_to: "{{ item[0] }}"
+    
+  - name: check smartlis url
+    uri:
+      url: http://{{ slwww_keepalived_ip }}/system/about/
