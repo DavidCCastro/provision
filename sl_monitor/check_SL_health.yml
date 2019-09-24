@@ -27,7 +27,6 @@
     loop: 
       - "{{ cluster_health.json }}"
     when: item.status != 'green'
-    delegate_to: "{{ delegate_to }}"
     
   - name: Send message when elastic cluster is relocating shards
     slack:
@@ -36,7 +35,6 @@
     loop: 
       - "{{ cluster_health.json }}"
     when: item.relocating_shards > 0
-    delegate_to: "{{ delegate_to }}"
 
   - name: Get rabbitmq nodes info
     uri:
@@ -62,7 +60,6 @@
     with_items:
       - "{{ rabbitmq_health.json }}"
     when: item.disk_free_alarm == true
-    delegate_to: "{{ delegate_to }}"
     
   - name: Get rabbitmq queues info
     uri:
@@ -78,7 +75,6 @@
       msg: "{{ item.node }} queue name {{ item.name }} has {{ item.messages_ready }} messages ready, maybe the consumer is not working properly..."
     loop: "{{ rabbitmq_queues.json }}"
     when: item.messages_ready > 50000
-    delegate_to: "{{ delegate_to }}"
 
   - name: check couchdb status
     uri:
