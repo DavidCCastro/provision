@@ -11,7 +11,7 @@
   - name: debug
     debug:
       msg: "{{ item }}"
-    var: "{{ output }}"
+      var: "{{ output }}"
 
   - name: debug outuput to find error 503
     delegate_to: localhost
