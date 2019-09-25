@@ -17,4 +17,4 @@
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "Smartlis Backend not working {{ output.url }} --> {{ output.msg }}"
-    when: output.status == "503" or output.status == "-1"
+    when: output.status == failed
