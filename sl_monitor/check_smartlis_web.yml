@@ -18,3 +18,7 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "Smartlis Backend not working {{ output.url }} --> {{ output.msg }}"
     when: output.failed == true
+
+  - name: fail when url is not working
+    fail:
+    when: output.failed == true
