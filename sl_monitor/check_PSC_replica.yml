@@ -11,6 +11,6 @@
       token: T9N25BYMC/BNUAL972S/Pk5MToZ8DPwi9QZ5UMzQMFeo
       msg: "{{ ansible_hostname }} PSC replica {{ item.split(':')[0] }} is {{ item.split(':')[1]| regex_replace(' ') }}"
     loop: "{{ replica_status.stdout_lines }}"
-    when: ("{{ item.split(':')[0].find("available") }}" != -1) and ("{{ item.split(':')[1] | regex_replace(' ') }}" == 'No')
+    when: ("{{ item.split(':')[0].find("available") }}" != -1) and ("{{ item.split(':')[1] | regex_replace(' ') }}" == 'Yes')
     delegate_to: localhost
     ignore_errors: yes
