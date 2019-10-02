@@ -9,10 +9,17 @@
       url_username: "{{ mirth_user }}"
       url_password: "{{ mirth_pass }}"
       headers:
-        Content-Type: application/xml
-      body: "{{ message }}"
-      code: 204
+        Content-Type: application/json
+      body: "{
+               "rawData": "dsfhjsagdjags",
+               "binary": false
+             }"
+      status_code: 204
       force_basic_auth: yes
       return_content: yes
     ignore_errors: yes
-    register: get_orders
+    register: message_status
+    
+  - name: debug
+    debug:
+      var: message_status
