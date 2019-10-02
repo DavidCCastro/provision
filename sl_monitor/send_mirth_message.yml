@@ -10,15 +10,8 @@
       url_password: "{{ mirth_pass }}"
       headers:
         Content-Type: application/xml
-      body: "<com.mirth.connect.donkey.model.message.RawMessage>
-	              <rawData>MSH|^~\&|apa||HIS||20161027111420||OML^O21|127122184393756322|R|2.3|||AL|ER|
-PID|||161177^^^HIS^PI^^^^&&||PORCEL^JOSE LUIS^ENCINAS||19491104000000|M||||||||||||
-PV1|1|I|^|||^|^^|||||||||||||||||||||||||||||||||||||||
-SAC||18C0009001|||18C0009001|
-ORC|NW|18C0009001|||||^^^^^||||||||||^^^^||||^^^^^^^^^|
-OBR|1|18C0009001||18^ANTI-CEA^STAIN^^|||20161027111425||0|18C0009001 D 1 1|||||LIN GANGLIO^^|3^ALVAREZ^RAMIRO^ALEGRET|||18C0009001 D 1 13^13|18C0009001 D 1^1|18C0009001 D^D||||||0^^^^^^^^^||||||||||0||^^^^||||||||SPECIALINSTRUCTION^^BLOCK~TISSUEPIECES^1^BLOCK|</rawData>
-	              <binary>false</binary>
-            </com.mirth.connect.donkey.model.message.RawMessage>"
+      body: "{{ message }}"
+      code: 204
       force_basic_auth: yes
       return_content: yes
     ignore_errors: yes
