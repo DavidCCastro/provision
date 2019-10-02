@@ -11,8 +11,12 @@
       headers:
         Content-Type: application/xml
       body: "<com.mirth.connect.donkey.model.message.RawMessage>
-	              <rawData>MSH|^~\&|LABORATORIO|003674|DIRAYA^TratarReenvioResultados|02003|20191001153831|7147543@opegenlabvr@6E3F560530F160DC58DCD01AABB2E9C2@003674@02003@@@@@@@@331@1@@ANALISIS|OSQ^Q06^OSQ_Q06|00000000000000005243521289206898|T|2.5|1||||ESP|UNICODE UTF-8
-QRD|20191001153831|D|1|110000007|||1|7147543|19658521|003674</rawData>
+	              <rawData>MSH|^~\&|apa||HIS||20161027111420||OML^O21|127122184393756322|R|2.3|||AL|ER|
+PID|||161177^^^HIS^PI^^^^&&||PORCEL^JOSE LUIS^ENCINAS||19491104000000|M||||||||||||
+PV1|1|I|^|||^|^^|||||||||||||||||||||||||||||||||||||||
+SAC||18C0009001|||18C0009001|
+ORC|NW|18C0009001|||||^^^^^||||||||||^^^^||||^^^^^^^^^|
+OBR|1|18C0009001||18^ANTI-CEA^STAIN^^|||20161027111425||0|18C0009001 D 1 1|||||LIN GANGLIO^^|3^ALVAREZ^RAMIRO^ALEGRET|||18C0009001 D 1 13^13|18C0009001 D 1^1|18C0009001 D^D||||||0^^^^^^^^^||||||||||0||^^^^||||||||SPECIALINSTRUCTION^^BLOCK~TISSUEPIECES^1^BLOCK|</rawData>
 	              <binary>false</binary>
             </com.mirth.connect.donkey.model.message.RawMessage>"
       force_basic_auth: yes
