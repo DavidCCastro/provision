@@ -13,6 +13,7 @@
       body:
         rawData: "sdsdkjshdjh"
         binary: false
+      body_format: json
       status_code: 204
       force_basic_auth: yes
       return_content: yes
