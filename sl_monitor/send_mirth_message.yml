@@ -11,7 +11,7 @@
       headers:
         Content-Type: application/xml
       body: "<com.mirth.connect.donkey.model.message.RawMessage>
-	              <rawData>MSH|^~\&|LABORATORIO|003674|DIRAYA^TratarReenvioResultados|02003|20191001153831|7147543@opegenlabvr@6E3F560530F160DC58DCD01AABB2E9C2@003674@02003@@@@@@@@331@1@@ANALISIS|OSQ^Q06^OSQ_Q06|00000000000000005243521289206898|T|2.5|1||||ESP|UNICODE UTF-8</rawData>
+	              <rawData>MSH|^~\|LABORATORIO|003674|DIRAYA^TratarReenvioResultados|02003|20191001153831|7147543@opegenlabvr@6E3F560530F160DC58DCD01AABB2E9C2@003674@02003@@@@@@@@331@1@@ANALISIS|OSQ^Q06^OSQ_Q06|00000000000000005243521289206898|T|2.5|1||||ESP|UNICODE UTF-8</rawData>
 	              <binary>false</binary>
             </com.mirth.connect.donkey.model.message.RawMessage>"
       status_code: 204
