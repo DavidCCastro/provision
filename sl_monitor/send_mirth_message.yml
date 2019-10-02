@@ -9,9 +9,11 @@
       url_username: "{{ mirth_user }}"
       url_password: "{{ mirth_pass }}"
       headers:
-        Content-Type: application/json
-      body: { "rawData": "sdsdkjshdjh", "binary": false }
-      body_format: json
+        Content-Type: application/xml
+      body: "<com.mirth.connect.donkey.model.message.RawMessage>
+	              <rawData>hiuhaihfdsiuhdsaoifhisahfdiuhadsifuh</rawData>
+	              <binary>false</binary>
+            </com.mirth.connect.donkey.model.message.RawMessage>"
       status_code: 204
       force_basic_auth: yes
       return_content: yes
