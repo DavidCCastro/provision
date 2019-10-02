@@ -10,10 +10,9 @@
       url_password: "{{ mirth_pass }}"
       headers:
         Content-Type: application/json
-      body: {
-               "rawData": "dsfhjsagdjags",
-               "binary": false
-             }
+      body:
+        rawData: "sdsdkjshdjh"
+        binary: false
       status_code: 204
       force_basic_auth: yes
       return_content: yes
