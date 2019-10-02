@@ -1,0 +1,17 @@
+- hosts: localhost
+  gather_facts: no
+  
+  tasks:
+  - name: Send summy message to SL     
+    uri:
+      method: POST
+      url: "{{ mirth_url }}"
+      url_username: "{{ mirth_user }}"
+      url_password: "{{ mirth_pass }}"
+      headers:
+        Content-Type: application/x-www-form-urlencoded
+      body:
+      force_basic_auth: yes
+      return_content: yes
+    ignore_errors: yes
+    register: get_orders
