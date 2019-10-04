@@ -15,10 +15,12 @@
       msg: postgresql service is not working
       attachments:
         - blocks:
-            type: "section"
-            text:
-              type: "mrkdwn"
-              text: "test"
+            type: "actions"
+            elements:
+              type: "button"
+              text:
+                type: plain_text
+                text: "test"
     when: postgresql_status.stdout.find("inactive") != -1
     
   - name: Checking couchdb service is up
