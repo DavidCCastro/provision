@@ -18,12 +18,12 @@
           actions:
             - name: "reboot"
               text: "yes"
-              type: button
-              value: https://www.google.es
+              type: "button"
+              value: "https://www.google.es"
             - name: "reboot"
               text: "no"
-              type: button
-              value: no
+              type: "button"
+              value: "no"
     when: postgresql_status.stdout.find("inactive") != -1
     
   - name: Checking couchdb service is up
