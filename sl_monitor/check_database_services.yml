@@ -16,7 +16,9 @@
       attachments:
         - blocks:
             type: "section"
-            text: "test"
+            text:
+              type: "mrkdwn"
+              text: "test"
     when: postgresql_status.stdout.find("inactive") != -1
     
   - name: Checking couchdb service is up
