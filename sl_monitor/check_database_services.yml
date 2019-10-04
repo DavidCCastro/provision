@@ -14,16 +14,9 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: postgresql service is not working
       attachments:
-        - text: "reboot?"
-          actions:
-            - name: "reboot"
-              text: "yes"
-              type: "button"
-              value: "https://www.google.es"
-            - name: "reboot"
-              text: "no"
-              type: "button"
-              value: "no"
+        - blocks:
+            type: "section"
+            text: "test"
     when: postgresql_status.stdout.find("inactive") != -1
     
   - name: Checking couchdb service is up
