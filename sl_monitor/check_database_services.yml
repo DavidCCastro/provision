@@ -1,5 +1,4 @@
 - hosts: "{{ servers }}"
-  user: smartlis
     
   tasks:
   - name: Checking postgresql service is up
@@ -10,10 +9,21 @@
     register: postgresql_status
    
   - name: debug outuput to find "inactive" status on stdout
-    delegate_to: SE00SANSL
+    delegate_to: localhost
     slack:
-      token: T9N25BYMC/BEKR5FXAT/Ed3fUnagKyth6RXeYz9JjElg
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: postgresql service is not working
+      attachments:
+        - text: "reboot?"
+          actions:
+            - name: reboot
+              text: Yes
+              type: button
+              value: yes
+            - name: reboot
+              text: No
+              type: button
+              value: no
     when: postgresql_status.stdout.find("inactive") != -1
     
   - name: Checking couchdb service is up
@@ -24,8 +34,8 @@
     register: couchdb_status
    
   - name: debug outuput to find "inactive" status on stdout
-    delegate_to: SE00SANSL
+    delegate_to: localhost
     slack:
-      token: T9N25BYMC/BEKR5FXAT/Ed3fUnagKyth6RXeYz9JjElg
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: couchdb service is not working
     when: couchdb_status.stdout.find("inactive") != -1
