@@ -16,14 +16,7 @@
       attachments:
         - text: "reboot?"
           actions:
-            - name: reboot
-              text: Yes
-              type: button
-              value: yes
-            - name: reboot
-              text: No
-              type: button
-              value: no
+            - type: button
     when: postgresql_status.stdout.find("inactive") != -1
     
   - name: Checking couchdb service is up
