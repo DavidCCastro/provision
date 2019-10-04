@@ -16,7 +16,8 @@
       attachments:
         - text: "reboot?"
           actions:
-            - name: reboot
+            - name: "reboot"
+              text: "yes"
               type: button
               value: yes
     when: postgresql_status.stdout.find("inactive") != -1
