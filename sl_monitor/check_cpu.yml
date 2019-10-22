@@ -7,4 +7,5 @@
 
   - name: debug
     debug:
-      var: cpu_usage
+      msg: "{{ cpu_usage.stdout_lines }}"
+    loop: cpu_usage
