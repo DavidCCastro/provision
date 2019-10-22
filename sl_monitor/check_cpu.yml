@@ -8,4 +8,5 @@
   - name: debug
     debug:
       msg: "{{ item }}"
-    loop: cpu_usage.stdout_lines
+    loop: 
+      - cpu_usage.stdout_lines
