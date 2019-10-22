@@ -9,4 +9,4 @@
     debug:
       msg: "{{ item }}"
     loop: 
-      - cpu_usage.stdout_lines
+      - "{{ cpu_usage.stdout_lines }}"
