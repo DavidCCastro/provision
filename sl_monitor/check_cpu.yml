@@ -8,4 +8,6 @@
  
   - name: Output CPU usage facts
     debug:
-      var: cpu_usage
+      msg: "{{ item.split()[1] }}"
+    loop: "{{ cpu_usage.stdout_lines }}"
+    when: "{{ item.split()[1] }}" != '_Total'
