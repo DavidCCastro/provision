@@ -10,4 +10,4 @@
     debug:
       msg: "{{ item.split()[1] }}"
     loop: "{{ cpu_usage.stdout_lines }}"
-    when: "{{ item.split()[1] }}" != '_Total'
+    when: ("{{ item.split()[1] }}" != '_Total')
