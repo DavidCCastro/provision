@@ -9,3 +9,8 @@
   - name: Set Output CPU usage fact
     set_fact:
       sys_cpu: "{{ cpu_usage.stdout|from_json|list }}"
+      
+  - name: debug
+    debug:
+      msg: "{{ item }}"
+    when: sys_cpu.InstanceName == '_Total'
