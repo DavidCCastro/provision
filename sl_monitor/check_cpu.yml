@@ -8,5 +8,4 @@
  
   - name: Output CPU usage facts
     debug:
-      msg: "{{ item }}"
-    loop: "{{ cpu_usage.stdout_lines }}"
+      var: cpu_usage
