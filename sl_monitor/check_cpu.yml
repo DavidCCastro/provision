@@ -1,12 +1,18 @@
 - hosts: "{{ servers }}"
+  gather_facts: no
 
   tasks:
   - name: Check ensemble service status
     win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5
     register: cpu_usage
 
-  - name: debug
-    debug:
-      msg: "{{ item }}"
-    loop: 
-      - "{{ cpu_usage.stdout_lines }}"
+  - name: Set CPU usage facts
+	  set_fact:
+			user_cpu: "{{cpu_usage.stdout_lines[2].split()[1]}}"
+			system_cpu: "{{cpu_usage.stdout_lines[2].split()[3]}}"
+ 
+	- name: Output CPU usage facts
+	  debug:
+			msg:
+			  - "User CPU usage: {{user_cpu}}"
+			  - "System CPU usage: {{system_cpu}}"
