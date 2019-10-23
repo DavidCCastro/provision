@@ -13,9 +13,9 @@
   - name: Send slack message
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "CPU load of {{ item.CPU }} by process {{ item.InstanceName }}"
+      msg: "CPU load of {{ item.CPU }}% by process {{ item.InstanceName }}"
     loop: "{{ sys_cpu | list }}"
-    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
+    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle') and (item.CPU > 90)
     delegate_to: localhost
     
     
