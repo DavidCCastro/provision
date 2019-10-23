@@ -9,7 +9,7 @@
   - name: Set CPU usage facts
     set_fact:
       user_cpu: "{{cpu_usage.stdout_lines[2].split()[1]}}"
-      system_cpu: "{{cpu_usage.stdout_lines[2].split()[3]}}"
+      system_cpu: "{{cpu_usage.stdout_lines[2].split()[2]}}"
  
   - name: Output CPU usage facts
     debug:
