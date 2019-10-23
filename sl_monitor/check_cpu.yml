@@ -3,12 +3,12 @@
 
   tasks:
   - name: Check ensemble service status
-    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5
+    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | ConvertTo-Json
     register: cpu_usage
  
   - name: Set Output CPU usage fact
     set_fact:
-      sys_cpu: "{{ cpu_usage.stdout_lines | to_json }}"
+      sys_cpu: "{{ cpu_usage.stdout_lines | from_json }}"
       
   - name: debug
     debug:
