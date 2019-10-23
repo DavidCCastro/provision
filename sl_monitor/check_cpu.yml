@@ -8,7 +8,7 @@
  
   - name: Set Output CPU usage fact
     set_fact:
-      sys_cpu: "{{ cpu_usage.stdout_lines | from_json }}"
+      sys_cpu: "{{ cpu_usage.stdout | from_json }}"
       
   - name: debug
     debug:
