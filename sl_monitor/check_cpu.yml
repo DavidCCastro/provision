@@ -14,4 +14,4 @@
     debug:
       msg: "{{ item }}"
     loop: "{{ sys_cpu | list }}"
-    when: item.InstanceName == '_Total'
+    when: item.InstanceName == '_total'
