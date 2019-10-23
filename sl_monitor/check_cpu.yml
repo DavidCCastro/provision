@@ -8,5 +8,5 @@
  
   - name: Output CPU usage facts
     debug:
-      msg: "{{ item.split()[1] }}"
+      msg: "{{ item.split() }}"
     loop: "{{ cpu_usage.stdout_lines }}"
