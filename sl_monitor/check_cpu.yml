@@ -3,17 +3,13 @@
 
   tasks:
   - name: Check ensemble service status
-    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | Format-Table -Autosize
+    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | ConvertTo-Json
     register: cpu_usage
  
-  - name: Output CPU usage facts
+  - name: Set Output CPU usage fact
+    set_fact:
+      sys_cpu: "{{ cpu_usage.stadout|from_json }}"
+  
+  - name: debug
     debug:
-      var: cpu_usage
-      
-  - name: Send message when supervisor process is not running
-    slack:
-      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ cpu_usage | json_query('[].stdout_lines[]') }}"
-      parse: full
-    delegate_to: localhost
-
+      msg: "{{ sys_cpu }}"
