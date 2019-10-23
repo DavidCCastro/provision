@@ -8,8 +8,4 @@
  
   - name: Set Output CPU usage fact
     set_fact:
-      sys_cpu: "{{ cpu_usage.stdout|from_json }}"
-  
-  - name: debug
-    debug:
-      msg: "{{ sys_cpu }}"
+      sys_cpu: "{{ cpu_usage.stdout|from_json|list }}"
