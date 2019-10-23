@@ -9,3 +9,9 @@
   - name: Output CPU usage facts
     debug:
       var: cpu_usage
+      
+  - name: Send message when supervisor process is not running
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "{{ cpu_usage.stdout_lines }}"
+
