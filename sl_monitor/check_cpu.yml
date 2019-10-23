@@ -3,7 +3,7 @@
 
   tasks:
   - name: Check ensemble service status
-    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | ConvertTo-Json
+    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU%';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | ConvertTo-Json
     register: cpu_usage
  
   - name: Set Output CPU usage fact
@@ -13,7 +13,7 @@
   - name: Send slack message
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "CPU load of {{ item.CPU % }} by process {{ item.InstanceName }}"
+      msg: "CPU load of {{ item.CPU% }} by process {{ item.InstanceName }}"
     loop: "{{ sys_cpu | list }}"
     when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
     delegate_to: localhost
