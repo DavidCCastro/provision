@@ -3,7 +3,7 @@
 
   tasks:
   - name: Check ensemble service status
-    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | Format-List
+    win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU %';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | Format-Table
     register: cpu_usage
  
   - name: Output CPU usage facts
