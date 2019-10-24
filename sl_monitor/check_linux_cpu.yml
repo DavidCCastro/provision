@@ -5,7 +5,12 @@
   - name: Get CPU usage
     shell: "top -b -n 1"
     register: top
- 
+    
+  - name: debug
+    debug:
+      msg: "{{ item.split()[1] }}"
+    loop: "{{ top.stdout_lines | list }}"
+    
   - name: Set CPU usage facts
     set_fact:
       user_cpu: "{{top.stdout_lines[2].split()[1]}}"
@@ -16,3 +21,11 @@
       msg:
         - "User CPU usage: {{user_cpu}}"
         - "System CPU usage: {{system_cpu}}"
+
+  - name: Send slack message
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "{{ ansible_hostname }} User CPU usage is {{ user_cpu }}% and System CPU usage is {{ system_cpu }}"
+    loop: "{{ top.stdout_lines | list }}"
+    when: (item.split()[1] > 85) and (item.split()[3] > 85)
+    delegate_to: localhost
