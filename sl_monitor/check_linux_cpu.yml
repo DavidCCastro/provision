@@ -9,7 +9,7 @@
   - name: debug
     debug:
       msg: "{{ item.stdout_lines[2] }}"
-    loop: "{{ top | list }}"
+    loop: "{{ top }}"
     
   - name: Set CPU usage facts
     set_fact:
