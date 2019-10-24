@@ -14,5 +14,5 @@
   - name: Output CPU usage facts
     debug:
       msg:
-	- "User CPU usage: {{user_cpu}}"
-	- "System CPU usage: {{system_cpu}}"
+        - "User CPU usage: {{user_cpu}}"
+        - "System CPU usage: {{system_cpu}}"
