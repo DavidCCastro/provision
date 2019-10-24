@@ -8,7 +8,7 @@
     
   - name: debug
     debug:
-      msg: "{{ item.split()[1] }}"
+      msg: "{{ item }}"
     loop: "{{ top.stdout_lines | list }}"
     
   - name: Set CPU usage facts
