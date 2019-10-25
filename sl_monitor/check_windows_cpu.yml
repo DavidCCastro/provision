@@ -1,5 +1,4 @@
 - hosts: "{{ servers }}"
-  gather_facts: no
 
   tasks:
   - name: Check CPU load average
@@ -29,7 +28,8 @@
   - name: Send slack message when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "{{ ansible_hostname }} overall CPU load is {{ cpu_load }}% and top CPU consumers are {{ sys_cpu.0.InstanceName }} -> {{ sys_cpu.0.CPU }}%"
+      msg: 
+        - "{{ ansible_hostname }} overall CPU load is {{ cpu_load }}% and top CPU consumers are {{ sys_cpu.0.InstanceName }} -> {{ sys_cpu.0.CPU }}%"
     when: (cpu_load > 90)
     delegate_to: localhost
     
