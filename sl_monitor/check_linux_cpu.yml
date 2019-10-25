@@ -8,4 +8,6 @@
     
   - name: debug
     debug:
-      msg: "{{ top.stdout_lines[2].split()[1] }}"
+      msg: 
+        - "{{ top.stdout_lines[2].split()[1] }}"
+        - "{{ top.stdout_lines[2].split()[3] }}"
