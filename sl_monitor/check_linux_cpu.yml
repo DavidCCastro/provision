@@ -17,5 +17,5 @@
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_hostname }} User CPU usage is {{ top.stdout_lines[2].split()[1] }}% and System CPU usage is {{ top.stdout_lines[2].split()[3] }}%"
-    when: ("{{ top.stdout_lines[2].split()[1] }}" > 85) and ("{{ top.stdout_lines[2].split()[3] }}" > 85)
+    when: (top.stdout_lines[2].split()[1] > 85) and (top.stdout_lines[2].split()[3] > 85)
     delegate_to: localhost
