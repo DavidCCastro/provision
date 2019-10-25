@@ -2,7 +2,14 @@
   gather_facts: no
 
   tasks:
-  - name: Check ensemble service status
+  - name: Check CPU load average
+    win_command: powershell.exe "Get-WmiObject win32_processor | Measure-Object -property LoadPercentage -Average | Select Average | Format-List"
+    register: cpu_average
+    
+  - name: debug
+    msg: cpu_average
+  
+  - name: Check top 5 CPU load process
     win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | ConvertTo-Json
     register: cpu_usage
  
@@ -10,7 +17,7 @@
     set_fact:
       sys_cpu: "{{ cpu_usage.stdout | from_json }}"
       
-  - name: Send slack message
+  - name: Send slack message when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "CPU load of {{ item.CPU }}% by process {{ item.InstanceName }}"
