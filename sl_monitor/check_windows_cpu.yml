@@ -17,7 +17,7 @@
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_hostname }} overall CPU load is {{ cpu_load }}% and top 3 CPU consumers are:"
-    when: (cpu_load > 90)
+    when: ("{{ cpu_load }}" > 90)
     delegate_to: localhost
   
   - name: Check top 5 CPU load process
