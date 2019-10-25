@@ -4,10 +4,6 @@
   - name: Check CPU load average
     win_command: powershell.exe "Get-WmiObject win32_processor | Measure-Object -property LoadPercentage -Average | Select Average | Format-List"
     register: cpu_average
-    
-  - name: debug
-    debug:
-      msg: "{{ cpu_average.stdout_lines[2].split()[2] }}"
   
   - name: Set CPU load average fact
     set_fact:
@@ -28,16 +24,12 @@
     set_fact:
       sys_cpu: "{{ cpu_usage.stdout | from_json }}"
       
-  - name: debug
-    debug:
-      msg: "{{ sys_cpu }}"
-      
   - name: Send slack message when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ item.InstanceName }} -> {{ item.CPU }}%"
     loop: "{{ sys_cpu | list }}"
-    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
+    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle') and (cpu_load > '90')
     delegate_to: localhost
     
     
