@@ -8,7 +8,7 @@
     
   - name: debug
     debug:
-      msg: "{{ cpu_average.stdout_lines }}"
+      msg: "{{ cpu_average.stdout_lines[2].split()[1] }}"
   
   - name: Check top 5 CPU load process
     win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | ConvertTo-Json
