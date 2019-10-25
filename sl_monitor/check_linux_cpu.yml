@@ -11,3 +11,10 @@
       msg: 
         - "{{ top.stdout_lines[2].split()[1] }}"
         - "{{ top.stdout_lines[2].split()[3] }}"
+  
+  - name: Send slack message
+    slack:
+      token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
+      msg: "{{ ansible_hostname }} User CPU usage is {{ user_cpu }}% and System CPU usage is {{ system_cpu }}"
+    when: ("{{ top.stdout_lines[2].split()[1] }}" > 85) and ("{{ top.stdout_lines[2].split()[1] }}" > 85)
+    delegate_to: localhost
