@@ -10,20 +10,27 @@
     debug:
       msg: "{{ cpu_average.stdout_lines[2].split()[2] }}"
   
+  - name: Set CPU load average fact
+    set_fact:
+      cpu_load: "{{ cpu_average.stdout_lines[2].split()[2] }}"
+  
   - name: Check top 5 CPU load process
     win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}} | sort *CPU* -Descending | select -First 5 | ConvertTo-Json
     register: cpu_usage
  
-  - name: Set Output CPU usage fact
+  - name: Set Output CPU usage fact by process
     set_fact:
       sys_cpu: "{{ cpu_usage.stdout | from_json }}"
+      
+  - name: debug
+    debug:
+      msg: "{{ sys_cpu }}"
       
   - name: Send slack message when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "CPU load of {{ item.CPU }}% by process {{ item.InstanceName }}"
-    loop: "{{ sys_cpu | list }}"
-    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle') and (item.CPU > 90)
+      msg: "CPU load of {{ sys_cpu.CPU }}% by process {{ sys_cpu.InstanceName }}"
+    when: (cpu_load > 90)
     delegate_to: localhost
     
     
