@@ -1,0 +1,10 @@
+- hosts: "{{ servers }}"
+
+  tasks:
+  - name: Check CPU load average
+    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | Format-List"
+    register: process_paths
+  
+  - name: Set process path
+    set_fact:
+      process_path: "{{ process_paths.stdout_lines[2].split()[2] }}"
