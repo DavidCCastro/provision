@@ -8,4 +8,4 @@
   - name: debug
     debug:
       msg: "{{ item }}"
-    loop: "{{ process_paths }}"
+    loop: "{{ process_paths | list }}"
