@@ -1,10 +1,23 @@
 - hosts: "{{ servers }}"
 
   tasks:
-  - name: Check CPU load average
+  - name: List process path
     win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | ConvertTo-Json"
     register: process_paths
   
   - name: debug
     debug:
       msg: "{{ process_paths.stdout | from_json }}"
+      
+  - name: set process paths fact
+    set_fact:
+      process_path: "{{ process_paths.stdout | from_json }}"
+
+  - name: Check process id from process path
+    win_command: powershell.exe "((Get-Counter ('{{ item.path }}' -replace "\\Id. de proceso","\id. de proceso")).CounterSamples.CookedValue)"
+    loop: "{{ process_path | list }}"
+    register: process_pid
+    
+  - name: debug
+    debug:
+      msg: "{{ process_pid.stdout_lines }}"
