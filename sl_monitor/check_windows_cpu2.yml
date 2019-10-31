@@ -15,7 +15,7 @@
       
   - name: debug
     debug:
-      msg: "{{ item }}"
+      msg: "{{ item.path }}"
     loop: "{{ process_path | list }}"
 
   - name: Check process id from process path
