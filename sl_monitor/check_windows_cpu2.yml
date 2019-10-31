@@ -7,5 +7,4 @@
   
   - name: debug
     debug:
-      msg: "{{ item }}"
-    loop: "{{ process_paths | list }}"
+      msg: "{{ process_paths }}"
