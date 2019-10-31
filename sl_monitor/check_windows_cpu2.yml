@@ -2,12 +2,12 @@
 
   tasks:
   - name: List process path
-    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | Format-List"
+    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | ConvertTo-Json"
     register: process_paths
   
   - name: set process paths fact
     set_fact:
-      process_path: "{{ process_paths.stdout }}"
+      process_path: "{{ process_paths.stdout | from_json }}"
       
   - name: debug
     debug:
@@ -18,7 +18,3 @@
     win_command: powershell.exe "((Get-Counter ('"{{ item.Path }}"' -replace "\\Id. de proceso","\id. de proceso")).CounterSamples.CookedValue)"
     loop: "{{ process_path | list }}"
     register: process_pid
-    
-  - name: debug
-    debug:
-      msg: "{{ process_pid.stdout_lines }}"
