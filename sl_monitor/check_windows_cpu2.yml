@@ -7,4 +7,4 @@
   
   - name: debug
     debug:
-      msg: "{{ process_paths.stdout_lines | from_json }}"
+      msg: "{{ process_paths.stdout | from_json }}"
