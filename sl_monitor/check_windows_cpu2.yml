@@ -2,12 +2,12 @@
 
   tasks:
   - name: List process path
-    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path"
+    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | Format-List"
     register: process_paths
   
   - name: set process paths fact
     set_fact:
-      process_path: "{{ process_paths.stdout | from_json }}"
+      process_path: "{{ process_paths.stdout }}"
       
   - name: debug
     debug:
