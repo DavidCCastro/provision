@@ -2,9 +2,10 @@
 
   tasks:
   - name: Check CPU load average
-    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | Format-List"
+    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | ConvertTo-Json"
     register: process_paths
   
-  - name: Set process path
-    set_fact:
-      process_path: "{{ process_paths.stdout_lines[2].split()[2] }}"
+  - name: debug
+    debug:
+      msg: "{{ item }}"
+    loop: "{{ process_paths }}"
