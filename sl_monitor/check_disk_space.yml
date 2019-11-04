@@ -4,7 +4,7 @@
   - name: 'Ensure that free space is greater than 20%'
     assert:
       that: 
-        - item.size_available > item.size_total|float * 0.2
+        - item.size_available > item.size_total|float * 0.8
       msg: "disk space has reached 80% threshold"
     with_items: 
       - "{{ ansible_mounts }}"
