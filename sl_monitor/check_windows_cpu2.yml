@@ -15,6 +15,6 @@
     loop: "{{ process_path | list }}"
 
   - name: Check process id from process path
-    win_command: powershell.exe "((Get-Counter ('"{{ item.Path }}"' -replace "\\Id. de proceso","\id. de proceso")).CounterSamples.CookedValue)"
+    win_command: powershell.exe "((Get-Counter ('{{ item.Path }}' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
     loop: "{{ process_path | list }}"
     register: process_pid
