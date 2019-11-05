@@ -2,16 +2,16 @@
 
   tasks:
   - name: List process path
-    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | Format-List"
+    win_command: powershell.exe "(Get-Counter '\Proceso(*)\Id. de Proceso').CounterSamples | select Path | ConvertTo-Json"
     register: process_paths
   
   - name: set process paths fact
     set_fact:
-      process_path: "{{ process_paths.stdout_lines }}"
+      process_path: "{{ process_paths.stdout | From-Json }}"
       
   - name: debug
     debug:
-      msg: "{{ item }}"
+      msg: "{{ item.Path }}"
     loop: "{{ process_path | list }}"
 
   - name: Check process id from process path
