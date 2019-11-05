@@ -7,7 +7,7 @@
   
   - name: set process paths fact
     set_fact:
-      process_path: "{{ process_paths.stdout | From_Json }}"
+      process_path: "{{ process_paths.stdout | from_json }}"
       
   - name: debug
     debug:
