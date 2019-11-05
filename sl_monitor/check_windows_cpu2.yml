@@ -19,7 +19,7 @@
     loop: "{{ process_path | list }}"
     register: process_pid
 
-   - name: debug
+  - name: debug
     debug:
       msg: "{{ item }}"
     loop: "{{ process_pid | list }}"
