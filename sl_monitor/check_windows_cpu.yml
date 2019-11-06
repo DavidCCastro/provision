@@ -24,6 +24,17 @@
     set_fact:
       sys_cpu: "{{ cpu_usage.stdout | from_json }}"
       
+  - name: Check process id from process path
+    win_command: powershell.exe "((Get-Counter ('{{ item.Path }}' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
+    loop: "{{ sys_cpu | list }}"
+    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
+    register: process_pid
+    
+  - name: debug
+    debug:
+      msg: "{{ item }}"
+    loop: "{{ process_pid | list }}"
+      
   - name: Send slack message of 3 top CPU consumers when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
