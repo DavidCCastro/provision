@@ -27,7 +27,7 @@
   - name: Check process id from process path
     win_command: powershell.exe "((Get-Counter ('{{ item.Path.split('%')[0] | regex_replace('') }}Id. de Proceso' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
     loop: "{{ sys_cpu | list }}"
-    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
+#    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
     register: process_pid
     
   - name: debug
@@ -39,7 +39,7 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "Process {{ item.InstanceName }} with PID {{ process_pid.stdout }} -> {{ item.CPU }}%"
     loop: "{{ sys_cpu | list }}"
-    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle') and ((cpu_load > '90') or (cpu_load == '100'))
+    when: ((cpu_load > '90') or (cpu_load == '100'))
     delegate_to: localhost
     
     
