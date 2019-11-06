@@ -32,7 +32,7 @@
     
   - name: debug
     debug:
-      msg: "{{ item }}"
+      msg: "{{ item.item }}"
     loop: "{{ process_pid | list }}"
       
   - name: Send slack message of 3 top CPU consumers when CPU load is over 90%
