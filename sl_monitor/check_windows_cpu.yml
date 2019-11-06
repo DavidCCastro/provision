@@ -24,15 +24,19 @@
     set_fact:
       sys_cpu: "{{ cpu_usage.stdout | from_json }}"
       
+  - name: Set process paths fact
+    set_fact:
+      process_path: "{{ cpu_usage.stdout.Path | from_json }}"
+      
   - name: Check process id from process path
     win_command: powershell.exe "((Get-Counter ('{{ item.Path }}' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
-    loop: "{{ sys_cpu | list }}"
+    loop: "{{ process_path | list }}"
     register: process_pid
     
   - name: debug
     debug:
       msg: "{{ item }}"
-    loop: "{{ process_pid | list }}"
+    loop: "{{ process_pid.stdout | list }}"
       
   - name: Send slack message of 3 top CPU consumers when CPU load is over 90%
     slack:
