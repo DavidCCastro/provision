@@ -25,7 +25,7 @@
       sys_cpu: "{{ cpu_usage.stdout | from_json }}"
       
   - name: Check process id from process path
-    win_command: powershell.exe "((Get-Counter ('{{ item.Path }}' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
+    win_command: powershell.exe "((Get-Counter ('{{ item.Path.split('%')[0] | regex_replace('') }}' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
     loop: "{{ sys_cpu | list }}"
     register: process_pid
     
