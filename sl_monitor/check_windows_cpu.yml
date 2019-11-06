@@ -27,12 +27,12 @@
   - name: Check process id from process path
     win_command: powershell.exe "((Get-Counter ('{{ item.Path.split('%')[0] | regex_replace('') }}Id. de Proceso' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
     loop: "{{ sys_cpu | list }}"
+    when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
     register: process_pid
     
   - name: debug
     debug:
-      msg: "{{ item }}"
-    loop: "{{ process_pid | list }}"
+      msg: "{{ process_pid.stdout }}"
       
   - name: Send slack message of 3 top CPU consumers when CPU load is over 90%
     slack:
