@@ -26,7 +26,7 @@
       
   - name: Set process paths fact
     set_fact:
-      process_path: "{{ cpu_usage.stdout.Path | from_json }}"
+      process_path: "{{ cpu_usage.stdout_lines.Path | from_json }}"
       
   - name: Check process id from process path
     win_command: powershell.exe "((Get-Counter ('{{ item.Path }}' -replace '\\Id. de proceso','\id. de proceso')).CounterSamples.CookedValue)"
