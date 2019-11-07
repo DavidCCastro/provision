@@ -38,7 +38,7 @@
   - name: Send slack message of 3 top CPU consumers when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "Process {{ _ansible_item_label._ansible_item_label.InstanceName }} {{ item.0.stdout }} -> {{ item._ansible_item_label.CPU }}%"
+      msg: "Process {{ msg._ansible_item_label.InstanceName }} {{ item.0.stdout }} -> {{ item._ansible_item_label.CPU }}%"
     loop: "{{ process_pid.results }}"
     when: ((cpu_load < '90') or (cpu_load == '100'))
     delegate_to: localhost
