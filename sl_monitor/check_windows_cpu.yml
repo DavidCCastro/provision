@@ -38,7 +38,7 @@
   - name: Send slack message of 3 top CPU consumers when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
-      msg: "Process {{ item.item.InstanceName }} with PID {{ item.item.stdout }} -> {{ item.item.CPU }}%"
+      msg: "Process {{ item.item.InstanceName }} with PID {{ item.stdout | list }} -> {{ item.item.CPU }}%"
     loop: "{{ process_pid.results }}"
     when: ((cpu_load < '90') or (cpu_load == '100'))
     delegate_to: localhost
