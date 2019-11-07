@@ -40,7 +40,7 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "Process {{ item.item.InstanceName }} with PID {{ item.stdout }} -> {{ item.item.CPU }}%"
     loop: "{{ process_pid.results }}"
-    when: ((cpu_load > '90') or (cpu_load == '100'))
+    when: ((cpu_load < '90') or (cpu_load == '100'))
     delegate_to: localhost
     
     
