@@ -1,7 +1,6 @@
 - hosts: "{{ servers }}"
 
   tasks:
-  tasks:
   - name: Check CPU load average
     win_command: powershell.exe "Get-WmiObject win32_processor | Measure-Object -property LoadPercentage -Average | Select Average | Format-List"
     register: cpu_average
@@ -14,10 +13,6 @@
     win_command: powershell.exe $cpucores = (Get-WMIObject Win32_ComputerSystem).NumberOfLogicalProcessors; (Get-Counter '\Proceso(*)\% de tiempo de procesador').CounterSamples | Select InstanceName, @{Name='CPU';Expression={[Decimal]::Round(($_.CookedValue / $cpucores), 2)}}, Path | sort *CPU* -Descending | select -First 7 | ConvertTo-Json
     register: cpu_usage
 
-  - name: debug
-    debug:
-      var: cpu_usage
-
   - name: Set Output CPU usage fact by process
     set_fact:
       sys_cpu: "{{ cpu_usage.stdout | from_json }}"
@@ -28,15 +23,11 @@
     when: (item.InstanceName != '_total') and (item.InstanceName != 'idle')
     register: process_pid
 
-  - name: debug
-    debug:
-      var: process_pid
-
   - name: Send slack message when CPU load is over 90%
     slack:
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "{{ ansible_hostname }} overall CPU load is {{ cpu_load }}% and top 5 CPU consumers are:"
-    when: (cpu_load < '90')
+    when: (cpu_load > '90')
     delegate_to: localhost
 
   - name: Send slack message of 5 top CPU consumers when CPU load is over 90%
@@ -44,5 +35,5 @@
       token: T9N25BYMC/BEJ5TU0MP/UkjPmJsB7d1D0BAA2Belyjxf
       msg: "Process {{ item.item.InstanceName }} with PID {{ item.stdout }} have {{ item.item.CPU }}% of CPU load"
     loop: "{{ process_pid.results }}"
-    when: (item.item.InstanceName != '_total') and (item.item.InstanceName != 'idle') and ((cpu_load < '90') or (cpu_load == '100'))
+    when: (item.item.InstanceName != '_total') and (item.item.InstanceName != 'idle') and ((cpu_load > '90') or (cpu_load == '100'))
     delegate_to: localhost
